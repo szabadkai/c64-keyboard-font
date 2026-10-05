@@ -82,8 +82,13 @@ def build_shapes():
     put('6',six,'Shared closed lower bowl; upright side and smooth shoulder')
     put('9',transform(six,(-1,0,0,-1,380,700)),'Exact 180-degree counterpart of 6')
     put('7','M0 700H380V620L137 0H40L283 620H0Z','Horizontal top bar; straight constant-width diagonal')
-    eight=path('M190 700C70 700 0 635 0 531C0 450 32 392 80 350C28 312 0 257 0 180C0 65 66 0 190 0C314 0 380 65 380 180C380 257 352 312 300 350C348 392 380 450 380 531C380 635 310 700 190 700Z')
-    put('8',subtract(eight,union(ellipse(190,530,102,90),ellipse(190,181,102,101))),'Symmetric bowls and counters; centered waist')
+    # The photo's lower counter is taller than the upper one. Two similar
+    # ellipses made the previous waist 158 units thick instead of about 80.
+    # Keep the upright symmetry while fitting these observed proportions.
+    eight=path('M190 700C72 700 13 642 13 542V518C13 456 40 414 85 389Q101 380 85 371C26 335 0 286 0 218V182C0 63 64 0 190 0C316 0 380 63 380 182V218C380 286 354 335 295 371Q279 380 295 389C340 414 367 456 367 518V542C367 642 308 700 190 700Z')
+    upper_eight=path('M190 620C129 620 101 588 101 536V507C101 450 129 420 190 420C251 420 279 450 279 507V536C279 588 251 620 190 620Z')
+    lower_eight=path('M190 340C118 340 88 296 88 230V190C88 112 118 80 190 80C262 80 292 112 292 190V230C292 296 262 340 190 340Z')
+    put('8',subtract(eight,union(upper_eight,lower_eight)),'Narrower upper bowl; taller lower counter (260 vs 200 units); 80-unit waist; bilateral symmetry')
     # Small legends have their own optical weight, independent of the main caps.
     put('.',ellipse(50,50,50,50),'Circular dot on baseline')
     put(':',union(ellipse(50,50,50,50),ellipse(50,290,50,50)),'Equal circular dots on one vertical axis')
@@ -136,6 +141,6 @@ def main():
         width=x1-x0;outline=pen.getCommands()
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=e['photo'],method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.100',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.101',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()

@@ -1,5 +1,5 @@
 {
-  "version": "1.100",
+  "version": "1.101",
   "cap_height": 700,
   "vertical_stem": 88,
   "horizontal_bar": 80,
@@ -505,7 +505,7 @@
       "codepoint": "U+0038",
       "source_photo": "IMG_0296.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Symmetric bowls and counters; centered waist",
+      "assumptions": "Narrower upper bowl; taller lower counter (260 vs 200 units); 80-unit waist; bilateral symmetry",
       "original_width": 361.772,
       "width": 380.0,
       "bounds": [

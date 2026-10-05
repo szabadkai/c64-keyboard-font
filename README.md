@@ -58,6 +58,8 @@ The initial 65 core shapes were traced from close-up photographs. **Version 1.1*
 - Symmetry where justified, and matched pairs such as parentheses, angular brackets, and 6/9.
 - Preserved identifying details: the slashed zero, plain I, angular brackets, and hooked Q.
 
+**Version 1.101** corrects the 8 to follow its source proportions: a narrower upper bowl, a taller lower opening, and an 80-unit waist. The earlier normalization made both openings too round and left an excessively heavy middle band.
+
 These are inferred design constraints, not a unique recovery of the original camera calibration or manufacturer's artwork. Curved keycaps, print wear, and perspective cannot be separated unambiguously from one photograph. The reconstruction makes the geometric assumptions explicit rather than retaining those defects in the font.
 
 ![Before and after: photographic traces compared with normalized glyph geometry](normalization-comparison.png)

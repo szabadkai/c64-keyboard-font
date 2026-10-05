@@ -49,4 +49,10 @@ assert_pair('<','>',(-1,0,0,1,310,0))
 # Same number of counters survives simplification.
 for c,count in [('A',2),('B',3),('O',2),('Q',2),('0',3),('8',3),('N',1),('H',1)]:
     assert len(list(load(c).contours))==count,(c,len(list(load(c).contours)))
+# Regression: an 8 must retain the photographed taller lower opening and
+# an 80-unit waist, rather than two small, widely separated round holes.
+eight=load('8');vertical=pathops.Path();eight.draw(TransformPen(vertical.getPen(),(0,1,1,0,0,0)))
+assert scan(vertical,190)==[(0,80),(340,420),(620,700)],scan(vertical,190)
+assert scan(eight,210)==[(0,88),(292,380)],scan(eight,210)
+assert scan(eight,525)==[(13,101),(279,367)],scan(eight,525)
 print('Geometry verified: 36 cap bounds, parallel stems, shared thickness, symmetry, paired glyphs, and counters')
