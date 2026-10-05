@@ -1,9 +1,9 @@
 {
-  "version": "1.103",
+  "version": "1.105",
   "cap_height": 700,
   "vertical_stem": 88,
   "horizontal_bar": 80,
-  "note": "Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.",
+  "note": "Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/. Additional references are recorded in reference-review.json.",
   "glyphs": [
     {
       "character": "P",
@@ -520,7 +520,7 @@
       "codepoint": "U+0039",
       "source_photo": "IMG_0297.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Independent 9 proportions; shorter counter than the photo-fitted 6",
+      "assumptions": "LSZ04735: 285-unit tall upper counter, parallel bowl sides, 80-unit shoulder and upright backbone; independent of 6",
       "original_width": 359.254,
       "width": 380.0,
       "bounds": [
@@ -970,14 +970,14 @@
       "codepoint": "U+E001",
       "source_photo": "IMG_0349.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Upright function f; level crossbar and smooth hook",
+      "assumptions": "LSZ04733 function f: 100-unit stem, 96-unit bar, flat-ended hook aligned with crossbar, and shared 700-unit height",
       "original_width": 379.167,
-      "width": 377.309,
+      "width": 360.0,
       "bounds": [
         0,
         0.0,
-        377.309,
-        696.0
+        360.0,
+        700.0
       ]
     }
   ]

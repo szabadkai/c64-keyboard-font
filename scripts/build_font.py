@@ -36,9 +36,13 @@ def combine(items):
 
 def build():
     OUT.mkdir(exist_ok=True)
+    review=json.loads((ROOT/'glyphs/reference-review.json').read_text())
+    refinements={e['character']:e['photo'] for e in review['observations'] if e['action']=='refined'}
     for entry in json.loads((ROOT/'glyphs/source-map.json').read_text()):
         ch=entry['character'];root=ET.parse(ROOT/'glyphs'/f'{ord(ch):04X}.svg').getroot()
-        put(ch,root.find('{http://www.w3.org/2000/svg}path').attrib['d'],f"Geometrically normalized from {entry['photo']}")
+        note=f"Geometrically normalized from {entry['photo']}"
+        if ch in refinements:note+=f"; refined against {refinements[ch]}"
+        put(ch,root.find('{http://www.w3.org/2000/svg}path').attrib['d'],note)
     reflect('/','\\',horizontal=True);reflect('←','→',horizontal=True);reflect('↑','↓',vertical=True)
     reflect("'",'`',horizontal=True)
     put('|','M0 -80H88V780H0Z')
@@ -106,7 +110,7 @@ def build():
         if c=='I':advance=290;bearing=(290-w)/2
         if c in '.:,;':advance=max(270,advance);bearing=(advance-w)/2
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
-    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.104','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.104','description':'Geometrically normalized reconstruction of the keycap legends in the supplied C64 photographs. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs'}
+    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.105','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.105','description':'Geometrically normalized reconstruction of the keycap legends in the supplied C64 photographs. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs'}
     kern='feature kern {\n'+ '\n'.join(f'pos {names[a]} {names[b]} {value};' for a,b,value in [('A','V',-45),('A','W',-30),('A','Y',-40),('V','A',-45),('W','A',-30),('Y','A',-40),('T','A',-35),('L','T',-30),('L','V',-30),('L','Y',-40),('T','O',-15),('T','.',-45)])+'\n} kern;'
     for ttf in [True,False]:
         fb=FontBuilder(1000,isTTF=ttf);fb.setupGlyphOrder(order);fb.setupCharacterMap(cmap)
@@ -124,7 +128,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
-        fb.font['head'].fontRevision=1.104
+        fb.font['head'].fontRevision=1.105
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')

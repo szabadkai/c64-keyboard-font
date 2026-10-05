@@ -72,13 +72,17 @@ The initial 65 core shapes were traced from close-up photographs. **Version 1.1*
 
 **Version 1.104** extends the function-key legends to f12, adding U+E018–U+E01B for f9–f12. Existing glyphs and codepoints are unchanged.
 
+**Version 1.105** uses a new set of twelve 6000 × 4000 reference photographs to refine 9 and the function-key f. The 9 has a taller, straighter-sided upper counter; f has a heavier stem and crossbar and a flat-ended hook. All f1–f12 labels inherit the revised f. The earlier corrections to 2, 3, 5, 6, and 8 are retained.
+
 These are inferred design constraints, not a unique recovery of the original camera calibration or manufacturer's artwork. Curved keycaps, print wear, and perspective cannot be separated unambiguously from one photograph. The reconstruction makes the geometric assumptions explicit rather than retaining those defects in the font.
 
 ![Before and after: photographic traces compared with normalized glyph geometry](normalization-comparison.png)
 
 The original traced vectors remain in [`glyphs/traced/`](glyphs/traced/). [`glyphs/normalization.json`](glyphs/normalization.json) records the assumptions and before/after dimensions for all 65 core shapes. [`scripts/normalize_glyphs.py`](scripts/normalize_glyphs.py) contains the reproducible geometric definitions.
 
-C comes from the **CTRL** key in IMG_0318; there is no dedicated C close-up in the supplied sequence. Function f comes from IMG_0349. The Commodore symbol comes from IMG_0348. Original photographs are kept locally and are not included in this public repository. The editable vector outlines and source mapping are included.
+C was initially based on the **CTRL** key in IMG_0318; the dedicated C key in the later LSZ04731 photograph supports the current construction. Function f was initially based on IMG_0349 and refined against LSZ04733. The Commodore symbol comes from IMG_0348. Original photographs are kept locally and are not included in this public repository. The editable vector outlines and source mapping are included.
+
+[`glyphs/reference-review.json`](glyphs/reference-review.json) catalogs the additional LSZ04724–LSZ04735 photographs and records ten focused comparisons, including crop coordinates, rotation, findings, and which outlines changed. Place those JPEGs in `source/better/` and run `.venv/bin/python scripts/review_references.py` to render a local photo/font comparison in `build/better/reference-review.png`. The comparison retains photographic perspective; it is visual evidence, not a calibrated measurement.
 
 The right and down arrows are reflected from the normalized left and up arrows. Missing ASCII utility symbols, typographic punctuation, and accent marks are constructed additions. `fonts/character-map.json` identifies the origin of every distinct mapped outline. `glyphs/source-map.json` retains the photograph, crop, and original outline for each traced observation. Its dimensions describe the original traces; normalized dimensions are in `glyphs/normalization.json`. Crop coordinates refer to upright 1000-pixel-wide previews; extraction uses full-resolution decodes.
 

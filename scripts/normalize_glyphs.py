@@ -95,10 +95,12 @@ def build_shapes():
     six_counter=path('M190 381C120 381 88 336 88 268V195C88 121 117 80 190 80C263 80 292 121 292 195V268C292 336 260 381 190 381Z')
     six=subtract(six_outer,six_counter)
     put('6',six,'Photo-fitted tall lower counter (301 units), parallel bowl sides, 80-unit shoulder, upright backbone, and short upper hook')
-    # Preserve 9 independently: its photograph has a shorter counter than 6.
-    # An exact rotation is an over-strong assumption for these two originals.
-    nine_model=union(ring(190,205,190,205,88,80),stroke('M44 205V529C44 616 96 656 190 656C284 656 336 616 336 530'))
-    put('9',transform(nine_model,(-1,0,0,-1,380,700)),'Independent 9 proportions; shorter counter than the photo-fitted 6')
+    # LSZ04735 resolves the straight sides and taller counter that the old
+    # elliptical model lost. Fit 9 independently: its counter remains shorter
+    # than 6's, rather than assuming the two are exact rotations.
+    nine_outer=path('M190 700C64 700 0 637 0 515V419C0 311 64 255 179 255C222 255 260 269 292 297V180C292 115 259 80 190 80C122 80 88 110 88 168V207H0V168C0 63 64 0 190 0C316 0 380 70 380 186V515C380 637 316 700 190 700Z')
+    nine_counter=path('M190 620C117 620 88 579 88 505V432C88 364 120 335 190 335C260 335 292 364 292 432V505C292 579 263 620 190 620Z')
+    put('9',subtract(nine_outer,nine_counter),'LSZ04735: 285-unit tall upper counter, parallel bowl sides, 80-unit shoulder and upright backbone; independent of 6')
     put('7','M0 700H380V620L137 0H40L283 620H0Z','Horizontal top bar; straight constant-width diagonal')
     # The photo's lower counter is taller than the upper one. Two similar
     # ellipses made the previous waist 158 units thick instead of about 80.
@@ -143,7 +145,7 @@ def build_shapes():
     # Separated bars: the original logo has an open horizontal gap at the center.
     logo=union(subtract(ring(245,350,245,290,95,105),rect(245,0,320,700)),path('M300 382H505L570 452H300Z'),path('M300 318H570L505 248H300Z'))
     put('\ue000',logo,'Regularized open C and equal aligned logo bars')
-    put('\ue001',union(stroke('M140 0V492C140 602 185 656 280 656C309 656 335 650 360 638',80),rect(0,360,320,75)),'Upright function f; level crossbar and smooth hook')
+    put('\ue001','M120 0V350H0V446H120V520C120 642 174 700 284 700H360V604H284C240 604 220 575 220 520V446H360V350H220V0Z','LSZ04733 function f: 100-unit stem, 96-unit bar, flat-ended hook aligned with crossbar, and shared 700-unit height')
 
 def main():
     build_shapes()
@@ -159,6 +161,6 @@ def main():
         width=x1-x0;outline=pen.getCommands()
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=e['photo'],method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.103',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.105',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/. Additional references are recorded in reference-review.json.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()
