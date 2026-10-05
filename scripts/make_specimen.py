@@ -8,10 +8,10 @@ def make():
     def f(s):return ImageFont.truetype(str(FONT),s)
     def label(p,t,s=22,col='#59615f'):d.text(p,t,font=ImageFont.truetype(ui,s),fill=col)
     label((100,65),'C64  /  KEYBOARD LETTERING',24)
-    label((1430,65),'REGULAR  —  1.0',21)
+    label((1430,65),'REGULAR  —  1.1',21)
     d.line((100,113,1700,113),fill='#bcbcaf',width=2)
     d.text((90,153),'PRESS PLAY ON TAPE',font=f(147),fill='#25333c')
-    label((100,338),'A photographic reconstruction of the printed keycap legends.',28)
+    label((100,338),'A geometrically normalized reconstruction of the keycap legends.',28)
     for i,c in enumerate(['#bd5350','#c38249','#cfb258','#709a76','#609ea7']):d.rectangle((100+i*82,400,179+i*82,413),fill=c)
     for row,chars in enumerate(['ABCDEFGHIJKLM','NOPQRSTUVWXYZ','0123456789']):
         for col,c in enumerate(chars):
@@ -22,7 +22,7 @@ def make():
     d.text((100,990),'! " # $ % & \' ( ) * + - / : ; < = > ? @ £',font=f(62),fill='#25333c')
     d.text((100,1110),'← ↑ → ↓   \ue000   \ue010 \ue011 \ue012 \ue013 \ue014 \ue015 \ue016 \ue017',font=f(63),fill='#25333c')
     d.line((100,1260,1700,1260),fill='#bcbcaf',width=2)
-    label((100,1305),'FROM THE PHOTOGRAPHS',20)
+    label((100,1305),'NORMALIZED FROM THE PHOTOGRAPHS',20)
     label((100,1355),'Narrow capitals · Slashed zero · Hooked Q · Plain I',25,col='#25333c')
     label((100,1400),'Lowercase input uses uppercase key legends. Accent and utility extensions included.',23)
     im.save(ROOT/'specimen.png')

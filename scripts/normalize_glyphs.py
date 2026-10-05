@@ -1,0 +1,141 @@
+"""Reconstruct ideal key legends with explicit geometric constraints.
+
+The photo traces are observations, not master geometry. Shared dimensions,
+parallel stems, horizontal bars and symmetric bowls remove projective distortion
+and print wear together. This is a constrained reconstruction, not a recovered
+camera calibration: a single curved keycap photograph cannot determine that.
+"""
+from pathlib import Path
+import json
+import shutil
+import xml.etree.ElementTree as ET
+import pathops
+from fontTools.svgLib.path import parse_path
+from fontTools.pens.svgPathPen import SVGPathPen
+from fontTools.pens.transformPen import TransformPen
+from fontTools.pens.boundsPen import BoundsPen
+ROOT=Path(__file__).resolve().parents[1]
+V=88; H=80; CAP=700
+SHAPES={};NOTES={}
+def path(d):
+    p=pathops.Path();parse_path(d,p.getPen());return p
+
+def rect(x,y,w,h):return path(f'M{x} {y}h{w}v{h}h{-w}Z')
+def union(*items):
+    out=pathops.Path()
+    for p in items:out=pathops.op(out,p,pathops.PathOp.UNION)
+    return out
+
+def subtract(a,b):return pathops.op(a,b,pathops.PathOp.DIFFERENCE)
+def transform(p,t):
+    out=pathops.Path();p.draw(TransformPen(out.getPen(),t));return out
+
+def stroke(d,width=V):
+    p=path(d);p.stroke(width,pathops.LineCap.BUTT_CAP,pathops.LineJoin.ROUND_JOIN,4)
+    p.convertConicsToQuads(.08)
+    return pathops.simplify(p)
+
+def ellipse(x,y,rx,ry):
+    k=.5522847498307936
+    return path(f'M{x+rx} {y}C{x+rx} {y+k*ry} {x+k*rx} {y+ry} {x} {y+ry}C{x-k*rx} {y+ry} {x-rx} {y+k*ry} {x-rx} {y}C{x-rx} {y-k*ry} {x-k*rx} {y-ry} {x} {y-ry}C{x+k*rx} {y-ry} {x+rx} {y-k*ry} {x+rx} {y}Z')
+def ring(x,y,rx,ry,sx=V,sy=H):return subtract(ellipse(x,y,rx,ry),ellipse(x,y,rx-sx,ry-sy))
+def put(c,p,note):SHAPES[c]=path(p) if isinstance(p,str) else p;NOTES[c]=note
+
+def build_shapes():
+    bowl=path('M190 700C64 700 0 632 0 515V185C0 68 64 0 190 0C316 0 380 68 380 185V515C380 632 316 700 190 700Z')
+    counter=path('M190 620C117 620 88 579 88 505V195C88 121 117 80 190 80C263 80 292 121 292 195V505C292 579 263 620 190 620Z')
+    o=subtract(bowl,counter)
+    put('O',o,'380 × 700; parallel 88-unit stems; symmetric bowls; 80-unit caps')
+    put('C',subtract(o,rect(240,195,160,310)),'O-family bowl; level open terminals')
+    put('G',union(subtract(o,rect(240,340,160,165)),rect(200,260,180,80)),'O-family bowl; level bar and vertical lower-right stem')
+    put('Q',union(o,stroke('M190 170L264 40H440',72)),'O-family bowl; preserved low diagonal and horizontal tail')
+    put('D',subtract(path('M0 0V700H182C317 700 380 636 380 510V190C380 64 317 0 182 0Z'),path('M88 80H178C263 80 292 117 292 195V505C292 583 263 620 178 620H88Z')),'Parallel stems and matching D/O bowl dimensions')
+    p=subtract(path('M0 0V700H184C319 700 380 639 380 530V480C380 370 319 310 184 310H88V0Z'),path('M88 390H180C262 390 292 420 292 485V525C292 590 262 620 180 620H88Z'))
+    put('P',p,'88-unit stem; horizontal bowl boundaries; upright right shoulder')
+    put('R',union(p,path('M181 344H276L410 0H315Z')),'P-family bowl with straight diagonal leg')
+    put('B',subtract(path('M0 0V700H180C305 700 366 642 366 528C366 447 338 398 282 367C348 341 380 284 380 195C380 68 313 0 180 0Z'),union(path('M88 408H174C250 408 278 445 278 521C278 589 250 620 174 620H88Z'),path('M88 80H179C259 80 292 116 292 197C292 286 259 328 179 328H88Z'))),'Shared upright stem; level waist; optically larger lower bowl')
+    for c,arms in [('E',[(0,620,340,80),(0,320,300,80),(0,0,340,80)]),('F',[(0,620,340,80),(0,320,300,80)]),('L',[(0,0,340,80)])]:
+        put(c,union(rect(0,0,V,CAP),*(rect(*r) for r in arms)),'E/F/L family: one stem width, level 80-unit bars')
+    put('H',union(rect(0,0,V,CAP),rect(312,0,V,CAP),rect(0,310,400,H)),'Exactly parallel equal stems; centered horizontal crossbar')
+    put('I',rect(0,0,V,CAP),'Plain rectangle; constant stem width')
+    put('T',union(rect(156,0,V,CAP),rect(0,620,400,H)),'Centered stem; horizontal cap bar')
+    put('U','M0 700H88V190C88 115 117 80 190 80C263 80 292 115 292 190V700H380V185C380 63 316 0 190 0C64 0 0 63 0 185Z','O-family lower bowl; equal parallel stems')
+    put('J','M272 700H360V180C360 62 302 0 180 0C58 0 0 62 0 180V245H88V185C88 112 112 80 180 80C248 80 272 112 272 185Z','Parallel upright stem; level top; matched lower bowl weight')
+    put('N',union(rect(0,0,V,CAP),rect(332,0,V,CAP),path('M0 700H94L420 0H326Z')),'420 × 700 rectangle; parallel stems and straight diagonal')
+    put('K',union(rect(0,0,V,CAP),path('M70 334L310 700H414L176 343L420 0H311L119 270L88 222Z')),'Upright stem; straight diagonal arms; aligned cap and baseline')
+    put('A','M0 0L188 700H272L460 0H370L329 155H131L90 0Z M153 235H307L230 525Z','Symmetric diagonal stems; level crossbar; centered apex')
+    put('V','M0 700H90L220 160L350 700H440L262 0H178Z','Symmetric V; parallel sides within each diagonal stroke')
+    put('X','M0 0L168 350L0 700H96L220 442L344 700H440L272 350L440 0H344L220 258L96 0Z','Mirrored straight diagonals; centered crossing')
+    put('Y','M0 700H96L210 422L324 700H420L254 330V0H166V330Z','Symmetric fork; vertical centered 88-unit stem')
+    put('M','M0 0V700H100L290 225L480 700H580V0H492V487L333 105H247L88 487V0Z','Parallel outer stems; mirrored diagonals; centered inner vertex')
+    put('W','M0 700H92L166 150L282 700H378L494 150L568 700H660L548 0H448L330 540L212 0H112Z','660-unit broad W; paired mirrored diagonals')
+    put('Z','M0 700H380V620L103 80H380V0H0V80L277 620H0Z','Equal level bars; parallel diagonal edges')
+    s=stroke('M336 535C336 612 286 656 190 656C94 656 44 612 44 535C44 453 102 391 190 350C278 309 336 247 336 165C336 88 286 44 190 44C94 44 44 88 44 165')
+    put('S',s,'Smooth rotationally balanced spine; consistent stroke; level terminals')
+    put('0',pathops.op(union(o,stroke('M50 0L330 700',65)),rect(0,0,380,700),pathops.PathOp.INTERSECTION),'O-family oval with preserved slash, clipped to its bounding rectangle')
+    put('1','M110 0V588L15 533L0 618L123 700H198V0Z','Vertical stem; preserved flag; no added baseline serif')
+    put('2',union(stroke('M44 530C44 615 95 656 190 656C285 656 336 615 336 530C336 466 303 412 263 352L44 44'),rect(0,0,380,80)),'Level baseline and symmetric upper bowl; straight lower diagonal')
+    put('3',union(stroke('M44 535C44 615 96 656 190 656C284 656 336 610 336 525C336 408 281 350 175 350H142'),stroke('M175 350C282 350 336 290 336 176C336 89 284 44 190 44C96 44 44 85 44 165')),'Matched upper/lower bowls; aligned right-hand extrema')
+    put('4','M270 700H358V240H430V160H358V0H270V160H0V240Z M270 537L105 240H270Z','Parallel right stem; horizontal bar; triangular counter')
+    put('5',stroke('M360 656H44V367C89 395 131 412 190 412C292 412 336 341 336 230V175C336 87 284 44 190 44C96 44 44 87 44 165'),'Level top; vertical upper stem; aligned lower bowl')
+    six=union(ring(190,205,190,205,88,80),stroke('M44 205V529C44 616 96 656 190 656C284 656 336 616 336 530'))
+    put('6',six,'Shared closed lower bowl; upright side and smooth shoulder')
+    put('9',transform(six,(-1,0,0,-1,380,700)),'Exact 180-degree counterpart of 6')
+    put('7','M0 700H380V620L137 0H40L283 620H0Z','Horizontal top bar; straight constant-width diagonal')
+    eight=path('M190 700C70 700 0 635 0 531C0 450 32 392 80 350C28 312 0 257 0 180C0 65 66 0 190 0C314 0 380 65 380 180C380 257 352 312 300 350C348 392 380 450 380 531C380 635 310 700 190 700Z')
+    put('8',subtract(eight,union(ellipse(190,530,102,90),ellipse(190,181,102,101))),'Symmetric bowls and counters; centered waist')
+    # Small legends have their own optical weight, independent of the main caps.
+    put('.',ellipse(50,50,50,50),'Circular dot on baseline')
+    put(':',union(ellipse(50,50,50,50),ellipse(50,290,50,50)),'Equal circular dots on one vertical axis')
+    comma=path('M100 50C100 14 78 -26 34 -70H0L28 8C-10 35 -5 100 50 100C79 100 100 78 100 50Z')
+    put(',',comma,'Circular head with clean tapered tail')
+    put(';',union(comma,ellipse(50,290,50,50)),'Colon-family dot and comma-family tail')
+    put('!',union(path('M0 700H110L87 340H23Z'),ellipse(55,250,50,50)),'Centered tapered stem and circular dot')
+    put('"',union(rect(0,460,80,240),rect(150,460,80,240)),'Equal rectangular strokes with parallel edges')
+    put("'",path('M72 700H150L68 480H0Z'),'Straight slanted stroke')
+    put('-',rect(0,310,460,80),'Level 80-unit horizontal stroke')
+    put('=',union(rect(0,200,460,80),rect(0,420,460,80)),'Equal parallel bars and equal bearings')
+    put('+',union(rect(0,310,500,80),rect(210,100,80,500)),'Perpendicular bars with equal thickness and centered crossing')
+    put('/',path('M0 0H96L456 700H360Z'),'Straight parallel diagonal edges')
+    left=stroke('M270 515L40 350L270 185',62)
+    put('<',left,'Symmetric angled arms around math axis')
+    put('>',transform(left,(-1,0,0,1,310,0)),'Exact reflected counterpart of less-than')
+    bracket=stroke('M310 660L40 515V185L310 40',80)
+    put('[',bracket,'Original angular bracket; vertical spine and mirrored arms')
+    put(']',transform(bracket,(-1,0,0,1,350,0)),'Exact reflected angular bracket')
+    paren=stroke('M188 700C-4 471 -4 229 188 0',76)
+    put('(',paren,'Smooth symmetric parenthesis around mid-height')
+    put(')',transform(paren,(-1,0,0,1,220,0)),'Exact reflected parenthesis')
+    put('*',union(*(stroke(d,78) for d in ['M0 350H620','M150 73L470 627','M150 627L470 73'])),'Three equal straight strokes intersecting at one center')
+    put('#',union(rect(90,150,62,500),rect(275,150,62,500),stroke('M0 305L410 365',62),stroke('M0 480L410 540',62)),'Parallel upright strokes and matching intentionally sloped crossbars')
+    put('?',union(stroke('M44 535C44 615 96 656 190 656C284 656 336 610 336 530C336 456 294 409 241 371C206 344 184 316 184 264V224'),ellipse(184,50,50,50)),'Smooth bowl; centered stem and circular dot')
+    put('←',union(rect(135,315,625,70),path('M0 350L170 450V250Z')),'Horizontal shaft and centered symmetric triangular head')
+    put('↑',union(rect(55,0,70,565),path('M90 700L0 530H180Z')),'Vertical shaft and centered symmetric triangular head')
+    put('$',union(transform(s,(.83,0,0,.77,0,115)),rect(127,75,58,610)),'Normalized S-derived bowls crossed by one vertical stem')
+    put('%',union(ring(105,490,105,120,55,55),ring(405,210,105,120,55,55),stroke('M105 90L410 610',62)),'Equal oval counters and straight diagonal; paired sizes')
+    put('&',union(stroke('M348 75L102 351C55 400 47 445 77 483C107 524 168 530 209 497C252 461 250 410 206 369L93 263C36 213 29 167 57 121C85 74 133 52 190 52C277 52 323 113 359 191',65),stroke('M272 146L379 66',65)),'Smooth loop and crossing; leveled optical extrema')
+    put('£',union(stroke('M480 550C456 622 410 656 336 656C237 656 190 599 190 507V213C190 135 161 84 98 44H338C414 44 450 72 490 126',88),rect(70,300,290,72)),'Vertical main stem and horizontal bars; smooth arched shoulder')
+    at=union(stroke('M536 156C432 42 235 17 118 108C-4 203 -16 398 75 522C168 649 368 663 493 579C599 509 623 356 550 276C487 207 426 244 437 324L461 492',66),ring(297,364,132,162,65,65))
+    put('@',at,'Regularized oval counter and smooth spiral; intended lean retained')
+    # Separated bars: the original logo has an open horizontal gap at the center.
+    logo=union(subtract(ring(245,350,245,290,95,105),rect(245,0,320,700)),path('M300 382H505L570 452H300Z'),path('M300 318H570L505 248H300Z'))
+    put('\ue000',logo,'Regularized open C and equal aligned logo bars')
+    put('\ue001',union(stroke('M140 0V492C140 602 185 656 280 656C309 656 335 650 360 638',80),rect(0,360,320,75)),'Upright function f; level crossbar and smooth hook')
+
+def main():
+    build_shapes()
+    manifest=json.loads((ROOT/'glyphs/source-map.json').read_text())
+    assert set(SHAPES)=={e['character'] for e in manifest}
+    raw=ROOT/'glyphs/traced';raw.mkdir(exist_ok=True)
+    report=[]
+    for e in manifest:
+        ch=e['character'];name=f'{ord(ch):04X}.svg';dest=ROOT/'glyphs'/name
+        if not (raw/name).exists():shutil.copy2(dest,raw/name)
+        p=pathops.simplify(SHAPES[ch]);b=BoundsPen(None);p.draw(b);x0,y0,x1,y1=b.bounds
+        p=transform(p,(1,0,0,1,-x0,0));pen=SVGPathPen(None,ntos=lambda v:format(v,'.4f').rstrip('0').rstrip('.') if v else '0');p.draw(pen)
+        width=x1-x0;outline=pen.getCommands()
+        dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
+        report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=e['photo'],method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.100',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
+if __name__=='__main__':main()

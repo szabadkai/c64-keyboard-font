@@ -38,11 +38,11 @@ def build():
     OUT.mkdir(exist_ok=True)
     for entry in json.loads((ROOT/'glyphs/source-map.json').read_text()):
         ch=entry['character'];root=ET.parse(ROOT/'glyphs'/f'{ord(ch):04X}.svg').getroot()
-        put(ch,root.find('{http://www.w3.org/2000/svg}path').attrib['d'],entry['photo'])
+        put(ch,root.find('{http://www.w3.org/2000/svg}path').attrib['d'],f"Geometrically normalized from {entry['photo']}")
     reflect('/','\\',horizontal=True);reflect('←','→',horizontal=True);reflect('↑','↓',vertical=True)
     reflect("'",'`',horizontal=True)
-    put('|','M0 -80H82V780H0Z')
-    put('_','M0 -90H460V-15H0Z')
+    put('|','M0 -80H88V780H0Z')
+    put('_','M0 -90H460V-10H0Z')
     put('^','M0 480L170 700H250L420 480H322L210 624L98 480Z')
     put('~','M0 315C70 460 142 440 228 373C300 318 325 330 375 408L445 364C371 233 302 241 221 296C146 348 115 373 70 277Z')
     put('{','M280 710H200C115 710 100 655 100 575V450C100 395 75 390 20 390V310C75 310 100 305 100 250V125C100 45 115 -10 200 -10H280V65H225C188 65 180 85 180 135V255C180 307 164 335 132 350C164 365 180 393 180 445V565C180 615 188 635 225 635H280Z')
@@ -101,7 +101,7 @@ def build():
         if c=='I':advance=290;bearing=(290-w)/2
         if c in '.:,;':advance=max(270,advance);bearing=(advance-w)/2
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
-    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.000','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.000','description':'Photo-based reconstruction of the keycap legends in the supplied C64 photographs. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs'}
+    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.100','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.100','description':'Geometrically normalized reconstruction of the keycap legends in the supplied C64 photographs. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs'}
     kern='feature kern {\n'+ '\n'.join(f'pos {names[a]} {names[b]} {value};' for a,b,value in [('A','V',-45),('A','W',-30),('A','Y',-40),('V','A',-45),('W','A',-30),('Y','A',-40),('T','A',-35),('L','T',-30),('L','V',-30),('L','Y',-40),('T','O',-15),('T','.',-45)])+'\n} kern;'
     for ttf in [True,False]:
         fb=FontBuilder(1000,isTTF=ttf);fb.setupGlyphOrder(order);fb.setupCharacterMap(cmap)
@@ -119,6 +119,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
+        fb.font['head'].fontRevision=1.1
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')

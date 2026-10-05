@@ -1,0 +1,984 @@
+{
+  "version": "1.100",
+  "cap_height": 700,
+  "vertical_stem": 88,
+  "horizontal_bar": 80,
+  "note": "Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.",
+  "glyphs": [
+    {
+      "character": "P",
+      "codepoint": "U+0050",
+      "source_photo": "IMG_0308.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "88-unit stem; horizontal bowl boundaries; upright right shoulder",
+      "original_width": 382.366,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "O",
+      "codepoint": "U+004F",
+      "source_photo": "IMG_0309.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "380 × 700; parallel 88-unit stems; symmetric bowls; 80-unit caps",
+      "original_width": 365.736,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "I",
+      "codepoint": "U+0049",
+      "source_photo": "IMG_0310.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Plain rectangle; constant stem width",
+      "original_width": 104.053,
+      "width": 88.0,
+      "bounds": [
+        0,
+        0.0,
+        88.0,
+        700.0
+      ]
+    },
+    {
+      "character": "U",
+      "codepoint": "U+0055",
+      "source_photo": "IMG_0311.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "O-family lower bowl; equal parallel stems",
+      "original_width": 372.894,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "Y",
+      "codepoint": "U+0059",
+      "source_photo": "IMG_0312.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Symmetric fork; vertical centered 88-unit stem",
+      "original_width": 427.913,
+      "width": 420.0,
+      "bounds": [
+        0,
+        0.0,
+        420.0,
+        700.0
+      ]
+    },
+    {
+      "character": "T",
+      "codepoint": "U+0054",
+      "source_photo": "IMG_0313.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Centered stem; horizontal cap bar",
+      "original_width": 407.931,
+      "width": 400.0,
+      "bounds": [
+        0,
+        0.0,
+        400.0,
+        700.0
+      ]
+    },
+    {
+      "character": "R",
+      "codepoint": "U+0052",
+      "source_photo": "IMG_0314.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "P-family bowl with straight diagonal leg",
+      "original_width": 378.964,
+      "width": 410.0,
+      "bounds": [
+        0,
+        0.0,
+        410.0,
+        700.0
+      ]
+    },
+    {
+      "character": "E",
+      "codepoint": "U+0045",
+      "source_photo": "IMG_0315.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "E/F/L family: one stem width, level 80-unit bars",
+      "original_width": 328.69,
+      "width": 340.0,
+      "bounds": [
+        0,
+        0.0,
+        340.0,
+        700.0
+      ]
+    },
+    {
+      "character": "W",
+      "codepoint": "U+0057",
+      "source_photo": "IMG_0316.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "660-unit broad W; paired mirrored diagonals",
+      "original_width": 715.089,
+      "width": 660.0,
+      "bounds": [
+        0,
+        0.0,
+        660.0,
+        700.0
+      ]
+    },
+    {
+      "character": "Q",
+      "codepoint": "U+0051",
+      "source_photo": "IMG_0317.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "O-family bowl; preserved low diagonal and horizontal tail",
+      "original_width": 419.892,
+      "width": 440.0,
+      "bounds": [
+        0,
+        0.0,
+        440.0,
+        700.0
+      ]
+    },
+    {
+      "character": "A",
+      "codepoint": "U+0041",
+      "source_photo": "IMG_0321.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Symmetric diagonal stems; level crossbar; centered apex",
+      "original_width": 506.973,
+      "width": 460.0,
+      "bounds": [
+        0,
+        0.0,
+        460.0,
+        700.0
+      ]
+    },
+    {
+      "character": "S",
+      "codepoint": "U+0053",
+      "source_photo": "IMG_0322.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Smooth rotationally balanced spine; consistent stroke; level terminals",
+      "original_width": 396.175,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "D",
+      "codepoint": "U+0044",
+      "source_photo": "IMG_0323.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Parallel stems and matching D/O bowl dimensions",
+      "original_width": 369.215,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "F",
+      "codepoint": "U+0046",
+      "source_photo": "IMG_0324.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "E/F/L family: one stem width, level 80-unit bars",
+      "original_width": 357.085,
+      "width": 340.0,
+      "bounds": [
+        0,
+        0.0,
+        340.0,
+        700.0
+      ]
+    },
+    {
+      "character": "G",
+      "codepoint": "U+0047",
+      "source_photo": "IMG_0325.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "O-family bowl; level bar and vertical lower-right stem",
+      "original_width": 367.553,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "H",
+      "codepoint": "U+0048",
+      "source_photo": "IMG_0326.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Exactly parallel equal stems; centered horizontal crossbar",
+      "original_width": 387.099,
+      "width": 400.0,
+      "bounds": [
+        0,
+        0.0,
+        400.0,
+        700.0
+      ]
+    },
+    {
+      "character": "J",
+      "codepoint": "U+004A",
+      "source_photo": "IMG_0327.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Parallel upright stem; level top; matched lower bowl weight",
+      "original_width": 379.682,
+      "width": 360.0,
+      "bounds": [
+        0,
+        0.0,
+        360.0,
+        700.0
+      ]
+    },
+    {
+      "character": "K",
+      "codepoint": "U+004B",
+      "source_photo": "IMG_0328.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Upright stem; straight diagonal arms; aligned cap and baseline",
+      "original_width": 400.833,
+      "width": 420.0,
+      "bounds": [
+        0,
+        0.0,
+        420.0,
+        700.0
+      ]
+    },
+    {
+      "character": "L",
+      "codepoint": "U+004C",
+      "source_photo": "IMG_0329.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "E/F/L family: one stem width, level 80-unit bars",
+      "original_width": 347.852,
+      "width": 340.0,
+      "bounds": [
+        0,
+        0.0,
+        340.0,
+        700.0
+      ]
+    },
+    {
+      "character": "M",
+      "codepoint": "U+004D",
+      "source_photo": "IMG_0340.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Parallel outer stems; mirrored diagonals; centered inner vertex",
+      "original_width": 584.685,
+      "width": 580.0,
+      "bounds": [
+        0,
+        0.0,
+        580.0,
+        700.0
+      ]
+    },
+    {
+      "character": "N",
+      "codepoint": "U+004E",
+      "source_photo": "IMG_0341.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "420 × 700 rectangle; parallel stems and straight diagonal",
+      "original_width": 438.193,
+      "width": 420.0,
+      "bounds": [
+        0,
+        0.0,
+        420.0,
+        700.0
+      ]
+    },
+    {
+      "character": "B",
+      "codepoint": "U+0042",
+      "source_photo": "IMG_0342.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Shared upright stem; level waist; optically larger lower bowl",
+      "original_width": 366.466,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "V",
+      "codepoint": "U+0056",
+      "source_photo": "IMG_0343.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Symmetric V; parallel sides within each diagonal stroke",
+      "original_width": 415.186,
+      "width": 440.0,
+      "bounds": [
+        0,
+        0.0,
+        440.0,
+        700.0
+      ]
+    },
+    {
+      "character": "X",
+      "codepoint": "U+0058",
+      "source_photo": "IMG_0345.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Mirrored straight diagonals; centered crossing",
+      "original_width": 452.431,
+      "width": 440.0,
+      "bounds": [
+        0,
+        0.0,
+        440.0,
+        700.0
+      ]
+    },
+    {
+      "character": "Z",
+      "codepoint": "U+005A",
+      "source_photo": "IMG_0346.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Equal level bars; parallel diagonal edges",
+      "original_width": 373.178,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "C",
+      "codepoint": "U+0043",
+      "source_photo": "IMG_0318.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "O-family bowl; level open terminals",
+      "original_width": 375.58,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "1",
+      "codepoint": "U+0031",
+      "source_photo": "IMG_0288.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Vertical stem; preserved flag; no added baseline serif",
+      "original_width": 200.939,
+      "width": 198.0,
+      "bounds": [
+        0,
+        0.0,
+        198.0,
+        700.0
+      ]
+    },
+    {
+      "character": "2",
+      "codepoint": "U+0032",
+      "source_photo": "IMG_0289.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Level baseline and symmetric upper bowl; straight lower diagonal",
+      "original_width": 370.866,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "3",
+      "codepoint": "U+0033",
+      "source_photo": "IMG_0290.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Matched upper/lower bowls; aligned right-hand extrema",
+      "original_width": 357.207,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "4",
+      "codepoint": "U+0034",
+      "source_photo": "IMG_0292.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Parallel right stem; horizontal bar; triangular counter",
+      "original_width": 432.06,
+      "width": 430.0,
+      "bounds": [
+        0,
+        0.0,
+        430.0,
+        700.0
+      ]
+    },
+    {
+      "character": "5",
+      "codepoint": "U+0035",
+      "source_photo": "IMG_0293.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Level top; vertical upper stem; aligned lower bowl",
+      "original_width": 355.738,
+      "width": 380.0,
+      "bounds": [
+        0,
+        -0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "6",
+      "codepoint": "U+0036",
+      "source_photo": "IMG_0294.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Shared closed lower bowl; upright side and smooth shoulder",
+      "original_width": 361.401,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "7",
+      "codepoint": "U+0037",
+      "source_photo": "IMG_0295.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Horizontal top bar; straight constant-width diagonal",
+      "original_width": 347.508,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "8",
+      "codepoint": "U+0038",
+      "source_photo": "IMG_0296.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Symmetric bowls and counters; centered waist",
+      "original_width": 361.772,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "9",
+      "codepoint": "U+0039",
+      "source_photo": "IMG_0297.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Exact 180-degree counterpart of 6",
+      "original_width": 359.254,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "0",
+      "codepoint": "U+0030",
+      "source_photo": "IMG_0298.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "O-family oval with preserved slash, clipped to its bounding rectangle",
+      "original_width": 374.725,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "!",
+      "codepoint": "U+0021",
+      "source_photo": "IMG_0288.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Centered tapered stem and circular dot",
+      "original_width": 129.025,
+      "width": 110.0,
+      "bounds": [
+        0,
+        200.0,
+        110.0,
+        700.0
+      ]
+    },
+    {
+      "character": "\"",
+      "codepoint": "U+0022",
+      "source_photo": "IMG_0289.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Equal rectangular strokes with parallel edges",
+      "original_width": 225.82,
+      "width": 230.0,
+      "bounds": [
+        0,
+        460.0,
+        230.0,
+        700.0
+      ]
+    },
+    {
+      "character": "#",
+      "codepoint": "U+0023",
+      "source_photo": "IMG_0290.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Parallel upright strokes and matching intentionally sloped crossbars",
+      "original_width": 393.297,
+      "width": 418.978,
+      "bounds": [
+        0,
+        150.0,
+        418.978,
+        650.0
+      ]
+    },
+    {
+      "character": "$",
+      "codepoint": "U+0024",
+      "source_photo": "IMG_0292.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Normalized S-derived bowls crossed by one vertical stem",
+      "original_width": 354.981,
+      "width": 315.4,
+      "bounds": [
+        0,
+        75.0,
+        315.4,
+        685.0
+      ]
+    },
+    {
+      "character": "%",
+      "codepoint": "U+0025",
+      "source_photo": "IMG_0293.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Equal oval counters and straight diagonal; paired sizes",
+      "original_width": 526.419,
+      "width": 510.0,
+      "bounds": [
+        0,
+        74.316,
+        510.0,
+        625.684
+      ]
+    },
+    {
+      "character": "&",
+      "codepoint": "U+0026",
+      "source_photo": "IMG_0294.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Smooth loop and crossing; leveled optical extrema",
+      "original_width": 409.314,
+      "width": 389.942,
+      "bounds": [
+        0,
+        19.5,
+        389.942,
+        550.771
+      ]
+    },
+    {
+      "character": "'",
+      "codepoint": "U+0027",
+      "source_photo": "IMG_0295.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Straight slanted stroke",
+      "original_width": 138.88,
+      "width": 150.0,
+      "bounds": [
+        0,
+        480.0,
+        150.0,
+        700.0
+      ]
+    },
+    {
+      "character": "(",
+      "codepoint": "U+0028",
+      "source_photo": "IMG_0296.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Smooth symmetric parenthesis around mid-height",
+      "original_width": 229.79,
+      "width": 211.119,
+      "bounds": [
+        0,
+        -24.414,
+        211.119,
+        724.414
+      ]
+    },
+    {
+      "character": ")",
+      "codepoint": "U+0029",
+      "source_photo": "IMG_0297.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Exact reflected parenthesis",
+      "original_width": 209.721,
+      "width": 211.119,
+      "bounds": [
+        0,
+        -24.414,
+        211.119,
+        724.414
+      ]
+    },
+    {
+      "character": "+",
+      "codepoint": "U+002B",
+      "source_photo": "IMG_0299.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Perpendicular bars with equal thickness and centered crossing",
+      "original_width": 509.464,
+      "width": 500.0,
+      "bounds": [
+        0,
+        100.0,
+        500.0,
+        600.0
+      ]
+    },
+    {
+      "character": "-",
+      "codepoint": "U+002D",
+      "source_photo": "IMG_0300.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Level 80-unit horizontal stroke",
+      "original_width": 456.144,
+      "width": 460.0,
+      "bounds": [
+        0,
+        310.0,
+        460.0,
+        390.0
+      ]
+    },
+    {
+      "character": "£",
+      "codepoint": "U+00A3",
+      "source_photo": "IMG_0301.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Vertical main stem and horizontal bars; smooth arched shoulder",
+      "original_width": 616.199,
+      "width": 471.357,
+      "bounds": [
+        0,
+        0.0,
+        471.357,
+        700.0
+      ]
+    },
+    {
+      "character": "*",
+      "codepoint": "U+002A",
+      "source_photo": "IMG_0306.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Three equal straight strokes intersecting at one center",
+      "original_width": 681.106,
+      "width": 620.0,
+      "bounds": [
+        0,
+        53.493,
+        620.0,
+        646.507
+      ]
+    },
+    {
+      "character": "@",
+      "codepoint": "U+0040",
+      "source_photo": "IMG_0307.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Regularized oval counter and smooth spiral; intended lean retained",
+      "original_width": 650.982,
+      "width": 642.852,
+      "bounds": [
+        0,
+        19.657,
+        642.852,
+        664.925
+      ]
+    },
+    {
+      "character": ":",
+      "codepoint": "U+003A",
+      "source_photo": "IMG_0330.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Equal circular dots on one vertical axis",
+      "original_width": 107.541,
+      "width": 100.0,
+      "bounds": [
+        0,
+        0.0,
+        100.0,
+        340.0
+      ]
+    },
+    {
+      "character": ";",
+      "codepoint": "U+003B",
+      "source_photo": "IMG_0331.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Colon-family dot and comma-family tail",
+      "original_width": 118.918,
+      "width": 100.0,
+      "bounds": [
+        0,
+        -70.0,
+        100.0,
+        340.0
+      ]
+    },
+    {
+      "character": "[",
+      "codepoint": "U+005B",
+      "source_photo": "IMG_0330.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Original angular bracket; vertical spine and mirrored arms",
+      "original_width": 332.453,
+      "width": 328.925,
+      "bounds": [
+        0,
+        4.76,
+        328.925,
+        695.24
+      ]
+    },
+    {
+      "character": "]",
+      "codepoint": "U+005D",
+      "source_photo": "IMG_0331.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Exact reflected angular bracket",
+      "original_width": 331.272,
+      "width": 328.925,
+      "bounds": [
+        0,
+        4.76,
+        328.925,
+        695.24
+      ]
+    },
+    {
+      "character": "=",
+      "codepoint": "U+003D",
+      "source_photo": "IMG_0332.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Equal parallel bars and equal bearings",
+      "original_width": 438.498,
+      "width": 460.0,
+      "bounds": [
+        0,
+        200.0,
+        460.0,
+        500.0
+      ]
+    },
+    {
+      "character": "?",
+      "codepoint": "U+003F",
+      "source_photo": "IMG_0337.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Smooth bowl; centered stem and circular dot",
+      "original_width": 361.864,
+      "width": 380.0,
+      "bounds": [
+        0,
+        0.0,
+        380.0,
+        700.0
+      ]
+    },
+    {
+      "character": "/",
+      "codepoint": "U+002F",
+      "source_photo": "IMG_0337.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Straight parallel diagonal edges",
+      "original_width": 455.406,
+      "width": 456.0,
+      "bounds": [
+        0,
+        0.0,
+        456.0,
+        700.0
+      ]
+    },
+    {
+      "character": ">",
+      "codepoint": "U+003E",
+      "source_photo": "IMG_0338.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Exact reflected counterpart of less-than",
+      "original_width": 264.693,
+      "width": 279.07,
+      "bounds": [
+        0,
+        159.811,
+        279.07,
+        540.189
+      ]
+    },
+    {
+      "character": ".",
+      "codepoint": "U+002E",
+      "source_photo": "IMG_0338.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Circular dot on baseline",
+      "original_width": 94.149,
+      "width": 100.0,
+      "bounds": [
+        0,
+        0.0,
+        100.0,
+        100.0
+      ]
+    },
+    {
+      "character": "<",
+      "codepoint": "U+003C",
+      "source_photo": "IMG_0339.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Symmetric angled arms around math axis",
+      "original_width": 277.487,
+      "width": 279.07,
+      "bounds": [
+        0,
+        159.811,
+        279.07,
+        540.189
+      ]
+    },
+    {
+      "character": ",",
+      "codepoint": "U+002C",
+      "source_photo": "IMG_0339.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Circular head with clean tapered tail",
+      "original_width": 93.792,
+      "width": 100.0,
+      "bounds": [
+        0,
+        -70.0,
+        100.0,
+        100.0
+      ]
+    },
+    {
+      "character": "←",
+      "codepoint": "U+2190",
+      "source_photo": "IMG_0287.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Horizontal shaft and centered symmetric triangular head",
+      "original_width": 781.144,
+      "width": 760.0,
+      "bounds": [
+        0,
+        250.0,
+        760.0,
+        450.0
+      ]
+    },
+    {
+      "character": "↑",
+      "codepoint": "U+2191",
+      "source_photo": "IMG_0305.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Vertical shaft and centered symmetric triangular head",
+      "original_width": 167.631,
+      "width": 180.0,
+      "bounds": [
+        0,
+        0.0,
+        180.0,
+        700.0
+      ]
+    },
+    {
+      "character": "",
+      "codepoint": "U+E000",
+      "source_photo": "IMG_0348.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Regularized open C and equal aligned logo bars",
+      "original_width": 577.117,
+      "width": 570.0,
+      "bounds": [
+        0,
+        60.0,
+        570.0,
+        640.0
+      ]
+    },
+    {
+      "character": "",
+      "codepoint": "U+E001",
+      "source_photo": "IMG_0349.HEIC",
+      "method": "constrained geometric reconstruction",
+      "assumptions": "Upright function f; level crossbar and smooth hook",
+      "original_width": 379.167,
+      "width": 377.309,
+      "bounds": [
+        0,
+        0.0,
+        377.309,
+        696.0
+      ]
+    }
+  ]
+}

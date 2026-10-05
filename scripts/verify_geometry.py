@@ -1,0 +1,52 @@
+"""Check the delivered SVG geometry, not just the construction parameters."""
+from pathlib import Path
+import xml.etree.ElementTree as ET
+import pathops
+from fontTools.svgLib.path import parse_path
+from fontTools.pens.transformPen import TransformPen
+from fontTools.pens.boundsPen import BoundsPen
+ROOT=Path(__file__).resolve().parents[1]
+def load(c):
+    e=ET.parse(ROOT/'glyphs'/f'{ord(c):04X}.svg').getroot();p=pathops.Path();parse_path(e.find('{http://www.w3.org/2000/svg}path').attrib['d'],p.getPen());return p
+
+def bounds(p):
+    pen=BoundsPen(None);p.draw(pen);return pen.bounds
+
+def scan(p,y):
+    # Half-unit sampling checks equal thickness across multiple heights.
+    intervals=[];start=None
+    for i in range(-2,1602):
+        x=i/2;inside=p.contains((x+.25,y))
+        if inside and start is None:start=x
+        if not inside and start is not None:intervals.append((start,x));start=None
+    return intervals
+
+def assert_pair(a,b,t):
+    p=pathops.Path();load(a).draw(TransformPen(p.getPen(),t));q=load(b)
+    # Each exported glyph is translated to x=0 after its construction.
+    x0=bounds(p)[0];aligned=pathops.Path();p.draw(TransformPen(aligned.getPen(),(1,0,0,1,-x0,0)))
+    error=pathops.op(aligned,q,pathops.PathOp.XOR).area
+    assert error<.15,(a,b,error)
+
+for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789':
+    x0,y0,x1,y1=bounds(load(c));assert abs(y0)<.1 and abs(y1-700)<.1,(c,(x0,y0,x1,y1))
+for y in [100,200,450,550,600]:
+    assert scan(load('H'),y)==[(0,88),(312,400)],('H',y,scan(load('H'),y))
+for c in ['O','D']:
+    for y in [250,350,450]:assert scan(load(c),y)==[(0,88),(292,380)],(c,y,scan(load(c),y))
+for c in ['E','F','L','P','R']:
+    for y in [100,200]:assert scan(load(c),y)[0]==(0,88),(c,y,scan(load(c),y))
+for c,x,expected in [('E',200,[(0,80),(320,400),(620,700)]),('F',200,[(320,400),(620,700)]),('L',200,[(0,80)]),('T',100,[(620,700)]),('H',200,[(310,390)])]:
+    transposed=pathops.Path();load(c).draw(TransformPen(transposed.getPen(),(0,1,1,0,0,0)))
+    assert scan(transposed,x)==expected,(c,scan(transposed,x))
+for c in ['A','H','I','M','O','T','U','V','W','X','Y','8']:
+    p=load(c);x0,_,x1,_=bounds(p);mirrored=pathops.Path();p.draw(TransformPen(mirrored.getPen(),(-1,0,0,1,x0+x1,0)))
+    assert pathops.op(p,mirrored,pathops.PathOp.XOR).area<.15,c
+assert_pair('6','9',(-1,0,0,-1,380,700))
+assert_pair('(',')',(-1,0,0,1,220,0))
+assert_pair('[',']',(-1,0,0,1,350,0))
+assert_pair('<','>',(-1,0,0,1,310,0))
+# Same number of counters survives simplification.
+for c,count in [('A',2),('B',3),('O',2),('Q',2),('0',3),('8',3),('N',1),('H',1)]:
+    assert len(list(load(c).contours))==count,(c,len(list(load(c).contours)))
+print('Geometry verified: 36 cap bounds, parallel stems, shared thickness, symmetry, paired glyphs, and counters')

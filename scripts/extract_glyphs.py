@@ -83,7 +83,7 @@ def extract(spec):
 
 def main():
     (ROOT/'build/masks').mkdir(parents=True,exist_ok=True)
-    (ROOT/'glyphs').mkdir(exist_ok=True)
+    (ROOT/'glyphs/traced').mkdir(parents=True,exist_ok=True)
     sheet=Image.new('RGB',(1500,((len(SPECS)+7)//8)*230),'#ecebe5');d=ImageDraw.Draw(sheet)
     manifest=[]
     for i,(char,spec) in enumerate(SPECS.items()):
@@ -109,7 +109,7 @@ def main():
         # Potrace's native path coordinates are Cartesian (its SVG group flips y).
         pen=SVGPathPen(None);rec.replay(TransformPen(pen,(s,0,0,s,-xmin*s,spec['bottom']-ymin*s)))
         outline=pen.getCommands();gw=(xmax-xmin)*s
-        (ROOT/'glyphs'/f'{code}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {gw+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
+        (ROOT/'glyphs/traced'/f'{code}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {gw+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         entry=dict(character=char,codepoint=f'U+{code}',**spec,width=round(gw,3),outline=outline)
         manifest.append(entry)
         x=i%8*187;y=i//8*230

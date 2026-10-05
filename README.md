@@ -1,6 +1,6 @@
 # C64 Keyboard
 
-An installable vector reconstruction of the **printed lettering on classic Commodore 64 keycaps**, traced from close-up photographs of a physical keyboard.
+An installable vector reconstruction of the **printed lettering on classic Commodore 64 keycaps**, based on close-up photographs and corrected using shared geometric constraints.
 
 ![C64 Keyboard font specimen showing the alphabet, numerals, punctuation, arrows, and function-key legends](specimen.png)
 
@@ -49,17 +49,30 @@ The multi-letter and function legends are composed from the reconstructed charac
 
 ## How it was reconstructed
 
-65 core shapes were traced from the supplied close-ups. The process isolates the dark printing, removes small surface defects, fits smooth curves, and normalizes cap height and bearings. The outline shapes retain some of the photographed printing's asymmetry; this is a photo-based reconstruction, not a claim to recover the manufacturer's original master artwork.
+The initial 65 core shapes were traced from close-up photographs. **Version 1.1** replaces the remaining photographic skew, taper, uneven strokes, and surface wear with a constrained geometric reconstruction. Each shape is rebuilt with explicit design assumptions informed by the photographs:
+
+- A shared 700-unit cap height and baseline, with plausible bounds for each character family.
+- 88-unit vertical stems and 80-unit horizontal bars in the principal letter families, with optical adjustments for diagonals and smaller symbols.
+- Parallel stems in letters such as H, N, and U; level bars in E, F, L, and T.
+- Consistent curves and counters across O, C, G, Q, and related bowls.
+- Symmetry where justified, and matched pairs such as parentheses, angular brackets, and 6/9.
+- Preserved identifying details: the slashed zero, plain I, angular brackets, and hooked Q.
+
+These are inferred design constraints, not a unique recovery of the original camera calibration or manufacturer's artwork. Curved keycaps, print wear, and perspective cannot be separated unambiguously from one photograph. The reconstruction makes the geometric assumptions explicit rather than retaining those defects in the font.
+
+![Before and after: photographic traces compared with normalized glyph geometry](normalization-comparison.png)
+
+The original traced vectors remain in [`glyphs/traced/`](glyphs/traced/). [`glyphs/normalization.json`](glyphs/normalization.json) records the assumptions and before/after dimensions for all 65 core shapes. [`scripts/normalize_glyphs.py`](scripts/normalize_glyphs.py) contains the reproducible geometric definitions.
 
 C comes from the **CTRL** key in IMG_0318; there is no dedicated C close-up in the supplied sequence. Function f comes from IMG_0349. The Commodore symbol comes from IMG_0348. Original photographs are kept locally and are not included in this public repository. The editable vector outlines and source mapping are included.
 
-The right and down arrows are reflected from the photographed left and up arrows. Missing ASCII utility symbols, typographic punctuation, and accent marks are constructed additions. `fonts/character-map.json` identifies the origin of every distinct mapped outline. `glyphs/source-map.json` records the photograph and crop for each directly traced shape. Crop coordinates refer to upright 1000-pixel-wide previews; the extraction itself uses full-resolution decodes.
+The right and down arrows are reflected from the normalized left and up arrows. Missing ASCII utility symbols, typographic punctuation, and accent marks are constructed additions. `fonts/character-map.json` identifies the origin of every distinct mapped outline. `glyphs/source-map.json` retains the photograph, crop, and original outline for each traced observation. Its dimensions describe the original traces; normalized dimensions are in `glyphs/normalization.json`. Crop coordinates refer to upright 1000-pixel-wide previews; extraction uses full-resolution decodes.
 
 This is an independent, unofficial reconstruction. The name and photographed logo identify the source keyboard; they do not imply endorsement.
 
 ## Editable sources and rebuilding
 
-`glyphs/*.svg` are the editable core outlines, with filenames corresponding to hexadecimal Unicode values. The SVG uses a flipped display group around Cartesian font coordinates. Edit the path's coordinates and run the font builder to keep edits. Running the extraction script again overwrites those core SVGs.
+`glyphs/*.svg` are the editable normalized core outlines, with filenames corresponding to hexadecimal Unicode values. The SVG uses a flipped display group around Cartesian font coordinates. Edit those paths and run the font builder to keep manual edits. Running `normalize_glyphs.py` regenerates them from the geometric definitions. Extraction writes only to `glyphs/traced/` and does not overwrite the normalized outlines.
 
 ```sh
 python3 -m venv .venv
@@ -67,13 +80,26 @@ python3 -m venv .venv
 .venv/bin/python scripts/build_font.py
 .venv/bin/python scripts/make_specimen.py
 .venv/bin/python scripts/verify_font.py
+.venv/bin/python scripts/verify_geometry.py
 ```
+
+To regenerate the normalized outlines and comparison sheet from the saved geometric definitions:
+
+```sh
+.venv/bin/python scripts/normalize_glyphs.py
+.venv/bin/python scripts/build_font.py
+.venv/bin/python scripts/make_specimen.py
+.venv/bin/python scripts/make_comparison.py
+```
+
+The geometry checks inspect the exported SVGs for aligned cap bounds, equal stem thickness at multiple heights, symmetry, matching reflected shapes, and intact counters. The font checks validate coverage, metrics, serialization, and rendering of the desktop formats.
 
 To retrace the photographs from scratch on macOS, place the original photographs in the local `source/` directory. This optional step requires those photographs, which are not distributed here, plus `sips` and the `potrace` executable:
 
 ```sh
 .venv/bin/python scripts/prepare_references.py
 .venv/bin/python scripts/extract_glyphs.py
+.venv/bin/python scripts/normalize_glyphs.py
 .venv/bin/python scripts/build_font.py
 .venv/bin/python scripts/make_specimen.py
 ```
