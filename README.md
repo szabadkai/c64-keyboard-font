@@ -55,10 +55,12 @@ The initial 65 core shapes were traced from close-up photographs. **Version 1.1*
 - 88-unit vertical stems and 80-unit horizontal bars in the principal letter families, with optical adjustments for diagonals and smaller symbols.
 - Parallel stems in letters such as H, N, and U; level bars in E, F, L, and T.
 - Consistent curves and counters across O, C, G, Q, and related bowls.
-- Symmetry where justified, and matched pairs such as parentheses, angular brackets, and 6/9.
+- Symmetry where justified, and matched pairs such as parentheses and angular brackets. Numeral bowls are fitted independently when their photographs show different proportions.
 - Preserved identifying details: the slashed zero, plain I, angular brackets, and hooked Q.
 
 **Version 1.101** corrects the 8 to follow its source proportions: a narrower upper bowl, a taller lower opening, and an 80-unit waist. The earlier normalization made both openings too round and left an excessively heavy middle band.
+
+**Version 1.102** corrects 3, 5, and 6 against their individual photographs: 3 has a narrower upper bowl and taller lower opening; 5 has a raised shoulder, an inset upper stem, and a taller lower bowl; 6 has a taller lower counter and straighter bowl sides. The existing 9 is retained independently rather than forcing it to mirror the revised 6.
 
 These are inferred design constraints, not a unique recovery of the original camera calibration or manufacturer's artwork. Curved keycaps, print wear, and perspective cannot be separated unambiguously from one photograph. The reconstruction makes the geometric assumptions explicit rather than retaining those defects in the font.
 

@@ -11,7 +11,7 @@ from fontTools.pens.transformPen import TransformPen
 from fontTools.pens.cu2quPen import Cu2QuPen
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 ROOT=Path(__file__).resolve().parents[1]
-ROWS=['HNEFMOWQ','01234589','AVXYZCGS']
+ROWS=['HNEFMOWQ','02345689','AVXYZCGS']
 def preview_font(directory,size):
     fb=FontBuilder(1000,isTTF=True);chars=sorted(set(''.join(ROWS)));names={c:f'uni{ord(c):04X}' for c in chars}
     fb.setupGlyphOrder(['.notdef']+list(names.values()));fb.setupCharacterMap({ord(c):n for c,n in names.items()});glyphs={'.notdef':TTGlyphPen(None).glyph()};metrics={'.notdef':(900,0)}

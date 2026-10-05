@@ -42,12 +42,11 @@ for c,x,expected in [('E',200,[(0,80),(320,400),(620,700)]),('F',200,[(320,400),
 for c in ['A','H','I','M','O','T','U','V','W','X','Y','8']:
     p=load(c);x0,_,x1,_=bounds(p);mirrored=pathops.Path();p.draw(TransformPen(mirrored.getPen(),(-1,0,0,1,x0+x1,0)))
     assert pathops.op(p,mirrored,pathops.PathOp.XOR).area<.15,c
-assert_pair('6','9',(-1,0,0,-1,380,700))
 assert_pair('(',')',(-1,0,0,1,220,0))
 assert_pair('[',']',(-1,0,0,1,350,0))
 assert_pair('<','>',(-1,0,0,1,310,0))
 # Same number of counters survives simplification.
-for c,count in [('A',2),('B',3),('O',2),('Q',2),('0',3),('8',3),('N',1),('H',1)]:
+for c,count in [('A',2),('B',3),('O',2),('Q',2),('0',3),('8',3),('N',1),('H',1),('3',1),('5',1),('6',2),('9',2)]:
     assert len(list(load(c).contours))==count,(c,len(list(load(c).contours)))
 # Regression: an 8 must retain the photographed taller lower opening and
 # an 80-unit waist, rather than two small, widely separated round holes.
@@ -55,4 +54,12 @@ eight=load('8');vertical=pathops.Path();eight.draw(TransformPen(vertical.getPen(
 assert scan(vertical,190)==[(0,80),(340,420),(620,700)],scan(vertical,190)
 assert scan(eight,210)==[(0,88),(292,380)],scan(eight,210)
 assert scan(eight,525)==[(13,101),(279,367)],scan(eight,525)
+# Regression: preserve the source-specific numeral proportions rather than
+# reusing matching round arcs for 3, 5 and 6.
+assert scan(load('3'),535)==[(10,98),(272,360)],scan(load('3'),535)
+assert scan(load('5'),530)==[(24,112)],scan(load('5'),530)
+assert scan(load('5'),250)==[(292,380)],scan(load('5'),250)
+assert scan(load('6'),250)==[(0,88),(292,380)],scan(load('6'),250)
+six_vertical=pathops.Path();load('6').draw(TransformPen(six_vertical.getPen(),(0,1,1,0,0,0)))
+assert scan(six_vertical,190)==[(0,80),(381,460.5),(620,700)],scan(six_vertical,190)
 print('Geometry verified: 36 cap bounds, parallel stems, shared thickness, symmetry, paired glyphs, and counters')

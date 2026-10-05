@@ -75,12 +75,21 @@ def build_shapes():
     put('0',pathops.op(union(o,stroke('M50 0L330 700',65)),rect(0,0,380,700),pathops.PathOp.INTERSECTION),'O-family oval with preserved slash, clipped to its bounding rectangle')
     put('1','M110 0V588L15 533L0 618L123 700H198V0Z','Vertical stem; preserved flag; no added baseline serif')
     put('2',union(stroke('M44 530C44 615 95 656 190 656C285 656 336 615 336 530C336 466 303 412 263 352L44 44'),rect(0,0,380,80)),'Level baseline and symmetric upper bowl; straight lower diagonal')
-    put('3',union(stroke('M44 535C44 615 96 656 190 656C284 656 336 610 336 525C336 408 281 350 175 350H142'),stroke('M175 350C282 350 336 290 336 176C336 89 284 44 190 44C96 44 44 85 44 165')),'Matched upper/lower bowls; aligned right-hand extrema')
+    # Fit the unequal bowls directly: 3 has a narrower upper bowl and a
+    # taller lower opening. Stroked matching arcs lost those proportions.
+    three=path('M10 530V548C10 646 75 700 187 700C299 700 360 646 360 540V505C360 443 340 410 288 380C354 348 380 292 380 213V181C380 61 310 0 190 0C66 0 0 69 0 160V184H88V164C88 106 119 80 190 80C261 80 292 118 292 184V222C292 304 252 336 180 336H140V416H178C243 416 272 452 272 514V539C272 591 248 620 187 620C126 620 98 592 98 545V530Z')
+    put('3',three,'Photo-fitted unequal bowls: 360-unit upper width, 380-unit lower width; level terminals and short central bar')
     put('4','M270 700H358V240H430V160H358V0H270V160H0V240Z M270 537L105 240H270Z','Parallel right stem; horizontal bar; triangular counter')
-    put('5',stroke('M360 656H44V367C89 395 131 412 190 412C292 412 336 341 336 230V175C336 87 284 44 190 44C96 44 44 87 44 165'),'Level top; vertical upper stem; aligned lower bowl')
-    six=union(ring(190,205,190,205,88,80),stroke('M44 205V529C44 616 96 656 190 656C284 656 336 616 336 530'))
-    put('6',six,'Shared closed lower bowl; upright side and smooth shoulder')
-    put('9',transform(six,(-1,0,0,-1,380,700)),'Exact 180-degree counterpart of 6')
+    five=path('M24 700H356V620H112V426C141 452 169 464 208 464C321 464 380 394 380 285V190C380 65 315 0 190 0C66 0 0 64 0 164V184H88V168C88 108 119 80 190 80C261 80 292 117 292 190V280C292 354 265 384 207 384C157 384 132 359 112 310H24Z')
+    put('5',five,'Photo-fitted raised shoulder and tall lower bowl; inset parallel upper stem; horizontal top and clean open terminal')
+    six_outer=path('M190 700C316 700 380 637 380 532V493H292V532C292 590 258 620 190 620C121 620 88 585 88 520V419C120 447 158 461 201 461C316 461 380 389 380 281V185C380 63 316 0 190 0C64 0 0 63 0 185V514C0 630 64 700 190 700Z')
+    six_counter=path('M190 381C120 381 88 336 88 268V195C88 121 117 80 190 80C263 80 292 121 292 195V268C292 336 260 381 190 381Z')
+    six=subtract(six_outer,six_counter)
+    put('6',six,'Photo-fitted tall lower counter (301 units), parallel bowl sides, 80-unit shoulder, upright backbone, and short upper hook')
+    # Preserve 9 independently: its photograph has a shorter counter than 6.
+    # An exact rotation is an over-strong assumption for these two originals.
+    nine_model=union(ring(190,205,190,205,88,80),stroke('M44 205V529C44 616 96 656 190 656C284 656 336 616 336 530'))
+    put('9',transform(nine_model,(-1,0,0,-1,380,700)),'Independent 9 proportions; shorter counter than the photo-fitted 6')
     put('7','M0 700H380V620L137 0H40L283 620H0Z','Horizontal top bar; straight constant-width diagonal')
     # The photo's lower counter is taller than the upper one. Two similar
     # ellipses made the previous waist 158 units thick instead of about 80.
@@ -141,6 +150,6 @@ def main():
         width=x1-x0;outline=pen.getCommands()
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=e['photo'],method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.101',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.102',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()

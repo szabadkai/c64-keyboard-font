@@ -1,5 +1,5 @@
 {
-  "version": "1.101",
+  "version": "1.102",
   "cap_height": 700,
   "vertical_stem": 88,
   "horizontal_bar": 80,
@@ -430,7 +430,7 @@
       "codepoint": "U+0033",
       "source_photo": "IMG_0290.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Matched upper/lower bowls; aligned right-hand extrema",
+      "assumptions": "Photo-fitted unequal bowls: 360-unit upper width, 380-unit lower width; level terminals and short central bar",
       "original_width": 357.207,
       "width": 380.0,
       "bounds": [
@@ -460,12 +460,12 @@
       "codepoint": "U+0035",
       "source_photo": "IMG_0293.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Level top; vertical upper stem; aligned lower bowl",
+      "assumptions": "Photo-fitted raised shoulder and tall lower bowl; inset parallel upper stem; horizontal top and clean open terminal",
       "original_width": 355.738,
       "width": 380.0,
       "bounds": [
         0,
-        -0.0,
+        0.0,
         380.0,
         700.0
       ]
@@ -475,7 +475,7 @@
       "codepoint": "U+0036",
       "source_photo": "IMG_0294.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Shared closed lower bowl; upright side and smooth shoulder",
+      "assumptions": "Photo-fitted tall lower counter (301 units), parallel bowl sides, 80-unit shoulder, upright backbone, and short upper hook",
       "original_width": 361.401,
       "width": 380.0,
       "bounds": [
@@ -520,7 +520,7 @@
       "codepoint": "U+0039",
       "source_photo": "IMG_0297.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Exact 180-degree counterpart of 6",
+      "assumptions": "Independent 9 proportions; shorter counter than the photo-fitted 6",
       "original_width": 359.254,
       "width": 380.0,
       "bounds": [
