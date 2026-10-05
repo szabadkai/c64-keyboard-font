@@ -95,6 +95,15 @@ def build():
             base=unicodedata.normalize('NFD',ch)[0];w=bounds(SHAPES[base])[2]
             put(ch,combine([(SHAPES[base],(1,0,0,1,0,0)),(accents[kind],(1,0,0,1,(w-250)/2,0))]),'Composed accent extension')
     put('Ç',combine([(SHAPES['C'],(1,0,0,1,0,0)),(rec('M180 20H245L209 -52C300 -58 290 -170 190 -170H120V-115H186C229 -115 229 -90 177 -92H145Z'),(1,0,0,1,0,0))]))
+    # Framed PETSCII key-front legends retain their common cell alignment.
+    petscii=json.loads((ROOT/'glyphs/petscii-map.json').read_text())['symbols']
+    petscii_chars=set()
+    for entry in petscii:
+        cp=int(entry['font_codepoint'][2:],16);ch=chr(cp)
+        root=ET.parse(ROOT/'glyphs/petscii'/f'{cp:04X}.svg').getroot()
+        put(ch,root.find('{http://www.w3.org/2000/svg}path').attrib['d'],
+            f"Reconstructed key-front graphic: {entry['keyboard']}; PETSCII {entry['petscii_hex']}; {entry['name']}")
+        petscii_chars.add(ch)
     # Font metrics. Numerals share one advance; letter spacing follows actual width.
     names={c:f'uni{ord(c):04X}' for c in SHAPES};order=['.notdef','space']+list(names.values())
     cmap={32:'space',160:'space',**{ord(c):n for c,n in names.items()}}
@@ -109,8 +118,9 @@ def build():
         # Narrow I remains deliberately plain, with a little more breathing room.
         if c=='I':advance=290;bearing=(290-w)/2
         if c in '.:,;':advance=max(270,advance);bearing=(advance-w)/2
+        if c in petscii_chars:advance=830;bearing=65+x0
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
-    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.105','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.105','description':'Geometrically normalized reconstruction of the keycap legends in the supplied C64 photographs. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs'}
+    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.107','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.107','description':'Geometrically normalized reconstruction of C64 keycap lettering and PETSCII key-front legends. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs and documented PETSCII mappings'}
     kern='feature kern {\n'+ '\n'.join(f'pos {names[a]} {names[b]} {value};' for a,b,value in [('A','V',-45),('A','W',-30),('A','Y',-40),('V','A',-45),('W','A',-30),('Y','A',-40),('T','A',-35),('L','T',-30),('L','V',-30),('L','Y',-40),('T','O',-15),('T','.',-45)])+'\n} kern;'
     for ttf in [True,False]:
         fb=FontBuilder(1000,isTTF=ttf);fb.setupGlyphOrder(order);fb.setupCharacterMap(cmap)
@@ -128,7 +138,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
-        fb.font['head'].fontRevision=1.105
+        fb.font['head'].fontRevision=1.107
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')

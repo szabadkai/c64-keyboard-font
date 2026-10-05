@@ -1,21 +1,186 @@
 {
   "date": "2026-10-05",
-  "font_version": "1.105",
+  "font_version": "1.106",
   "source_directory": "source/better",
-  "photo_size": [6000, 4000],
-  "crop_coordinate_size": [1920, 1280],
+  "photo_size": [
+    6000,
+    4000
+  ],
+  "crop_coordinate_size": [
+    1920,
+    1280
+  ],
   "note": "Crops locate observations in the unrotated originals. Rotation is counterclockwise in degrees. Reviews compare at equal ink height; crop aspect ratios still contain camera and curved-keycap distortion. Outlines use explicit design constraints, not automatic tracing.",
-  "photos": ["LSZ04724.JPG", "LSZ04725.JPG", "LSZ04726.JPG", "LSZ04727.JPG", "LSZ04728.JPG", "LSZ04729.JPG", "LSZ04730.JPG", "LSZ04731.JPG", "LSZ04732.JPG", "LSZ04733.JPG", "LSZ04734.JPG", "LSZ04735.JPG"],
+  "photos": [
+    "LSZ04724.JPG",
+    "LSZ04725.JPG",
+    "LSZ04726.JPG",
+    "LSZ04727.JPG",
+    "LSZ04728.JPG",
+    "LSZ04729.JPG",
+    "LSZ04730.JPG",
+    "LSZ04731.JPG",
+    "LSZ04732.JPG",
+    "LSZ04733.JPG",
+    "LSZ04734.JPG",
+    "LSZ04735.JPG"
+  ],
   "observations": [
-    {"character":"C", "photo":"LSZ04731.JPG", "crop":[1480,690,1600,780], "rotation":-90, "action":"retained", "finding":"Dedicated C key supports the open O-family construction previously inferred from CTRL."},
-    {"character":"G", "photo":"LSZ04731.JPG", "crop":[1170,260,1290,330], "rotation":-90, "action":"retained", "finding":"Upright bowl and inset horizontal bar retained."},
-    {"character":"Q", "photo":"LSZ04730.JPG", "crop":[860,490,990,570], "rotation":-90, "action":"retained", "finding":"Low diagonal and horizontal tail retained."},
-    {"character":"2", "photo":"LSZ04730.JPG", "crop":[600,340,730,420], "rotation":-90, "action":"retained", "finding":"Preserve the corrected flush junction of diagonal and baseline bar."},
-    {"character":"3", "photo":"LSZ04731.JPG", "crop":[630,1070,750,1150], "rotation":-90, "action":"retained", "finding":"Unequal bowls and taller lower opening retained."},
-    {"character":"5", "photo":"LSZ04731.JPG", "crop":[640,470,750,550], "rotation":-90, "action":"retained", "finding":"Raised shoulder, inset upper stem and tall lower bowl retained."},
-    {"character":"6", "photo":"LSZ04731.JPG", "crop":[630,175,750,250], "rotation":-90, "action":"retained", "finding":"Tall lower counter and straight sides retained."},
-    {"character":"8", "photo":"LSZ04732.JPG", "crop":[630,475,740,550], "rotation":-90, "action":"retained", "finding":"Narrower upper bowl and taller lower counter retained."},
-    {"character":"9", "photo":"LSZ04735.JPG", "crop":[1125,475,1250,560], "rotation":90, "action":"refined", "finding":"Replace elliptical upper bowl with parallel sides and a taller counter, independently fitted from 6."},
-    {"character":"\ue001", "photo":"LSZ04733.JPG", "crop":[965,895,1060,955], "rotation":90, "action":"refined", "finding":"Heavier stem and bar; flat-ended hook aligned with crossbar. Propagates to f1–f12."}
+    {
+      "character": "C",
+      "photo": "LSZ04731.JPG",
+      "crop": [
+        1480,
+        690,
+        1600,
+        780
+      ],
+      "rotation": -90,
+      "action": "refined",
+      "finding": "Dedicated C key: narrower bowl and shorter opening, with shared stem thickness."
+    },
+    {
+      "character": "G",
+      "photo": "LSZ04731.JPG",
+      "crop": [
+        1170,
+        260,
+        1290,
+        330
+      ],
+      "rotation": -90,
+      "action": "refined",
+      "finding": "Raised crossbar and longer inward reach, preserving the shared O-family bowl."
+    },
+    {
+      "character": "Q",
+      "photo": "LSZ04730.JPG",
+      "crop": [
+        860,
+        490,
+        990,
+        570
+      ],
+      "rotation": -90,
+      "action": "retained",
+      "finding": "Low diagonal and horizontal tail retained."
+    },
+    {
+      "character": "2",
+      "photo": "LSZ04730.JPG",
+      "crop": [
+        600,
+        340,
+        730,
+        420
+      ],
+      "rotation": -90,
+      "action": "retained",
+      "finding": "Preserve the corrected flush junction of diagonal and baseline bar."
+    },
+    {
+      "character": "3",
+      "photo": "LSZ04731.JPG",
+      "crop": [
+        630,
+        1070,
+        750,
+        1150
+      ],
+      "rotation": -90,
+      "action": "retained",
+      "finding": "Unequal bowls and taller lower opening retained."
+    },
+    {
+      "character": "5",
+      "photo": "LSZ04731.JPG",
+      "crop": [
+        640,
+        470,
+        750,
+        550
+      ],
+      "rotation": -90,
+      "action": "retained",
+      "finding": "Raised shoulder, inset upper stem and tall lower bowl retained."
+    },
+    {
+      "character": "6",
+      "photo": "LSZ04731.JPG",
+      "crop": [
+        630,
+        175,
+        750,
+        250
+      ],
+      "rotation": -90,
+      "action": "retained",
+      "finding": "Tall lower counter and straight sides retained."
+    },
+    {
+      "character": "8",
+      "photo": "LSZ04732.JPG",
+      "crop": [
+        630,
+        475,
+        740,
+        550
+      ],
+      "rotation": -90,
+      "action": "retained",
+      "finding": "Narrower upper bowl and taller lower counter retained."
+    },
+    {
+      "character": "9",
+      "photo": "LSZ04735.JPG",
+      "crop": [
+        1125,
+        475,
+        1250,
+        560
+      ],
+      "rotation": 90,
+      "action": "refined",
+      "finding": "Replace elliptical upper bowl with parallel sides and a taller counter, independently fitted from 6."
+    },
+    {
+      "character": "",
+      "photo": "LSZ04733.JPG",
+      "crop": [
+        965,
+        895,
+        1060,
+        955
+      ],
+      "rotation": 90,
+      "action": "refined",
+      "finding": "Heavier stem and bar; flat-ended hook aligned with crossbar. Propagates to f1–f12."
+    },
+    {
+      "character": "£",
+      "photo": "LSZ04734.JPG",
+      "crop": [
+        1189,
+        477,
+        1297,
+        579
+      ],
+      "rotation": 90,
+      "action": "refined",
+      "finding": "Wider silhouette, raised bar, square left foot and rising right terminal."
+    },
+    {
+      "character": "",
+      "photo": "LSZ04730.JPG",
+      "crop": [
+        1457,
+        988,
+        1568,
+        1100
+      ],
+      "rotation": -90,
+      "action": "refined",
+      "finding": "Heavier C ring and mirrored wedge ends separated by a central gap."
+    }
   ]
 }

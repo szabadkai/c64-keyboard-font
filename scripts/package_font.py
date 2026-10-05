@@ -2,8 +2,8 @@
 from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 ROOT=Path(__file__).resolve().parents[1]
-files=[ROOT/n for n in ['README.md','requirements.txt','preview.html','specimen.png','normalization-comparison.png']]
-for folder in ['fonts','glyphs']:
+files=[ROOT/n for n in ['README.md','CHANGELOG.md','requirements.txt','preview.html','specimen.png','normalization-comparison.png','latest-reference-comparison.png','petscii-specimen.png']]
+for folder in ['fonts','glyphs','docs']:
     files+=sorted(p for p in (ROOT/folder).rglob('*') if p.is_file())
 files+=sorted((ROOT/'scripts').glob('*.py'))
 with ZipFile(ROOT/'C64-Keyboard.zip','w',ZIP_DEFLATED) as z:

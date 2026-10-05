@@ -46,8 +46,11 @@ def build_shapes():
     counter=path('M190 620C117 620 88 579 88 505V195C88 121 117 80 190 80C263 80 292 121 292 195V505C292 579 263 620 190 620Z')
     o=subtract(bowl,counter)
     put('O',o,'380 × 700; parallel 88-unit stems; symmetric bowls; 80-unit caps')
-    put('C',subtract(o,rect(240,195,160,310)),'O-family bowl; level open terminals')
-    put('G',union(subtract(o,rect(240,340,160,165)),rect(200,260,180,80)),'O-family bowl; level bar and vertical lower-right stem')
+    # LSZ04731 supplies the actual C key, previously inferred from CTRL.
+    c_outer=path('M180 700C60 700 0 632 0 515V185C0 68 60 0 180 0C300 0 360 68 360 185V515C360 632 300 700 180 700Z')
+    c_inner=path('M180 620C112 620 88 579 88 505V195C88 121 112 80 180 80C248 80 272 121 272 195V505C272 579 248 620 180 620Z')
+    put('C',subtract(subtract(c_outer,c_inner),rect(220,230,160,260)),'LSZ04731 C key: 360-unit bowl, shorter 260-unit opening, level terminals and shared 88/80-unit strokes')
+    put('G',union(subtract(o,rect(240,380,160,125)),rect(180,300,200,80)),'LSZ04731: crossbar raised to 300–380, longer inward reach; O-family bowl and shared stroke weights')
     put('Q',union(o,stroke('M190 170L264 40H440',72)),'O-family bowl; preserved low diagonal and horizontal tail')
     put('D',subtract(path('M0 0V700H182C317 700 380 636 380 510V190C380 64 317 0 182 0Z'),path('M88 80H178C263 80 292 117 292 195V505C292 583 263 620 178 620H88Z')),'Parallel stems and matching D/O bowl dimensions')
     p=subtract(path('M0 0V700H184C319 700 380 639 380 530V480C380 370 319 310 184 310H88V0Z'),path('M88 390H180C262 390 292 420 292 485V525C292 590 262 620 180 620H88Z'))
@@ -139,17 +142,20 @@ def build_shapes():
     put('$',union(transform(s,(.83,0,0,.77,0,115)),rect(127,75,58,610)),'Normalized S-derived bowls crossed by one vertical stem')
     put('%',union(ring(105,490,105,120,55,55),ring(405,210,105,120,55,55),stroke('M105 90L410 610',62)),'Equal oval counters and straight diagonal; paired sizes')
     put('&',union(stroke('M348 75L102 351C55 400 47 445 77 483C107 524 168 530 209 497C252 461 250 410 206 369L93 263C36 213 29 167 57 121C85 74 133 52 190 52C277 52 323 113 359 191',65),stroke('M272 146L379 66',65)),'Smooth loop and crossing; leveled optical extrema')
-    put('£',union(stroke('M480 550C456 622 410 656 336 656C237 656 190 599 190 507V213C190 135 161 84 98 44H338C414 44 450 72 490 126',88),rect(70,300,290,72)),'Vertical main stem and horizontal bars; smooth arched shoulder')
+    put('£','M0 0V80H35C110 80 132 140 132 230V340H72V420H132V505C132 635 211 700 360 700C509 700 600 630 600 490H500C500 577 452 620 360 620C268 620 232 580 232 505V420H410V340H232V230C232 163 218 112 184 80H420C472 80 500 123 500 210H600C600 70 528 0 420 0Z','LSZ04734: wider 600-unit silhouette, raised crossbar, square left foot and rising right terminal; 100-unit symbol stem')
     at=union(stroke('M536 156C432 42 235 17 118 108C-4 203 -16 398 75 522C168 649 368 663 493 579C599 509 623 356 550 276C487 207 426 244 437 324L461 492',66),ring(297,364,132,162,65,65))
     put('@',at,'Regularized oval counter and smooth spiral; intended lean retained')
     # Separated bars: the original logo has an open horizontal gap at the center.
-    logo=union(subtract(ring(245,350,245,290,95,105),rect(245,0,320,700)),path('M300 382H505L570 452H300Z'),path('M300 318H570L505 248H300Z'))
-    put('\ue000',logo,'Regularized open C and equal aligned logo bars')
+    logo=union(subtract(ring(340,350,340,290,140,140),rect(340,0,400,700)),path('M340 390H500L570 470H340Z'),path('M340 310H500L570 230H340Z'))
+    put('\ue000',logo,'LSZ04730: heavier 140-unit C ring and correctly mirrored wedge ends, with an open central gap')
     put('\ue001','M120 0V350H0V446H120V520C120 642 174 700 284 700H360V604H284C240 604 220 575 220 520V446H360V350H220V0Z','LSZ04733 function f: 100-unit stem, 96-unit bar, flat-ended hook aligned with crossbar, and shared 700-unit height')
 
 def main():
     build_shapes()
     manifest=json.loads((ROOT/'glyphs/source-map.json').read_text())
+    new_references={e['character']:e for e in json.loads((ROOT/'glyphs/high-resolution-map.json').read_text())}
+    review=json.loads((ROOT/'glyphs/reference-review.json').read_text())
+    refinements={e['character']:e['photo'] for e in review['observations'] if e['action']=='refined'}
     assert set(SHAPES)=={e['character'] for e in manifest}
     raw=ROOT/'glyphs/traced';raw.mkdir(exist_ok=True)
     report=[]
@@ -160,7 +166,8 @@ def main():
         p=transform(p,(1,0,0,1,-x0,0));pen=SVGPathPen(None,ntos=lambda v:format(v,'.4f').rstrip('0').rstrip('.') if v else '0');p.draw(pen)
         width=x1-x0;outline=pen.getCommands()
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
-        report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=e['photo'],method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.105',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/. Additional references are recorded in reference-review.json.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+        reference=new_references[ch]
+        report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=refinements.get(ch,e['photo']),original_source_photo=e['photo'],additional_reference=reference['photo'],revised_from_new_reference=ch in refinements,method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],new_reference_width=reference['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.106',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Original observations are retained in traced/; newer camera observations in high-resolution/. See reference-review.json for refinements.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()

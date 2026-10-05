@@ -25,6 +25,15 @@ for ext in ['ttf','otf','woff2']:
     function_codes=list(range(0xE010,0xE01C))
     assert all(cp in cmap for cp in function_codes)
     assert len({cmap[cp] for cp in function_codes})==12
+    petscii=json.loads((ROOT/'glyphs/petscii-map.json').read_text())['symbols']
+    assert len(petscii)==63
+    assert {e['screen_code'] for e in petscii}==set(range(64,128))-{96}
+    for entry in petscii:
+        cp=int(entry['font_codepoint'][2:],16)
+        assert cp in cmap,(ext,entry['keyboard'])
+        assert font['hmtx'][cmap[cp]][0]==830
+        pen=BoundsPen(glyphs);glyphs[cmap[cp]].draw(pen)
+        if entry['framed']:assert pen.bounds==(65,0,765,700),(ext,entry,pen.bounds)
     for cp in function_codes:
         pen=BoundsPen(glyphs);glyphs[cmap[cp]].draw(pen)
         assert abs(pen.bounds[1])<1 and abs(pen.bounds[3]-455)<1,(ext,cp,pen.bounds)

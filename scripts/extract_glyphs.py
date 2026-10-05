@@ -3,7 +3,7 @@ from pathlib import Path
 import json, subprocess, xml.etree.ElementTree as ET
 import cv2
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 from fontTools.svgLib.path import parse_path
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.pens.boundsPen import BoundsPen
@@ -53,12 +53,19 @@ for char,num,crop,height,bottom,multi in [
  ]:add(char,num,crop,height,bottom,multi)
 
 def extract(spec):
-    path=ROOT/'build/full'/spec['photo'].replace('.HEIC','.png')
-    im=np.array(Image.open(path).convert('RGB'))
+    if 'rotation' in spec:
+        # The newer camera JPEGs have sideways pixels, independent of EXIF.
+        path=ROOT/'source/better'/spec['photo']
+        if not path.exists():path=ROOT/'source'/spec['photo']
+        with Image.open(path) as source:
+            im=np.array(ImageOps.exif_transpose(source).rotate(spec['rotation'],expand=True).convert('RGB'))
+    else:
+        path=ROOT/'build/full'/spec['photo'].replace('.HEIC','.png')
+        im=np.array(Image.open(path).convert('RGB'))
     h,w=im.shape[:2];x0,y0,x1,y1=spec['crop'];sc=w/1000
     im=im[round(y0*sc):round(y1*sc),round(x0*sc):round(x1*sc)]
     gray=cv2.cvtColor(im,cv2.COLOR_RGB2GRAY)
-    gray=cv2.GaussianBlur(gray,(0,0),1.3)
+    gray=cv2.GaussianBlur(gray,(0,0),spec.get('blur',1.3))
     _,binary=cv2.threshold(gray,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
     n,lab,stats,cent=cv2.connectedComponentsWithStats(binary)
     # Keycap edges and neighboring legends touch the ROI border; discard them.
@@ -75,18 +82,23 @@ def extract(spec):
     inv=255-mask;n,lab,stats,_=cv2.connectedComponentsWithStats(inv)
     for i in range(1,n):
         if stats[i,cv2.CC_STAT_AREA]<largest*.02: mask[lab==i]=255
-    mask=cv2.morphologyEx(mask,cv2.MORPH_CLOSE,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(9,9)))
-    mask=cv2.GaussianBlur(mask,(0,0),1.8)
+    closing=spec.get('closing',9)
+    mask=cv2.morphologyEx(mask,cv2.MORPH_CLOSE,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(closing,closing)))
+    mask=cv2.GaussianBlur(mask,(0,0),spec.get('mask_blur',1.8))
     mask=np.where(mask>127,255,0).astype('uint8')
     y,x=np.where(mask>0);bb=(x.min(),y.min(),x.max()+1,y.max()+1)
     return im,mask[bb[1]:bb[3],bb[0]:bb[2]]
 
-def main():
-    (ROOT/'build/masks').mkdir(parents=True,exist_ok=True)
-    (ROOT/'glyphs/traced').mkdir(parents=True,exist_ok=True)
-    sheet=Image.new('RGB',(1500,((len(SPECS)+7)//8)*230),'#ecebe5');d=ImageDraw.Draw(sheet)
+def main(specs=None,reference_set='original'):
+    specs=SPECS if specs is None else specs
+    masks=ROOT/'build/masks'/reference_set
+    output=ROOT/('glyphs/traced' if reference_set=='original' else 'glyphs/high-resolution')
+    manifest_path=ROOT/'glyphs'/('source-map.json' if reference_set=='original' else 'high-resolution-map.json')
+    masks.mkdir(parents=True,exist_ok=True)
+    output.mkdir(parents=True,exist_ok=True)
+    sheet=Image.new('RGB',(1500,((len(specs)+7)//8)*230),'#ecebe5');d=ImageDraw.Draw(sheet)
     manifest=[]
-    for i,(char,spec) in enumerate(SPECS.items()):
+    for i,(char,spec) in enumerate(specs.items()):
         im,mask=extract(spec);code=f'{ord(char):04X}';height,width=mask.shape
         # Trace at a fixed raster height so the smoothing tolerance has equal effect.
         factor=240/height
@@ -99,9 +111,9 @@ def main():
             scaled[:]=0
             cv2.drawContours(scaled,contours,-1,255,cv2.FILLED)
         scaled=np.pad(scaled,12)
-        pbm=ROOT/'build/masks'/f'{code}.pbm'
+        pbm=masks/f'{code}.pbm'
         Image.fromarray(255-scaled).convert('1').save(pbm)
-        svg=ROOT/'build/masks'/f'{code}.svg'
+        svg=masks/f'{code}.svg'
         subprocess.run(['potrace',str(pbm),'-s','--flat','-a','1.05','-O','0.7','-o',str(svg)],check=True)
         root=ET.parse(svg).getroot();path=root.find('.//{http://www.w3.org/2000/svg}path').attrib['d']
         rec=RecordingPen();parse_path(path,rec);bounds=BoundsPen(None);rec.replay(bounds)
@@ -109,14 +121,15 @@ def main():
         # Potrace's native path coordinates are Cartesian (its SVG group flips y).
         pen=SVGPathPen(None);rec.replay(TransformPen(pen,(s,0,0,s,-xmin*s,spec['bottom']-ymin*s)))
         outline=pen.getCommands();gw=(xmax-xmin)*s
-        (ROOT/'glyphs/traced'/f'{code}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {gw+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
+        (output/f'{code}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {gw+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         entry=dict(character=char,codepoint=f'U+{code}',**spec,width=round(gw,3),outline=outline)
         manifest.append(entry)
         x=i%8*187;y=i//8*230
         thumb=Image.fromarray(im);thumb.thumbnail((175,112));sheet.paste(thumb,(x+6,y+22))
         thumb=Image.fromarray(255-mask);thumb.thumbnail((130,85));sheet.paste(thumb,(x+20,y+139))
-        d.text((x+6,y+3),f'{char if ord(char)<127 else code} / {spec["photo"][4:8]}',fill='black')
-    (ROOT/'glyphs/source-map.json').write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
-    sheet.save(ROOT/'build/extraction-review.png')
+        d.text((x+6,y+3),f'{char if ord(char)<127 else code} / {Path(spec["photo"]).stem}',fill='black')
+    manifest_path.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
+    review_name='extraction-review.png' if reference_set=='original' else f'extraction-review-{reference_set}.png'
+    sheet.save(ROOT/'build'/review_name)
     print(f'Extracted {len(manifest)} glyphs')
 if __name__=='__main__':main()

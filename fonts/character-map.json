@@ -72,7 +72,7 @@
   {
     "character": "G",
     "codepoint": "U+0047",
-    "source": "Geometrically normalized from IMG_0325.HEIC"
+    "source": "Geometrically normalized from IMG_0325.HEIC; refined against LSZ04731.JPG"
   },
   {
     "character": "H",
@@ -127,7 +127,7 @@
   {
     "character": "C",
     "codepoint": "U+0043",
-    "source": "Geometrically normalized from IMG_0318.HEIC"
+    "source": "Geometrically normalized from IMG_0318.HEIC; refined against LSZ04731.JPG"
   },
   {
     "character": "1",
@@ -237,7 +237,7 @@
   {
     "character": "£",
     "codepoint": "U+00A3",
-    "source": "Geometrically normalized from IMG_0301.HEIC"
+    "source": "Geometrically normalized from IMG_0301.HEIC; refined against LSZ04734.JPG"
   },
   {
     "character": "*",
@@ -317,7 +317,7 @@
   {
     "character": "",
     "codepoint": "U+E000",
-    "source": "Geometrically normalized from IMG_0348.HEIC"
+    "source": "Geometrically normalized from IMG_0348.HEIC; refined against LSZ04730.JPG"
   },
   {
     "character": "",
@@ -688,5 +688,320 @@
     "character": "Ç",
     "codepoint": "U+00C7",
     "source": "Constructed extension"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E161",
+    "source": "Reconstructed key-front graphic: C= + K; PETSCII $A1; LEFT HALF BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E162",
+    "source": "Reconstructed key-front graphic: C= + I; PETSCII $A2; LOWER HALF BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E163",
+    "source": "Reconstructed key-front graphic: C= + T; PETSCII $A3; UPPER ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E164",
+    "source": "Reconstructed key-front graphic: C= + @; PETSCII $A4; LOWER ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E165",
+    "source": "Reconstructed key-front graphic: C= + G; PETSCII $A5; LEFT ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E166",
+    "source": "Reconstructed key-front graphic: C= + +; PETSCII $A6; MEDIUM SHADE"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E167",
+    "source": "Reconstructed key-front graphic: C= + M; PETSCII $A7; RIGHT ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E168",
+    "source": "Reconstructed key-front graphic: C= + £; PETSCII $A8; LOWER HALF MEDIUM SHADE"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E169",
+    "source": "Reconstructed key-front graphic: SHIFT + £; PETSCII $A9; BLACK UPPER LEFT TRIANGLE"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E16A",
+    "source": "Reconstructed key-front graphic: C= + N; PETSCII $AA; RIGHT ONE QUARTER BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E16B",
+    "source": "Reconstructed key-front graphic: C= + Q; PETSCII $AB; BOX DRAWINGS LIGHT VERTICAL AND RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E16C",
+    "source": "Reconstructed key-front graphic: C= + D; PETSCII $AC; QUADRANT LOWER RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E16D",
+    "source": "Reconstructed key-front graphic: C= + Z; PETSCII $AD; BOX DRAWINGS LIGHT UP AND RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E16E",
+    "source": "Reconstructed key-front graphic: C= + S; PETSCII $AE; BOX DRAWINGS LIGHT DOWN AND LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E16F",
+    "source": "Reconstructed key-front graphic: C= + P; PETSCII $AF; LOWER ONE QUARTER BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E170",
+    "source": "Reconstructed key-front graphic: C= + A; PETSCII $B0; BOX DRAWINGS LIGHT DOWN AND RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E171",
+    "source": "Reconstructed key-front graphic: C= + E; PETSCII $B1; BOX DRAWINGS LIGHT UP AND HORIZONTAL"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E172",
+    "source": "Reconstructed key-front graphic: C= + R; PETSCII $B2; BOX DRAWINGS LIGHT DOWN AND HORIZONTAL"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E173",
+    "source": "Reconstructed key-front graphic: C= + W; PETSCII $B3; BOX DRAWINGS LIGHT VERTICAL AND LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E174",
+    "source": "Reconstructed key-front graphic: C= + H; PETSCII $B4; LEFT ONE QUARTER BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E175",
+    "source": "Reconstructed key-front graphic: C= + J; PETSCII $B5; LEFT THREE EIGHTHS BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E176",
+    "source": "Reconstructed key-front graphic: C= + L; PETSCII $B6; RIGHT THREE EIGHTHS BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E177",
+    "source": "Reconstructed key-front graphic: C= + Y; PETSCII $B7; UPPER ONE QUARTER BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E178",
+    "source": "Reconstructed key-front graphic: C= + U; PETSCII $B8; UPPER THREE EIGHTHS BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E179",
+    "source": "Reconstructed key-front graphic: C= + O; PETSCII $B9; LOWER THREE EIGHTHS BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E17A",
+    "source": "Reconstructed key-front graphic: SHIFT + @; PETSCII $BA; RIGHT AND LOWER ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E17B",
+    "source": "Reconstructed key-front graphic: C= + F; PETSCII $BB; QUADRANT LOWER LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E17C",
+    "source": "Reconstructed key-front graphic: C= + C; PETSCII $BC; QUADRANT UPPER RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E17D",
+    "source": "Reconstructed key-front graphic: C= + X; PETSCII $BD; BOX DRAWINGS LIGHT UP AND LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E17E",
+    "source": "Reconstructed key-front graphic: C= + V; PETSCII $BE; QUADRANT UPPER LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E17F",
+    "source": "Reconstructed key-front graphic: C= + B; PETSCII $BF; QUADRANT UPPER LEFT AND LOWER RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E140",
+    "source": "Reconstructed key-front graphic: SHIFT + *; PETSCII $C0; BOX DRAWINGS LIGHT HORIZONTAL"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E141",
+    "source": "Reconstructed key-front graphic: SHIFT + A; PETSCII $C1; BLACK SPADE SUIT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E142",
+    "source": "Reconstructed key-front graphic: SHIFT + B; PETSCII $C2; VERTICAL ONE EIGHTH BLOCK-4"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E143",
+    "source": "Reconstructed key-front graphic: SHIFT + C; PETSCII $C3; HORIZONTAL ONE EIGHTH BLOCK-4"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E144",
+    "source": "Reconstructed key-front graphic: SHIFT + D; PETSCII $C4; HORIZONTAL ONE EIGHTH BLOCK-3"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E145",
+    "source": "Reconstructed key-front graphic: SHIFT + E; PETSCII $C5; HORIZONTAL ONE EIGHTH BLOCK-2"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E146",
+    "source": "Reconstructed key-front graphic: SHIFT + F; PETSCII $C6; HORIZONTAL ONE EIGHTH BLOCK-6"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E147",
+    "source": "Reconstructed key-front graphic: SHIFT + G; PETSCII $C7; VERTICAL ONE EIGHTH BLOCK-3"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E148",
+    "source": "Reconstructed key-front graphic: SHIFT + H; PETSCII $C8; VERTICAL ONE EIGHTH BLOCK-6"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E149",
+    "source": "Reconstructed key-front graphic: SHIFT + I; PETSCII $C9; BOX DRAWINGS LIGHT ARC DOWN AND LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E14A",
+    "source": "Reconstructed key-front graphic: SHIFT + J; PETSCII $CA; BOX DRAWINGS LIGHT ARC UP AND RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E14B",
+    "source": "Reconstructed key-front graphic: SHIFT + K; PETSCII $CB; BOX DRAWINGS LIGHT ARC UP AND LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E14C",
+    "source": "Reconstructed key-front graphic: SHIFT + L; PETSCII $CC; LEFT AND LOWER ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E14D",
+    "source": "Reconstructed key-front graphic: SHIFT + M; PETSCII $CD; BOX DRAWINGS LIGHT DIAGONAL UPPER LEFT TO LOWER RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E14E",
+    "source": "Reconstructed key-front graphic: SHIFT + N; PETSCII $CE; BOX DRAWINGS LIGHT DIAGONAL UPPER RIGHT TO LOWER LEFT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E14F",
+    "source": "Reconstructed key-front graphic: SHIFT + O; PETSCII $CF; LEFT AND UPPER ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E150",
+    "source": "Reconstructed key-front graphic: SHIFT + P; PETSCII $D0; RIGHT AND UPPER ONE EIGHTH BLOCK"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E151",
+    "source": "Reconstructed key-front graphic: SHIFT + Q; PETSCII $D1; BULLET (or 0x25CF BLACK CIRCLE)"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E152",
+    "source": "Reconstructed key-front graphic: SHIFT + R; PETSCII $D2; HORIZONTAL ONE EIGHTH BLOCK-7"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E153",
+    "source": "Reconstructed key-front graphic: SHIFT + S; PETSCII $D3; BLACK HEART SUIT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E154",
+    "source": "Reconstructed key-front graphic: SHIFT + T; PETSCII $D4; VERTICAL ONE EIGHTH BLOCK-2"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E155",
+    "source": "Reconstructed key-front graphic: SHIFT + U; PETSCII $D5; BOX DRAWINGS LIGHT ARC DOWN AND RIGHT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E156",
+    "source": "Reconstructed key-front graphic: SHIFT + V; PETSCII $D6; BOX DRAWINGS LIGHT DIAGONAL CROSS"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E157",
+    "source": "Reconstructed key-front graphic: SHIFT + W; PETSCII $D7; WHITE CIRCLE (or 0x25E6 WHITE BULLET)"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E158",
+    "source": "Reconstructed key-front graphic: SHIFT + X; PETSCII $D8; BLACK CLUB SUIT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E159",
+    "source": "Reconstructed key-front graphic: SHIFT + Y; PETSCII $D9; VERTICAL ONE EIGHTH BLOCK-7"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E15A",
+    "source": "Reconstructed key-front graphic: SHIFT + Z; PETSCII $DA; BLACK DIAMOND SUIT"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E15B",
+    "source": "Reconstructed key-front graphic: SHIFT + +; PETSCII $DB; BOX DRAWINGS LIGHT VERTICAL AND HORIZONTAL"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E15C",
+    "source": "Reconstructed key-front graphic: C= + -; PETSCII $DC; LEFT HALF MEDIUM SHADE"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E15D",
+    "source": "Reconstructed key-front graphic: SHIFT + -; PETSCII $DD; BOX DRAWINGS LIGHT VERTICAL"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E15E",
+    "source": "Reconstructed key-front graphic: SHIFT + ↑ / C= + ↑; PETSCII $DE; GREEK SMALL LETTER PI"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E15F",
+    "source": "Reconstructed key-front graphic: C= + *; PETSCII $DF; BLACK UPPER RIGHT TRIANGLE"
   }
 ]
