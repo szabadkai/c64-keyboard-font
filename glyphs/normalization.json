@@ -1,5 +1,5 @@
 {
-  "version": "1.102",
+  "version": "1.103",
   "cap_height": 700,
   "vertical_stem": 88,
   "horizontal_bar": 80,
@@ -415,7 +415,7 @@
       "codepoint": "U+0032",
       "source_photo": "IMG_0289.HEIC",
       "method": "constrained geometric reconstruction",
-      "assumptions": "Level baseline and symmetric upper bowl; straight lower diagonal",
+      "assumptions": "Level baseline and symmetric upper bowl; straight diagonal continues into a flush, spur-free base junction",
       "original_width": 370.866,
       "width": 380.0,
       "bounds": [

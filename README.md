@@ -62,6 +62,8 @@ The initial 65 core shapes were traced from close-up photographs. **Version 1.1*
 
 **Version 1.102** corrects 3, 5, and 6 against their individual photographs: 3 has a narrower upper bowl and taller lower opening; 5 has a raised shoulder, an inset upper stem, and a taller lower bowl; 6 has a taller lower counter and straighter bowl sides. The existing 9 is retained independently rather than forcing it to mirror the revised 6.
 
+**Version 1.103** removes the small protrusion at the 2's lower-left corner by aligning the bottom bar's junction with the diagonal's outer edge.
+
 These are inferred design constraints, not a unique recovery of the original camera calibration or manufacturer's artwork. Curved keycaps, print wear, and perspective cannot be separated unambiguously from one photograph. The reconstruction makes the geometric assumptions explicit rather than retaining those defects in the font.
 
 ![Before and after: photographic traces compared with normalized glyph geometry](normalization-comparison.png)

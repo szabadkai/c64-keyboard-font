@@ -74,7 +74,16 @@ def build_shapes():
     put('S',s,'Smooth rotationally balanced spine; consistent stroke; level terminals')
     put('0',pathops.op(union(o,stroke('M50 0L330 700',65)),rect(0,0,380,700),pathops.PathOp.INTERSECTION),'O-family oval with preserved slash, clipped to its bounding rectangle')
     put('1','M110 0V588L15 533L0 618L123 700H198V0Z','Vertical stem; preserved flag; no added baseline serif')
-    put('2',union(stroke('M44 530C44 615 95 656 190 656C285 656 336 615 336 530C336 466 303 412 263 352L44 44'),rect(0,0,380,80)),'Level baseline and symmetric upper bowl; straight lower diagonal')
+    # Match the base's upper-left bevel to the *outer edge* of the diagonal.
+    # A full rectangle here projected left of the stroke, leaving a small spur.
+    diagonal_dx,diagonal_dy=263-44,352-44
+    diagonal_length=(diagonal_dx**2+diagonal_dy**2)**.5
+    edge_x=44-(V/2)*diagonal_dy/diagonal_length
+    edge_y=44+(V/2)*diagonal_dx/diagonal_length
+    left_join_y=edge_y-edge_x*diagonal_dy/diagonal_dx
+    top_join_x=(H-left_join_y)*diagonal_dx/diagonal_dy
+    two_base=path(f'M0 0H380V{H}H{top_join_x}L0 {left_join_y}Z')
+    put('2',union(stroke('M44 530C44 615 95 656 190 656C285 656 336 615 336 530C336 466 303 412 263 352L44 44'),two_base),'Level baseline and symmetric upper bowl; straight diagonal continues into a flush, spur-free base junction')
     # Fit the unequal bowls directly: 3 has a narrower upper bowl and a
     # taller lower opening. Stroked matching arcs lost those proportions.
     three=path('M10 530V548C10 646 75 700 187 700C299 700 360 646 360 540V505C360 443 340 410 288 380C354 348 380 292 380 213V181C380 61 310 0 190 0C66 0 0 69 0 160V184H88V164C88 106 119 80 190 80C261 80 292 118 292 184V222C292 304 252 336 180 336H140V416H178C243 416 272 452 272 514V539C272 591 248 620 187 620C126 620 98 592 98 545V530Z')
@@ -150,6 +159,6 @@ def main():
         width=x1-x0;outline=pen.getCommands()
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=e['photo'],method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.102',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.103',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Raw observations are retained in traced/.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()

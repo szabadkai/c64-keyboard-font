@@ -62,4 +62,17 @@ assert scan(load('5'),250)==[(292,380)],scan(load('5'),250)
 assert scan(load('6'),250)==[(0,88),(292,380)],scan(load('6'),250)
 six_vertical=pathops.Path();load('6').draw(TransformPen(six_vertical.getPen(),(0,1,1,0,0,0)))
 assert scan(six_vertical,190)==[(0,80),(381,460.5),(620,700)],scan(six_vertical,190)
+# Regression: the outer diagonal of 2 continues through the top of its
+# baseline bar, without the former rectangular protrusion at the left.
+two=load('2')
+assert not two.contains((1,79)) and two.contains((20,79))
+def left_edge_at(y):
+    lo,hi=0.,100.
+    for _ in range(30):
+        mid=(lo+hi)/2
+        if two.contains((mid,y)):hi=mid
+        else:lo=mid
+    return (lo+hi)/2
+edges=[left_edge_at(y) for y in [70,80,90]]
+assert abs(edges[0]+edges[2]-2*edges[1])<.01,edges
 print('Geometry verified: 36 cap bounds, parallel stems, shared thickness, symmetry, paired glyphs, and counters')

@@ -8,7 +8,7 @@ def make():
     def f(s):return ImageFont.truetype(str(FONT),s)
     def label(p,t,s=22,col='#59615f'):d.text(p,t,font=ImageFont.truetype(ui,s),fill=col)
     label((100,65),'C64  /  KEYBOARD LETTERING',24)
-    label((1430,65),'REGULAR  —  1.102',21)
+    label((1430,65),'REGULAR  —  1.103',21)
     d.line((100,113,1700,113),fill='#bcbcaf',width=2)
     d.text((90,153),'PRESS PLAY ON TAPE',font=f(147),fill='#25333c')
     label((100,338),'A geometrically normalized reconstruction of the keycap legends.',28)
