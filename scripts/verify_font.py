@@ -21,13 +21,22 @@ for ext in ['ttf','otf','woff2']:
         assert y0>=-220 and y1<=1000,(ext,name,pen.bounds)
         assert x0>=-1 and x1<=font['hmtx'][name][0]+1,(ext,name,pen.bounds)
     assert empty==['space'],(ext,empty)
+    # Every function-key label is one mapped glyph at the same optical size.
+    function_codes=list(range(0xE010,0xE01C))
+    assert all(cp in cmap for cp in function_codes)
+    assert len({cmap[cp] for cp in function_codes})==12
+    for cp in function_codes:
+        pen=BoundsPen(glyphs);glyphs[cmap[cp]].draw(pen)
+        assert abs(pen.bounds[1])<1 and abs(pen.bounds[3]-455)<1,(ext,cp,pen.bounds)
+    widest_single=max(font['hmtx'][cmap[cp]][0] for cp in range(0xE010,0xE019))
+    assert all(font['hmtx'][cmap[cp]][0]>widest_single for cp in range(0xE019,0xE01C))
     assert font['OS/2'].version>=4
     # Round-trip every table, including WOFF2 decompression.
     stream=BytesIO();font.flavor=None;font.save(stream);stream.seek(0);TTFont(stream)
     reports.append(dict(format=ext,glyphs=len(font.getGlyphOrder()),mapped_characters=len(cmap),bytes=path.stat().st_size))
 for ext in ['ttf','otf']:
     f=ImageFont.truetype(str(ROOT/'fonts'/f'C64Keyboard-Regular.{ext}'),64)
-    for text in ['ABCDEFGHIJKLMNOPQRSTUVWXYZ','0123456789','LOAD "*",8,1','ÁÉÍÓÖŐÚÜŰ','\ue000\ue010\ue021']:
+    for text in ['ABCDEFGHIJKLMNOPQRSTUVWXYZ','0123456789','LOAD "*",8,1','ÁÉÍÓÖŐÚÜŰ','\ue000\ue010\ue021','\ue018\ue019\ue01a\ue01b']:
         assert f.getmask(text).getbbox(),(ext,text)
 # Render all unique mappings at useful viewing size for a final visual review.
 font=TTFont(ROOT/'fonts/C64Keyboard-Regular.ttf');cmap=font.getBestCmap()

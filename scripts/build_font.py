@@ -56,8 +56,13 @@ def build():
     put('×','M0 150L155 350L0 550L70 605L210 420L350 605L420 550L265 350L420 150L350 95L210 280L70 95Z')
     put('…',combine([(SHAPES['.'],(1,0,0,1,i*210,0)) for i in range(3)]))
     # Function-key f is kept as a separate private-use glyph; lowercase f stays F.
-    for i in range(1,9):
-        put(chr(0xE00F+i),combine([(SHAPES['\ue001'],(.65,0,0,.65,0,0)),(SHAPES[str(i)],(.65,0,0,.65,420,0))]),f'Composed f{i} legend')
+    for i in range(1,13):
+        items=[(SHAPES['\ue001'],(.65,0,0,.65,0,0))]
+        x=420
+        for digit in str(i):
+            items.append((SHAPES[digit],(.65,0,0,.65,x,0)))
+            x+=(bounds(SHAPES[digit])[2]+130)*.65
+        put(chr(0xE00F+i),combine(items),f'Composed f{i} legend')
     # Compose key labels without turning common words into automatic ligatures.
     labels=['CTRL','RUN\nSTOP','SHIFT\nLOCK','SHIFT','RETURN','RESTORE','CLR\nHOME','INST\nDEL','CRSR']
     for index,label in enumerate(labels):
@@ -101,7 +106,7 @@ def build():
         if c=='I':advance=290;bearing=(290-w)/2
         if c in '.:,;':advance=max(270,advance);bearing=(advance-w)/2
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
-    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.103','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.103','description':'Geometrically normalized reconstruction of the keycap legends in the supplied C64 photographs. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs'}
+    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.104','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.104','description':'Geometrically normalized reconstruction of the keycap legends in the supplied C64 photographs. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs'}
     kern='feature kern {\n'+ '\n'.join(f'pos {names[a]} {names[b]} {value};' for a,b,value in [('A','V',-45),('A','W',-30),('A','Y',-40),('V','A',-45),('W','A',-30),('Y','A',-40),('T','A',-35),('L','T',-30),('L','V',-30),('L','Y',-40),('T','O',-15),('T','.',-45)])+'\n} kern;'
     for ttf in [True,False]:
         fb=FontBuilder(1000,isTTF=ttf);fb.setupGlyphOrder(order);fb.setupCharacterMap(cmap)
@@ -119,7 +124,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
-        fb.font['head'].fontRevision=1.103
+        fb.font['head'].fontRevision=1.104
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')

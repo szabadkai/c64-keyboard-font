@@ -18,7 +18,7 @@ The family appears as **C64 Keyboard**, style **Regular**. No font has been inst
 
 ## Character coverage
 
-136 glyphs with 195 mapped Unicode characters, including all printable ASCII, uppercase Latin letters, digits, punctuation, £, four arrows, and selected accented Latin letters (including Á É Í Ó Ö Ő Ú Ü Ű).
+140 glyphs with 199 mapped Unicode characters, including all printable ASCII, uppercase Latin letters, digits, punctuation, £, four arrows, and selected accented Latin letters (including Á É Í Ó Ö Ő Ú Ü Ű).
 
 - Lowercase input intentionally maps to the corresponding uppercase outline. There is no separate lowercase alphabet on these photographed keys.
 - Numerals use equal advances. Letters use proportional spacing with a few kerning pairs.
@@ -35,6 +35,10 @@ Use the buttons in the preview to insert these private-use characters into the t
 | U+E000 | Photographed Commodore key symbol |
 | U+E001 | Function-key lowercase f |
 | U+E010–U+E017 | f1 through f8 |
+| U+E018 | f9 |
+| U+E019 | f10 |
+| U+E01A | f11 |
+| U+E01B | f12 |
 | U+E020 | CTRL |
 | U+E021 | RUN / STOP |
 | U+E022 | SHIFT / LOCK |
@@ -44,6 +48,8 @@ Use the buttons in the preview to insert these private-use characters into the t
 | U+E026 | CLR / HOME |
 | U+E027 | INST / DEL |
 | U+E028 | CRSR |
+
+All twelve function labels are single glyphs with matching scale, baseline, and f-to-number spacing. The two-digit labels use wider advances. For example, use `&#xE01B;` in HTML (with this font applied) for f12.
 
 The multi-letter and function legends are composed from the reconstructed characters. Ordinary words are never replaced automatically by key labels.
 
@@ -63,6 +69,8 @@ The initial 65 core shapes were traced from close-up photographs. **Version 1.1*
 **Version 1.102** corrects 3, 5, and 6 against their individual photographs: 3 has a narrower upper bowl and taller lower opening; 5 has a raised shoulder, an inset upper stem, and a taller lower bowl; 6 has a taller lower counter and straighter bowl sides. The existing 9 is retained independently rather than forcing it to mirror the revised 6.
 
 **Version 1.103** removes the small protrusion at the 2's lower-left corner by aligning the bottom bar's junction with the diagonal's outer edge.
+
+**Version 1.104** extends the function-key legends to f12, adding U+E018–U+E01B for f9–f12. Existing glyphs and codepoints are unchanged.
 
 These are inferred design constraints, not a unique recovery of the original camera calibration or manufacturer's artwork. Curved keycaps, print wear, and perspective cannot be separated unambiguously from one photograph. The reconstruction makes the geometric assumptions explicit rather than retaining those defects in the font.
 
