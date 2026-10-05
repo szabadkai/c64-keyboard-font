@@ -1,0 +1,4 @@
+pillow==12.3.0
+fonttools[woff]==4.66.1
+numpy==2.5.3
+opencv-python-headless==5.0.0.93

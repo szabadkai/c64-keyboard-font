@@ -1,0 +1,672 @@
+[
+  {
+    "character": "P",
+    "codepoint": "U+0050",
+    "source": "IMG_0308.HEIC"
+  },
+  {
+    "character": "O",
+    "codepoint": "U+004F",
+    "source": "IMG_0309.HEIC"
+  },
+  {
+    "character": "I",
+    "codepoint": "U+0049",
+    "source": "IMG_0310.HEIC"
+  },
+  {
+    "character": "U",
+    "codepoint": "U+0055",
+    "source": "IMG_0311.HEIC"
+  },
+  {
+    "character": "Y",
+    "codepoint": "U+0059",
+    "source": "IMG_0312.HEIC"
+  },
+  {
+    "character": "T",
+    "codepoint": "U+0054",
+    "source": "IMG_0313.HEIC"
+  },
+  {
+    "character": "R",
+    "codepoint": "U+0052",
+    "source": "IMG_0314.HEIC"
+  },
+  {
+    "character": "E",
+    "codepoint": "U+0045",
+    "source": "IMG_0315.HEIC"
+  },
+  {
+    "character": "W",
+    "codepoint": "U+0057",
+    "source": "IMG_0316.HEIC"
+  },
+  {
+    "character": "Q",
+    "codepoint": "U+0051",
+    "source": "IMG_0317.HEIC"
+  },
+  {
+    "character": "A",
+    "codepoint": "U+0041",
+    "source": "IMG_0321.HEIC"
+  },
+  {
+    "character": "S",
+    "codepoint": "U+0053",
+    "source": "IMG_0322.HEIC"
+  },
+  {
+    "character": "D",
+    "codepoint": "U+0044",
+    "source": "IMG_0323.HEIC"
+  },
+  {
+    "character": "F",
+    "codepoint": "U+0046",
+    "source": "IMG_0324.HEIC"
+  },
+  {
+    "character": "G",
+    "codepoint": "U+0047",
+    "source": "IMG_0325.HEIC"
+  },
+  {
+    "character": "H",
+    "codepoint": "U+0048",
+    "source": "IMG_0326.HEIC"
+  },
+  {
+    "character": "J",
+    "codepoint": "U+004A",
+    "source": "IMG_0327.HEIC"
+  },
+  {
+    "character": "K",
+    "codepoint": "U+004B",
+    "source": "IMG_0328.HEIC"
+  },
+  {
+    "character": "L",
+    "codepoint": "U+004C",
+    "source": "IMG_0329.HEIC"
+  },
+  {
+    "character": "M",
+    "codepoint": "U+004D",
+    "source": "IMG_0340.HEIC"
+  },
+  {
+    "character": "N",
+    "codepoint": "U+004E",
+    "source": "IMG_0341.HEIC"
+  },
+  {
+    "character": "B",
+    "codepoint": "U+0042",
+    "source": "IMG_0342.HEIC"
+  },
+  {
+    "character": "V",
+    "codepoint": "U+0056",
+    "source": "IMG_0343.HEIC"
+  },
+  {
+    "character": "X",
+    "codepoint": "U+0058",
+    "source": "IMG_0345.HEIC"
+  },
+  {
+    "character": "Z",
+    "codepoint": "U+005A",
+    "source": "IMG_0346.HEIC"
+  },
+  {
+    "character": "C",
+    "codepoint": "U+0043",
+    "source": "IMG_0318.HEIC"
+  },
+  {
+    "character": "1",
+    "codepoint": "U+0031",
+    "source": "IMG_0288.HEIC"
+  },
+  {
+    "character": "2",
+    "codepoint": "U+0032",
+    "source": "IMG_0289.HEIC"
+  },
+  {
+    "character": "3",
+    "codepoint": "U+0033",
+    "source": "IMG_0290.HEIC"
+  },
+  {
+    "character": "4",
+    "codepoint": "U+0034",
+    "source": "IMG_0292.HEIC"
+  },
+  {
+    "character": "5",
+    "codepoint": "U+0035",
+    "source": "IMG_0293.HEIC"
+  },
+  {
+    "character": "6",
+    "codepoint": "U+0036",
+    "source": "IMG_0294.HEIC"
+  },
+  {
+    "character": "7",
+    "codepoint": "U+0037",
+    "source": "IMG_0295.HEIC"
+  },
+  {
+    "character": "8",
+    "codepoint": "U+0038",
+    "source": "IMG_0296.HEIC"
+  },
+  {
+    "character": "9",
+    "codepoint": "U+0039",
+    "source": "IMG_0297.HEIC"
+  },
+  {
+    "character": "0",
+    "codepoint": "U+0030",
+    "source": "IMG_0298.HEIC"
+  },
+  {
+    "character": "!",
+    "codepoint": "U+0021",
+    "source": "IMG_0288.HEIC"
+  },
+  {
+    "character": "\"",
+    "codepoint": "U+0022",
+    "source": "IMG_0289.HEIC"
+  },
+  {
+    "character": "#",
+    "codepoint": "U+0023",
+    "source": "IMG_0290.HEIC"
+  },
+  {
+    "character": "$",
+    "codepoint": "U+0024",
+    "source": "IMG_0292.HEIC"
+  },
+  {
+    "character": "%",
+    "codepoint": "U+0025",
+    "source": "IMG_0293.HEIC"
+  },
+  {
+    "character": "&",
+    "codepoint": "U+0026",
+    "source": "IMG_0294.HEIC"
+  },
+  {
+    "character": "'",
+    "codepoint": "U+0027",
+    "source": "IMG_0295.HEIC"
+  },
+  {
+    "character": "(",
+    "codepoint": "U+0028",
+    "source": "IMG_0296.HEIC"
+  },
+  {
+    "character": ")",
+    "codepoint": "U+0029",
+    "source": "IMG_0297.HEIC"
+  },
+  {
+    "character": "+",
+    "codepoint": "U+002B",
+    "source": "IMG_0299.HEIC"
+  },
+  {
+    "character": "-",
+    "codepoint": "U+002D",
+    "source": "IMG_0300.HEIC"
+  },
+  {
+    "character": "£",
+    "codepoint": "U+00A3",
+    "source": "IMG_0301.HEIC"
+  },
+  {
+    "character": "*",
+    "codepoint": "U+002A",
+    "source": "IMG_0306.HEIC"
+  },
+  {
+    "character": "@",
+    "codepoint": "U+0040",
+    "source": "IMG_0307.HEIC"
+  },
+  {
+    "character": ":",
+    "codepoint": "U+003A",
+    "source": "IMG_0330.HEIC"
+  },
+  {
+    "character": ";",
+    "codepoint": "U+003B",
+    "source": "IMG_0331.HEIC"
+  },
+  {
+    "character": "[",
+    "codepoint": "U+005B",
+    "source": "IMG_0330.HEIC"
+  },
+  {
+    "character": "]",
+    "codepoint": "U+005D",
+    "source": "IMG_0331.HEIC"
+  },
+  {
+    "character": "=",
+    "codepoint": "U+003D",
+    "source": "IMG_0332.HEIC"
+  },
+  {
+    "character": "?",
+    "codepoint": "U+003F",
+    "source": "IMG_0337.HEIC"
+  },
+  {
+    "character": "/",
+    "codepoint": "U+002F",
+    "source": "IMG_0337.HEIC"
+  },
+  {
+    "character": ">",
+    "codepoint": "U+003E",
+    "source": "IMG_0338.HEIC"
+  },
+  {
+    "character": ".",
+    "codepoint": "U+002E",
+    "source": "IMG_0338.HEIC"
+  },
+  {
+    "character": "<",
+    "codepoint": "U+003C",
+    "source": "IMG_0339.HEIC"
+  },
+  {
+    "character": ",",
+    "codepoint": "U+002C",
+    "source": "IMG_0339.HEIC"
+  },
+  {
+    "character": "←",
+    "codepoint": "U+2190",
+    "source": "IMG_0287.HEIC"
+  },
+  {
+    "character": "↑",
+    "codepoint": "U+2191",
+    "source": "IMG_0305.HEIC"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E000",
+    "source": "IMG_0348.HEIC"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E001",
+    "source": "IMG_0349.HEIC"
+  },
+  {
+    "character": "\\",
+    "codepoint": "U+005C",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "→",
+    "codepoint": "U+2192",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "↓",
+    "codepoint": "U+2193",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "`",
+    "codepoint": "U+0060",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "|",
+    "codepoint": "U+007C",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "_",
+    "codepoint": "U+005F",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "^",
+    "codepoint": "U+005E",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "~",
+    "codepoint": "U+007E",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "{",
+    "codepoint": "U+007B",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "}",
+    "codepoint": "U+007D",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "‘",
+    "codepoint": "U+2018",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "’",
+    "codepoint": "U+2019",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "“",
+    "codepoint": "U+201C",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "”",
+    "codepoint": "U+201D",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "–",
+    "codepoint": "U+2013",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "—",
+    "codepoint": "U+2014",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "−",
+    "codepoint": "U+2212",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "×",
+    "codepoint": "U+00D7",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "…",
+    "codepoint": "U+2026",
+    "source": "Constructed extension"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E010",
+    "source": "Composed f1 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E011",
+    "source": "Composed f2 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E012",
+    "source": "Composed f3 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E013",
+    "source": "Composed f4 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E014",
+    "source": "Composed f5 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E015",
+    "source": "Composed f6 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E016",
+    "source": "Composed f7 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E017",
+    "source": "Composed f8 legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E020",
+    "source": "Composed CTRL legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E021",
+    "source": "Composed RUN / STOP legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E022",
+    "source": "Composed SHIFT / LOCK legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E023",
+    "source": "Composed SHIFT legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E024",
+    "source": "Composed RETURN legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E025",
+    "source": "Composed RESTORE legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E026",
+    "source": "Composed CLR / HOME legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E027",
+    "source": "Composed INST / DEL legend"
+  },
+  {
+    "character": "",
+    "codepoint": "U+E028",
+    "source": "Composed CRSR legend"
+  },
+  {
+    "character": "Á",
+    "codepoint": "U+00C1",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "É",
+    "codepoint": "U+00C9",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Í",
+    "codepoint": "U+00CD",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ó",
+    "codepoint": "U+00D3",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ú",
+    "codepoint": "U+00DA",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ý",
+    "codepoint": "U+00DD",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ć",
+    "codepoint": "U+0106",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ń",
+    "codepoint": "U+0143",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ś",
+    "codepoint": "U+015A",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ź",
+    "codepoint": "U+0179",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "À",
+    "codepoint": "U+00C0",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "È",
+    "codepoint": "U+00C8",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ì",
+    "codepoint": "U+00CC",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ò",
+    "codepoint": "U+00D2",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ù",
+    "codepoint": "U+00D9",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Â",
+    "codepoint": "U+00C2",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ê",
+    "codepoint": "U+00CA",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Î",
+    "codepoint": "U+00CE",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ô",
+    "codepoint": "U+00D4",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Û",
+    "codepoint": "U+00DB",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ä",
+    "codepoint": "U+00C4",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ë",
+    "codepoint": "U+00CB",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ï",
+    "codepoint": "U+00CF",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ö",
+    "codepoint": "U+00D6",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ü",
+    "codepoint": "U+00DC",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ÿ",
+    "codepoint": "U+0178",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ã",
+    "codepoint": "U+00C3",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ñ",
+    "codepoint": "U+00D1",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Õ",
+    "codepoint": "U+00D5",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ő",
+    "codepoint": "U+0150",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ű",
+    "codepoint": "U+0170",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Å",
+    "codepoint": "U+00C5",
+    "source": "Composed accent extension"
+  },
+  {
+    "character": "Ç",
+    "codepoint": "U+00C7",
+    "source": "Constructed extension"
+  }
+]
