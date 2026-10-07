@@ -1,5 +1,5 @@
 {
-  "version": "1.109",
+  "version": "1.111",
   "cap_height": 700,
   "vertical_stem": 88,
   "horizontal_bar": 80,
@@ -735,15 +735,15 @@
       "additional_reference": "LSZ04731.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Parallel upright strokes and matching intentionally sloped crossbars",
+      "assumptions": "Cap-height upright strokes and matching intentionally sloped crossbars",
       "original_width": 393.297,
       "new_reference_width": 402.557,
-      "width": 418.978,
+      "width": 487.058,
       "bounds": [
         0,
-        150.0,
-        418.978,
-        650.0
+        0.0,
+        487.058,
+        700.0
       ]
     },
     {
@@ -754,15 +754,15 @@
       "additional_reference": "LSZ04731.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Normalized S-derived bowls crossed by one vertical stem",
+      "assumptions": "Full-size S crossed by one vertical stem extending 90 units beyond cap height and baseline",
       "original_width": 354.981,
       "new_reference_width": 368.301,
-      "width": 325.36,
+      "width": 392.0,
       "bounds": [
         0,
-        75.0,
-        325.36,
-        685.0
+        -90.0,
+        392.0,
+        790.0
       ]
     },
     {
@@ -773,15 +773,15 @@
       "additional_reference": "LSZ04731.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Equal oval counters and straight diagonal; paired sizes",
+      "assumptions": "Cap-height oval counters and straight diagonal; paired sizes",
       "original_width": 526.419,
       "new_reference_width": 549.932,
-      "width": 510.0,
+      "width": 540.0,
       "bounds": [
         0,
-        74.316,
-        510.0,
-        625.684
+        0.0,
+        540.0,
+        700.0
       ]
     },
     {

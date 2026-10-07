@@ -28,7 +28,7 @@ The font builder uses FontTools. Outline construction also uses skia-pathops. Sp
 
 The outputs are TTF, OTF, and WOFF2 fonts in `fonts/`, a character map, specimen and comparison PNGs, and `C64-Keyboard.zip`. Validation also writes `build/validation.json` and `build/all-glyphs.png` for inspection. Open `preview.html` to check the webfont and insertion buttons.
 
-Version 1.110 has 193 glyphs and 253 mapped characters. Validation checks printable ASCII, uppercase/lowercase aliases, numeral widths, function-key labels, all 63 PETSCII legends, outline bounds, and font-table round trips. The geometry check covers the original letters, numbers, and paired punctuation.
+Version 1.111 has 193 glyphs and 253 mapped characters. Validation checks printable ASCII, uppercase/lowercase aliases, numeral widths, function-key labels, all 63 PETSCII legends, outline bounds, and font-table round trips. The geometry check covers the original letters, numbers, and paired punctuation.
 
 ## Regenerate geometric outlines
 
@@ -56,7 +56,7 @@ Then run the build and validation sequence above. `normalize_glyphs.py` reconstr
 | `glyphs/petscii-map.json` | Key assignments and code mappings |
 | `fonts/character-map.json` | Built glyph coverage and provenance |
 
-The photo-review record retains version 1.106, when that review was made. The core normalization record is at 1.109, when S, @, and the text punctuation were revised. Version 1.107 added PETSCII; version 1.108 removed the former U+E000 symbol; version 1.110 removed the U+E020–U+E028 key-name legends.
+The photo-review record retains version 1.106, when that review was made. The core normalization record is at 1.111, when $, #, and % were last revised. Version 1.107 added PETSCII; version 1.108 removed the former U+E000 symbol; version 1.110 removed the U+E020–U+E028 key-name legends.
 
 ## Optional photo extraction
 

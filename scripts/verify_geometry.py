@@ -79,6 +79,10 @@ assert abs(edges[0]+edges[2]-2*edges[1])<.01,edges
 # thin slivers left where a separate kick bar overlapped its angled end.
 for y in range(5,200,15):
     assert all(b-a>40 for a,b in scan(load('&'),y)),('&',y,scan(load('&'),y))
+# Regression (#2): shifted keycap legends are full-size text symbols.
+for c in '!#%&?':
+    x0,y0,x1,y1=bounds(load(c));assert abs(y0)<.1 and abs(y1-700)<.1,(c,(y0,y1))
+x0,y0,x1,y1=bounds(load('$'));assert y0<-50 and y1>750 and abs(x1-x0-bounds(load('S'))[2])<1,('$',bounds(load('$')))
 # Regression (#5): S keeps the keycap's narrower upper bowl instead of
 # reading as a rotated copy of itself.
 s_upper=scan(load('S'),530);s_lower=scan(load('S'),170)

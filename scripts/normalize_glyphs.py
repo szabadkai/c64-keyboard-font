@@ -140,12 +140,16 @@ def build_shapes():
     put('(',paren,'Smooth symmetric parenthesis around mid-height')
     put(')',transform(paren,(-1,0,0,1,220,0)),'Exact reflected parenthesis')
     put('*',union(*(stroke(d,78) for d in ['M0 350H620','M150 73L470 627','M150 627L470 73'])),'Three equal straight strokes intersecting at one center')
-    put('#',union(rect(90,150,62,500),rect(275,150,62,500),stroke('M0 305L410 365',62),stroke('M0 480L410 540',62)),'Parallel upright strokes and matching intentionally sloped crossbars')
+    # # and % are small shifted legends on the keycaps; text needs cap height.
+    put('#',union(rect(100,0,76,CAP),rect(300,0,76,CAP),stroke('M0 205L476 275',76),stroke('M0 425L476 495',76)),'Cap-height upright strokes and matching intentionally sloped crossbars')
     put('?',union(stroke('M44 535C44 615 96 656 190 656C284 656 336 610 336 530C336 456 294 409 241 371C206 344 184 316 184 264V224'),ellipse(184,50,50,50)),'Smooth bowl; centered stem and circular dot')
     put('←',union(rect(135,315,625,70),path('M0 350L170 450V250Z')),'Horizontal shaft and centered symmetric triangular head')
     put('↑',union(rect(55,0,70,565),path('M90 700L0 530H180Z')),'Vertical shaft and centered symmetric triangular head')
-    put('$',union(transform(s,(.83,0,0,.77,0,115)),rect(127,75,58,610)),'Normalized S-derived bowls crossed by one vertical stem')
-    put('%',union(ring(105,490,105,120,55,55),ring(405,210,105,120,55,55),stroke('M105 90L410 610',62)),'Equal oval counters and straight diagonal; paired sizes')
+    # The keycap $ is a small shifted legend; in text it needs the full S at
+    # the shared stroke weight, with the stem extending past cap and baseline.
+    put('$',union(s,rect(165,-90,66,880)),'Full-size S crossed by one vertical stem extending 90 units beyond cap height and baseline')
+    percent=union(ring(115,555,115,145,76,72),ring(425,145,115,145,76,72),stroke('M95 -40L445 740',76))
+    put('%',pathops.op(percent,rect(-100,0,800,CAP),pathops.PathOp.INTERSECTION),'Cap-height oval counters and straight diagonal; paired sizes')
     # The shifted keycap & is small and light; text use needs cap height and
     # the shared stroke weight. The leg runs straight through to the baseline:
     # a separate kick bar over its angled end used to leave notches there.
@@ -180,6 +184,6 @@ def main():
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         reference=new_references[ch]
         report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=refinements.get(ch,e['photo']),original_source_photo=e['photo'],additional_reference=reference['photo'],revised_from_new_reference=ch in refinements,method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],new_reference_width=reference['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.109',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Original observations are retained in traced/; newer camera observations in high-resolution/. See reference-review.json for refinements.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.111',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Original observations are retained in traced/; newer camera observations in high-resolution/. See reference-review.json for refinements.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()

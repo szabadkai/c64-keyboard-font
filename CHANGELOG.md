@@ -1,5 +1,9 @@
 # Version history
 
+## 1.111 — 2026-10-07
+
+- Brought $, #, and % up to full size for running text, like ! and & in 1.109. $ is now the full S with its stem extending past cap height and baseline; # and % reach cap height at the shared stroke weight ([#2](https://github.com/szabadkai/c64-keyboard-font/issues/2)).
+
 ## 1.110 — 2026-10-07
 
 - Removed the composed key-name legends at U+E020–U+E028 (CTRL, RUN/STOP, SHIFT LOCK, SHIFT, RETURN, RESTORE, CLR/HOME, INST/DEL, CRSR) from the font and the preview. The font covers the single-character legends; f1–f12 remain.

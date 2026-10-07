@@ -112,8 +112,8 @@ def build():
         if c in petscii_chars:advance=830;bearing=65+x0
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
     common={'copyright':'Font reconstruction by Levente Szabadkai; CC0 1.0 Universal.',
-            'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.110',
-            'fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.110',
+            'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.111',
+            'fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.111',
             'description':'Geometrically normalized reconstruction of C64 keycap lettering and PETSCII key-front legends. Lowercase maps to uppercase. Unofficial reconstruction.',
             'manufacturer':'Independent reconstruction','designer':'Levente Szabadkai',
             'licenseDescription':'CC0 1.0 Universal. To the extent possible under law, the author has dedicated this font reconstruction to the public domain worldwide.',
@@ -135,7 +135,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
-        fb.font['head'].fontRevision=1.110
+        fb.font['head'].fontRevision=1.111
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')
