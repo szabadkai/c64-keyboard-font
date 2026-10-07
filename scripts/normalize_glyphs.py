@@ -163,9 +163,10 @@ def build_shapes():
     put('%',pathops.op(percent,rect(-100,0,800,CAP),pathops.PathOp.INTERSECTION),'Cap-height oval counters and straight diagonal; paired sizes')
     # Fitted to a close-up of the & key print, drawn as one 88-unit stroke:
     # foot, leg, teardrop loop, broad bowl, ending in a level spur. Where the
-    # stroke crosses itself it forms the print's notches, not cut-outs.
-    amp=stroke('M472 -40C466 34 436 88 385 142L240 330C205 388 128 450 128 548C128 620 189 656 268 656C347 656 406 612 406 548C406 490 378 445 318 405C200 330 44 300 44 180C44 90 120 44 225 44C310 44 372 74 420 128C452 164 482 200 540 200')
-    put('&',pathops.op(amp,rect(-100,0,1000,CAP),pathops.PathOp.INTERSECTION),'Photo-fitted single 88-unit stroke at cap height: teardrop loop, broad bowl, level spur and baseline foot')
+    # stroke crosses itself it forms the print's notches, not cut-outs. The
+    # print leans about 10 degrees; here the loop sits directly over the bowl.
+    amp=stroke('M492 -40C486 50 444 128 385 172L212 330C168 381 82 428 65 524C53 594 106 640 183 653C260 666.3 325 634 336 571C346 515 327 466 275 417C173 324 25 268 46 151C61 63 143 31 246 49C328 63 384 103 421 164C446 205 475 225 535 225')
+    put('&',pathops.op(amp,rect(-100,0,1000,CAP),pathops.PathOp.INTERSECTION),'Photo-fitted single 88-unit stroke at cap height, set upright: teardrop loop over a broad bowl, level spur and baseline foot')
     put('£','M0 0V80H35C110 80 132 140 132 230V340H72V420H132V505C132 635 211 700 360 700C509 700 600 630 600 490H500C500 577 452 620 360 620C268 620 232 580 232 505V420H410V340H232V230C232 163 218 112 184 80H420C472 80 500 123 500 210H600C600 70 528 0 420 0Z','LSZ04734: wider 600-unit silhouette, raised crossbar, square left foot and rising right terminal; 100-unit symbol stem')
     # IMG_0307/LSZ04734: one 80-unit stroke throughout. A circular ring ends
     # in a tail at the bottom; at the lower right it turns inward into the
