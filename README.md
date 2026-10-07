@@ -35,11 +35,11 @@ The lettering comes from my own Commodore 64, a Central European unit. Its keyca
 
 Open the [online preview](https://szabadkai.github.io/c64-keyboard-font/#petscii) or `preview.html` and use the PETSCII buttons to insert the symbols, then copy them from the type tester. Left legends correspond to Commodore + key, right legends to Shift + key in uppercase/graphics mode. Pi on the up-arrow key also works with Commodore.
 
-These are reconstructed outlines: identities and key assignments come from the [Ultimate Commodore 64 Reference](https://www.pagetable.com/c64ref/charset/); frame thickness, curves, and print proportions are inferred from the supplied keyboard photograph. They are not exact photo traces. Pi is unframed as on the key.
+These are reconstructed outlines: identities and key assignments come from the [Ultimate Commodore 64 Reference](https://www.pagetable.com/c64ref/charset/); frame thickness, curves, and print proportions are inferred from the keyboard photograph. They are not exact photo traces. Pi is unframed as on the key.
 
 The preview handles the special character codes for you. Copied symbols need this font to display correctly. See the [PETSCII key map and encoding guide](docs/PETSCII.md) for codes and keyboard combinations.
 
-Editable outlines are in [glyphs/](glyphs/), with build tools in [scripts/](scripts/). The close-up photographs used for tracing are not included.
+Editable outlines are in [glyphs/](glyphs/), with build tools in [scripts/](scripts/).
 
 [Build instructions](docs/BUILDING.md) · [Version history](CHANGELOG.md)
 
