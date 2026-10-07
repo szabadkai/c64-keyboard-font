@@ -83,6 +83,12 @@ for y in range(5,200,15):
 for c in '!#%&?':
     x0,y0,x1,y1=bounds(load(c));assert abs(y0)<.1 and abs(y1-700)<.1,(c,(y0,y1))
 x0,y0,x1,y1=bounds(load('$'));assert y0<-50 and y1>750 and abs(x1-x0-bounds(load('S'))[2])<1,('$',bounds(load('$')))
+# Regression: @ is drawn with one stroke width; its ring is 80 units thick
+# on every side instead of the former mix of heavy and thin parts.
+at=load('@');at_ring=scan(at,330)
+assert abs(at_ring[0][1]-at_ring[0][0]-80)<2 and abs(at_ring[-1][1]-at_ring[-1][0]-80)<2,at_ring
+at_vertical=pathops.Path();at.draw(TransformPen(at_vertical.getPen(),(0,1,1,0,0,0)))
+assert abs(scan(at_vertical,330)[-1][1]-scan(at_vertical,330)[-1][0]-80)<2,scan(at_vertical,330)
 # Regression (#5): S keeps the keycap's narrower upper bowl instead of
 # reading as a rotated copy of itself.
 s_upper=scan(load('S'),530);s_lower=scan(load('S'),170)

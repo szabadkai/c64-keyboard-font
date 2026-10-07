@@ -1,5 +1,5 @@
 {
-  "version": "1.111",
+  "version": "1.112",
   "cap_height": 700,
   "vertical_stem": 88,
   "horizontal_bar": 80,
@@ -944,15 +944,15 @@
       "additional_reference": "LSZ04734.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Photo-fitted: 88-unit spiral with a level bottom tail; leaning a with a narrow counter",
+      "assumptions": "Photo-fitted: circular 80-unit ring and spiral into a leaning a, one stroke width throughout",
       "original_width": 650.982,
       "new_reference_width": 652.602,
-      "width": 654.0,
+      "width": 660.03,
       "bounds": [
         0,
-        0.0,
-        654.0,
-        656.0
+        -0.034,
+        660.03,
+        660.026
       ]
     },
     {

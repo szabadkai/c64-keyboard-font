@@ -7,6 +7,7 @@ camera calibration: a single curved keycap photograph cannot determine that.
 """
 from pathlib import Path
 import json
+import math
 import shutil
 import xml.etree.ElementTree as ET
 import pathops
@@ -38,6 +39,16 @@ def stroke(d,width=V):
 def ellipse(x,y,rx,ry):
     k=.5522847498307936
     return path(f'M{x+rx} {y}C{x+rx} {y+k*ry} {x+k*rx} {y+ry} {x} {y+ry}C{x-k*rx} {y+ry} {x-rx} {y+k*ry} {x-rx} {y}C{x-rx} {y-k*ry} {x-k*rx} {y-ry} {x} {y-ry}C{x+k*rx} {y-ry} {x+rx} {y-k*ry} {x+rx} {y}Z')
+def arc(cx,cy,r,a0,a1):
+    # Cubic approximation of a circular arc from a0 to a1 degrees, in <=90 degree pieces.
+    n=max(1,math.ceil(abs(a1-a0)/90));step=(a1-a0)/n;out=''
+    for i in range(n):
+        t0,t1=math.radians(a0+i*step),math.radians(a0+(i+1)*step);h=4/3*math.tan((t1-t0)/4)
+        x0,y0,x1,y1=cx+r*math.cos(t0),cy+r*math.sin(t0),cx+r*math.cos(t1),cy+r*math.sin(t1)
+        if not out:out=f'M{x0:.2f} {y0:.2f}'
+        out+=f'C{x0-h*r*math.sin(t0):.2f} {y0+h*r*math.cos(t0):.2f} {x1+h*r*math.sin(t1):.2f} {y1-h*r*math.cos(t1):.2f} {x1:.2f} {y1:.2f}'
+    return out
+
 def ring(x,y,rx,ry,sx=V,sy=H):return subtract(ellipse(x,y,rx,ry),ellipse(x,y,rx-sx,ry-sy))
 def put(c,p,note):SHAPES[c]=path(p) if isinstance(p,str) else p;NOTES[c]=note
 
@@ -160,12 +171,12 @@ def build_shapes():
     amp=subtract(union(amp_body,amp_leg,amp_tail),amp_notch)
     put('&',pathops.op(amp,rect(-100,0,1000,CAP),pathops.PathOp.INTERSECTION),'Photo-fitted to the & key print at cap height: teardrop loop, broad bowl, spur and baseline foot')
     put('£','M0 0V80H35C110 80 132 140 132 230V340H72V420H132V505C132 635 211 700 360 700C509 700 600 630 600 490H500C500 577 452 620 360 620C268 620 232 580 232 505V420H410V340H232V230C232 163 218 112 184 80H420C472 80 500 123 500 210H600C600 70 528 0 420 0Z','LSZ04734: wider 600-unit silhouette, raised crossbar, square left foot and rising right terminal; 100-unit symbol stem')
-    # IMG_0307/LSZ04734: a heavy spiral whose tail ends level at the bottom,
-    # wrapped around a small, right-leaning a with a narrow counter.
-    a_bowl=subtract(ellipse(0,0,128,132),ellipse(4,0,46,80))
-    at=union(stroke('M462 44H310C150 44 44 160 44 330C44 510 172 612 328 612C496 612 610 505 610 345C610 262 576 212 522 212C470 212 440 236 424 268'),
-             stroke('M396 212L446 470',84),transform(a_bowl,(1,0,.22,1,312,338)))
-    put('@',at,'Photo-fitted: 88-unit spiral with a level bottom tail; leaning a with a narrow counter')
+    # IMG_0307/LSZ04734: one 80-unit stroke throughout. A circular ring ends
+    # in a tail at the bottom; at the lower right it turns inward into the
+    # stem of a slightly leaning a with an oval bowl.
+    at_spiral=stroke(arc(330,330,290,-66,-365)+'C614 240 592 200 540 198C478 196 384 204 396 250L440 440',80)
+    at_bowl=transform(stroke('M91 0C91 66 50 120 0 120C-50 120 -91 66 -91 0C-91 -66 -50 -120 0 -120C50 -120 91 -66 91 0Z',80),(1,0,.25,1,305,338))
+    put('@',union(at_spiral,at_bowl),'Photo-fitted: circular 80-unit ring and spiral into a leaning a, one stroke width throughout')
     put('\ue001','M120 0V350H0V446H120V520C120 642 174 700 284 700H360V604H284C240 604 220 575 220 520V446H360V350H220V0Z','LSZ04733 function f: 100-unit stem, 96-unit bar, flat-ended hook aligned with crossbar, and shared 700-unit height')
 
 def main():

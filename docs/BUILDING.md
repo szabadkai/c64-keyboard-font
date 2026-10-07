@@ -56,7 +56,7 @@ Then run the build and validation sequence above. `normalize_glyphs.py` reconstr
 | `glyphs/petscii-map.json` | Key assignments and code mappings |
 | `fonts/character-map.json` | Built glyph coverage and provenance |
 
-The photo-review record retains version 1.106, when that review was made. The core normalization record is at 1.112, when & was last revised. Version 1.107 added PETSCII; version 1.108 removed the former U+E000 symbol; version 1.110 removed the U+E020–U+E028 key-name legends.
+The photo-review record retains version 1.106, when that review was made. The core normalization record is at 1.112, when & and @ were last revised. Version 1.107 added PETSCII; version 1.108 removed the former U+E000 symbol; version 1.110 removed the U+E020–U+E028 key-name legends.
 
 ## Optional photo extraction
 
