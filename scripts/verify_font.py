@@ -18,6 +18,7 @@ for ext in ['ttf','otf','woff2']:
     assert set(range(32,127))<=set(cmap),'Printable ASCII coverage incomplete'
     for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':assert cmap[ord(c)]==cmap[ord(c.lower())]
     widths={font['hmtx'][cmap[ord(c)]][0] for c in '0123456789'};assert len(widths)==1
+    assert cmap[0x3C0]==cmap[0xE15E],(ext,'typed pi should use the pi legend')
     glyphs=font.getGlyphSet();empty=[];contours=0
     for name in font.getGlyphOrder():
         pen=BoundsPen(glyphs);glyphs[name].draw(pen)

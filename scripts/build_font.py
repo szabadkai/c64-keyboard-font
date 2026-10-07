@@ -107,6 +107,8 @@ def build():
     # Font metrics. Numerals share one advance; letter spacing follows actual width.
     names={c:f'uni{ord(c):04X}' for c in SHAPES};order=['.notdef','space']+list(names.values())
     cmap={32:'space',160:'space',**{ord(c):n for c,n in names.items()}}
+    # Pi is unframed on the key, so ordinary π can use the same glyph.
+    cmap[0x3C0]=names[chr(next(int(e['font_codepoint'][2:],16) for e in petscii if e['unicode']=='U+03C0'))]
     for c,n in names.items():
         if c.isupper() and len(c.lower())==1:cmap[ord(c.lower())]=n
     gl={'.notdef':rec('M50 0H470V700H50Z M125 75V625H395V75Z'),'space':RecordingPen()}
@@ -121,8 +123,8 @@ def build():
         if c in petscii_chars:advance=830;bearing=65+x0
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
     common={'copyright':'Font reconstruction by Levente Szabadkai; CC0 1.0 Universal.',
-            'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.108',
-            'fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.108',
+            'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.109',
+            'fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.109',
             'description':'Geometrically normalized reconstruction of C64 keycap lettering and PETSCII key-front legends. Lowercase maps to uppercase. Unofficial reconstruction.',
             'manufacturer':'Independent reconstruction','designer':'Levente Szabadkai',
             'licenseDescription':'CC0 1.0 Universal. To the extent possible under law, the author has dedicated this font reconstruction to the public domain worldwide.',
@@ -144,7 +146,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
-        fb.font['head'].fontRevision=1.108
+        fb.font['head'].fontRevision=1.109
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')

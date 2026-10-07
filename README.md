@@ -12,11 +12,11 @@ Install the TTF or OTF, then select **C64 Keyboard** in your application.
 
 To try it out, download and extract the complete package, then open `preview.html`. Click a special-key or PETSCII button to insert its symbol into the type tester, then copy the text into your application and select **C64 Keyboard**.
 
-If you have an earlier version installed, replace it with **version 1.108** and restart applications that still show the old font. The former U+E000 symbol is no longer included.
+If you have an earlier version installed, replace it with **version 1.109** and restart applications that still show the old font. The former U+E000 symbol is no longer included.
 
 ## Included
 
-- Uppercase letters, numbers, punctuation, arrows, and £.
+- Uppercase letters, numbers, punctuation, arrows, £, and π.
 - Selected accented letters, including Hungarian characters.
 - Function-key labels f1–f12 and classic C64 key legends.
 - All 63 PETSCII graphic front legends, arranged by key in the preview.

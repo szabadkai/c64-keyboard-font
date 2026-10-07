@@ -75,4 +75,8 @@ def left_edge_at(y):
     return (lo+hi)/2
 edges=[left_edge_at(y) for y in [70,80,90]]
 assert abs(edges[0]+edges[2]-2*edges[1])<.01,edges
+# Regression (#5): S keeps the keycap's narrower upper bowl instead of
+# reading as a rotated copy of itself.
+s_upper=scan(load('S'),530);s_lower=scan(load('S'),170)
+assert s_upper[-1][1]-s_upper[0][0]<s_lower[-1][1]-s_lower[0][0]-20,(s_upper,s_lower)
 print('Geometry verified: 36 cap bounds, parallel stems, shared thickness, symmetry, paired glyphs, and counters')

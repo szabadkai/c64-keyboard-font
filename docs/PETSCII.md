@@ -20,7 +20,7 @@ The font code is **U+E100 plus the screen code**: U+E140–U+E17F, excluding U+E
 
 For example, **Shift + A** produces the spade: PETSCII `$C1` (193), screen code `$41` (65), font character **U+E141**. To insert it programmatically in Python or JavaScript, use the string `"\uE141"` and render it with C64 Keyboard.
 
-The `unicode` field in [petscii-map.json](../glyphs/petscii-map.json) records the corresponding standard Unicode symbol for reference. Those standard code points are not aliases for the framed glyphs. This font does not decode arbitrary PETSCII byte streams or implement C64 control codes, reverse video, or character-set switching.
+The `unicode` field in [petscii-map.json](../glyphs/petscii-map.json) records the corresponding standard Unicode symbol for reference. Those standard code points are not aliases for the framed glyphs. The exception is π (U+03C0): pi is unframed on the key, so typing an ordinary π also displays it. This font does not decode arbitrary PETSCII byte streams or implement C64 control codes, reverse video, or character-set switching.
 
 ## Key map
 

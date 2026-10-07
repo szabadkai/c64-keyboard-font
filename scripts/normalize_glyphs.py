@@ -73,8 +73,11 @@ def build_shapes():
     put('M','M0 0V700H100L290 225L480 700H580V0H492V487L333 105H247L88 487V0Z','Parallel outer stems; mirrored diagonals; centered inner vertex')
     put('W','M0 700H92L166 150L282 700H378L494 150L568 700H660L548 0H448L330 540L212 0H112Z','660-unit broad W; paired mirrored diagonals')
     put('Z','M0 700H380V620L103 80H380V0H0V80L277 620H0Z','Equal level bars; parallel diagonal edges')
-    s=stroke('M336 535C336 612 286 656 190 656C94 656 44 612 44 535C44 453 102 391 190 350C278 309 336 247 336 165C336 88 286 44 190 44C94 44 44 88 44 165')
-    put('S',s,'Smooth rotationally balanced spine; consistent stroke; level terminals')
+    # The keycap S is not a rotated copy of itself: its upper bowl is about
+    # 30 units narrower, the upper terminal ends lower and the lower terminal
+    # higher (LSZ04731, IMG_0322). A point-symmetric S reads as upside down.
+    s=stroke('M334 480C334 600 280 656 195 656C105 656 56 605 56 530C56 450 110 405 195 365C290 320 348 270 348 180C348 90 290 44 196 44C100 44 44 95 44 225')
+    put('S',s,'Photo-fitted: 366-unit upper bowl over a 392-unit lower bowl; upper terminal at 480, lower at 225; consistent stroke')
     put('0',pathops.op(union(o,stroke('M50 0L330 700',65)),rect(0,0,380,700),pathops.PathOp.INTERSECTION),'O-family oval with preserved slash, clipped to its bounding rectangle')
     put('1','M110 0V588L15 533L0 618L123 700H198V0Z','Vertical stem; preserved flag; no added baseline serif')
     # Match the base's upper-left bevel to the *outer edge* of the diagonal.
@@ -114,11 +117,13 @@ def build_shapes():
     put('8',subtract(eight,union(upper_eight,lower_eight)),'Narrower upper bowl; taller lower counter (260 vs 200 units); 80-unit waist; bilateral symmetry')
     # Small legends have their own optical weight, independent of the main caps.
     put('.',ellipse(50,50,50,50),'Circular dot on baseline')
-    put(':',union(ellipse(50,50,50,50),ellipse(50,290,50,50)),'Equal circular dots on one vertical axis')
+    put(':',union(ellipse(50,50,50,50),ellipse(50,430,50,50)),'Equal circular dots on one vertical axis; upper dot raised for cap-height text')
     comma=path('M100 50C100 14 78 -26 34 -70H0L28 8C-10 35 -5 100 50 100C79 100 100 78 100 50Z')
     put(',',comma,'Circular head with clean tapered tail')
-    put(';',union(comma,ellipse(50,290,50,50)),'Colon-family dot and comma-family tail')
-    put('!',union(path('M0 700H110L87 340H23Z'),ellipse(55,250,50,50)),'Centered tapered stem and circular dot')
+    put(';',union(comma,ellipse(50,430,50,50)),'Colon-family dot and comma-family tail')
+    # Text punctuation sits on the baseline at full weight. On the keycap, !
+    # is a small shifted legend raised above the 1, which looked broken in text.
+    put('!',union(path('M0 700H104L90 220H14Z'),ellipse(52,50,50,50)),'Tapered stem at stem weight; baseline dot matching the full stop')
     put('"',union(rect(0,460,80,240),rect(150,460,80,240)),'Equal rectangular strokes with parallel edges')
     put("'",path('M72 700H150L68 480H0Z'),'Straight slanted stroke')
     put('-',rect(0,310,460,80),'Level 80-unit horizontal stroke')
@@ -141,10 +146,18 @@ def build_shapes():
     put('↑',union(rect(55,0,70,565),path('M90 700L0 530H180Z')),'Vertical shaft and centered symmetric triangular head')
     put('$',union(transform(s,(.83,0,0,.77,0,115)),rect(127,75,58,610)),'Normalized S-derived bowls crossed by one vertical stem')
     put('%',union(ring(105,490,105,120,55,55),ring(405,210,105,120,55,55),stroke('M105 90L410 610',62)),'Equal oval counters and straight diagonal; paired sizes')
-    put('&',union(stroke('M348 75L102 351C55 400 47 445 77 483C107 524 168 530 209 497C252 461 250 410 206 369L93 263C36 213 29 167 57 121C85 74 133 52 190 52C277 52 323 113 359 191',65),stroke('M272 146L379 66',65)),'Smooth loop and crossing; leveled optical extrema')
+    # The shifted keycap & is small and light; text use needs cap height and
+    # the shared stroke weight. Same construction, scaled to 700 units.
+    amp=union(stroke('M348 75L102 351C55 400 47 445 77 483C107 524 168 530 209 497C252 461 250 410 206 369L93 263C36 213 29 167 57 121C85 74 133 52 190 52C277 52 323 113 359 191',62),stroke('M272 146L379 66',62))
+    amp_bounds=BoundsPen(None);amp.draw(amp_bounds);_,amp_y0,_,amp_y1=amp_bounds.bounds;k=CAP/(amp_y1-amp_y0)
+    put('&',transform(amp,(k,0,0,k,0,-amp_y0*k)),'Smooth loop and crossing scaled to cap height with stem-weight strokes')
     put('£','M0 0V80H35C110 80 132 140 132 230V340H72V420H132V505C132 635 211 700 360 700C509 700 600 630 600 490H500C500 577 452 620 360 620C268 620 232 580 232 505V420H410V340H232V230C232 163 218 112 184 80H420C472 80 500 123 500 210H600C600 70 528 0 420 0Z','LSZ04734: wider 600-unit silhouette, raised crossbar, square left foot and rising right terminal; 100-unit symbol stem')
-    at=union(stroke('M536 156C432 42 235 17 118 108C-4 203 -16 398 75 522C168 649 368 663 493 579C599 509 623 356 550 276C487 207 426 244 437 324L461 492',66),ring(297,364,132,162,65,65))
-    put('@',at,'Regularized oval counter and smooth spiral; intended lean retained')
+    # IMG_0307/LSZ04734: a heavy spiral whose tail ends level at the bottom,
+    # wrapped around a small, right-leaning a with a narrow counter.
+    a_bowl=subtract(ellipse(0,0,128,132),ellipse(4,0,46,80))
+    at=union(stroke('M462 44H310C150 44 44 160 44 330C44 510 172 612 328 612C496 612 610 505 610 345C610 262 576 212 522 212C470 212 440 236 424 268'),
+             stroke('M396 212L446 470',84),transform(a_bowl,(1,0,.22,1,312,338)))
+    put('@',at,'Photo-fitted: 88-unit spiral with a level bottom tail; leaning a with a narrow counter')
     put('\ue001','M120 0V350H0V446H120V520C120 642 174 700 284 700H360V604H284C240 604 220 575 220 520V446H360V350H220V0Z','LSZ04733 function f: 100-unit stem, 96-unit bar, flat-ended hook aligned with crossbar, and shared 700-unit height')
 
 def main():
@@ -165,6 +178,6 @@ def main():
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         reference=new_references[ch]
         report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=refinements.get(ch,e['photo']),original_source_photo=e['photo'],additional_reference=reference['photo'],revised_from_new_reference=ch in refinements,method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],new_reference_width=reference['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.106',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Original observations are retained in traced/; newer camera observations in high-resolution/. See reference-review.json for refinements.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.109',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Original observations are retained in traced/; newer camera observations in high-resolution/. See reference-review.json for refinements.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()

@@ -1,5 +1,5 @@
 {
-  "version": "1.106",
+  "version": "1.109",
   "cap_height": 700,
   "vertical_stem": 88,
   "horizontal_bar": 80,
@@ -222,14 +222,14 @@
       "additional_reference": "LSZ04731.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Smooth rotationally balanced spine; consistent stroke; level terminals",
+      "assumptions": "Photo-fitted: 366-unit upper bowl over a 392-unit lower bowl; upper terminal at 480, lower at 225; consistent stroke",
       "original_width": 396.175,
       "new_reference_width": 396.301,
-      "width": 380.0,
+      "width": 392.0,
       "bounds": [
         0,
         0.0,
-        380.0,
+        392.0,
         700.0
       ]
     },
@@ -697,14 +697,14 @@
       "additional_reference": "LSZ04730.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Centered tapered stem and circular dot",
+      "assumptions": "Tapered stem at stem weight; baseline dot matching the full stop",
       "original_width": 129.025,
       "new_reference_width": 126.864,
-      "width": 110.0,
+      "width": 104.0,
       "bounds": [
         0,
-        200.0,
-        110.0,
+        0.0,
+        104.0,
         700.0
       ]
     },
@@ -757,11 +757,11 @@
       "assumptions": "Normalized S-derived bowls crossed by one vertical stem",
       "original_width": 354.981,
       "new_reference_width": 368.301,
-      "width": 315.4,
+      "width": 325.36,
       "bounds": [
         0,
         75.0,
-        315.4,
+        325.36,
         685.0
       ]
     },
@@ -792,15 +792,15 @@
       "additional_reference": "LSZ04731.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Smooth loop and crossing; leveled optical extrema",
+      "assumptions": "Smooth loop and crossing scaled to cap height with stem-weight strokes",
       "original_width": 409.314,
       "new_reference_width": 430.713,
-      "width": 389.942,
+      "width": 513.523,
       "bounds": [
         0,
-        19.5,
-        389.942,
-        550.771
+        0.0,
+        513.523,
+        700.0
       ]
     },
     {
@@ -944,15 +944,15 @@
       "additional_reference": "LSZ04734.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Regularized oval counter and smooth spiral; intended lean retained",
+      "assumptions": "Photo-fitted: 88-unit spiral with a level bottom tail; leaning a with a narrow counter",
       "original_width": 650.982,
       "new_reference_width": 652.602,
-      "width": 642.852,
+      "width": 654.0,
       "bounds": [
         0,
-        19.657,
-        642.852,
-        664.925
+        0.0,
+        654.0,
+        656.0
       ]
     },
     {
@@ -963,7 +963,7 @@
       "additional_reference": "LSZ04735.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Equal circular dots on one vertical axis",
+      "assumptions": "Equal circular dots on one vertical axis; upper dot raised for cap-height text",
       "original_width": 107.541,
       "new_reference_width": 115.827,
       "width": 100.0,
@@ -971,7 +971,7 @@
         0,
         0.0,
         100.0,
-        340.0
+        480.0
       ]
     },
     {
@@ -990,7 +990,7 @@
         0,
         -70.0,
         100.0,
-        340.0
+        480.0
       ]
     },
     {
