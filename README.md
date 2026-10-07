@@ -23,6 +23,12 @@ If you have an earlier version installed, replace it with **version 1.112** and 
 
 Lowercase input displays as uppercase. This recreates printed key legends, including smooth geometric reconstructions of the PETSCII graphics, rather than the screen bitmap font.
 
+## The source keyboard
+
+![The Central European Commodore 64 keyboard the font was reconstructed from](keyboard.jpg)
+
+The lettering comes from my own Commodore 64, a Central European unit. Its keycaps are the reference for every letter, number, and symbol in the font.
+
 ## PETSCII front legends
 
 ![PETSCII reference sheet](petscii-specimen.png)
@@ -33,7 +39,7 @@ These are reconstructed outlines: identities and key assignments come from the [
 
 The preview handles the special character codes for you. Copied symbols need this font to display correctly. See the [PETSCII key map and encoding guide](docs/PETSCII.md) for codes and keyboard combinations.
 
-Editable outlines are in [glyphs/](glyphs/), with build tools in [scripts/](scripts/). Original photographs are not included.
+Editable outlines are in [glyphs/](glyphs/), with build tools in [scripts/](scripts/). The close-up photographs used for tracing are not included.
 
 [Build instructions](docs/BUILDING.md) · [Version history](CHANGELOG.md)
 
@@ -41,4 +47,4 @@ Editable outlines are in [glyphs/](glyphs/), with build tools in [scripts/](scri
 
 To the extent possible under law, Levente Szabadkai dedicates the copyright and related rights he holds in this repository to the public domain under [CC0 1.0 Universal](LICENSE). This covers the font files, editable outlines and traces, build scripts, preview, documentation, mappings, and specimen images. You may use, modify, and redistribute these contributions, including commercially, without attribution.
 
-The private source photographs are not included. CC0 does not grant rights held by others in the historical keycap designs or any trademarks. **C64 Keyboard** is an independent, unofficial reconstruction and is not endorsed by Commodore.
+The close-up photographs used for tracing are not included. CC0 does not grant rights held by others in the historical keycap designs or any trademarks. **C64 Keyboard** is an independent, unofficial reconstruction and is not endorsed by Commodore.
