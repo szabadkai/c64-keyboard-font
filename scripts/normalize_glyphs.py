@@ -150,13 +150,15 @@ def build_shapes():
     put('$',union(s,rect(165,-90,66,880)),'Full-size S crossed by one vertical stem extending 90 units beyond cap height and baseline')
     percent=union(ring(115,555,115,145,76,72),ring(425,145,115,145,76,72),stroke('M95 -40L445 740',76))
     put('%',pathops.op(percent,rect(-100,0,800,CAP),pathops.PathOp.INTERSECTION),'Cap-height oval counters and straight diagonal; paired sizes')
-    # The shifted keycap & is small and light; text use needs cap height and
-    # the shared stroke weight. The leg runs straight through to the baseline:
-    # a separate kick bar over its angled end used to leave notches there.
-    amp_curve='L102 351C55 400 47 445 77 483C107 524 168 530 209 497C252 461 250 410 206 369L93 263C36 213 29 167 57 121C85 74 133 52 190 52C277 52 323 113 359 191'
-    amp_bounds=BoundsPen(None);stroke('M348 75'+amp_curve,62).draw(amp_bounds);_,amp_y0,_,amp_y1=amp_bounds.bounds;k=CAP/(amp_y1-amp_y0)
-    amp=transform(stroke('M460 -50'+amp_curve,62),(k,0,0,k,0,-amp_y0*k))
-    put('&',pathops.op(amp,rect(-100,0,1000,CAP),pathops.PathOp.INTERSECTION),'Smooth loop and crossing at cap height; straight leg cut level at the baseline')
+    # Fitted to a close-up of the & key print: small teardrop loop, broad lower
+    # bowl, and a forked tail where the leg meets the baseline beside a short
+    # spur. The print's tiny prong under the spur is smoothed into one curve.
+    amp_body=stroke('M262 654C340 654 406 610 406 540C406 472 362 424 302 388C190 330 48 300 48 180C48 92 125 48 222 48C298 48 350 72 392 112',92)
+    amp_leg=stroke('M262 654C190 654 129 610 129 540C122 482 130 446 183 404L406 70C425 40 445 15 455 -40')
+    amp_tail=path('M360 195L430 232L518 236L546 212Q490 160 476 118Q468 80 500 30Q510 10 500 0L430 0L380 100Z')
+    amp_notch=path('M335 -10L345 0Q362 32 390 60Q404 26 422 0L432 -10Z')
+    amp=subtract(union(amp_body,amp_leg,amp_tail),amp_notch)
+    put('&',pathops.op(amp,rect(-100,0,1000,CAP),pathops.PathOp.INTERSECTION),'Photo-fitted to the & key print at cap height: teardrop loop, broad bowl, spur and baseline foot')
     put('£','M0 0V80H35C110 80 132 140 132 230V340H72V420H132V505C132 635 211 700 360 700C509 700 600 630 600 490H500C500 577 452 620 360 620C268 620 232 580 232 505V420H410V340H232V230C232 163 218 112 184 80H420C472 80 500 123 500 210H600C600 70 528 0 420 0Z','LSZ04734: wider 600-unit silhouette, raised crossbar, square left foot and rising right terminal; 100-unit symbol stem')
     # IMG_0307/LSZ04734: a heavy spiral whose tail ends level at the bottom,
     # wrapped around a small, right-leaning a with a narrow counter.
@@ -184,6 +186,6 @@ def main():
         dest.write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -820 {width+40:.3f} 1040"><path transform="scale(1,-1)" d="{outline}"/></svg>\n')
         reference=new_references[ch]
         report.append(dict(character=ch,codepoint=e['codepoint'],source_photo=refinements.get(ch,e['photo']),original_source_photo=e['photo'],additional_reference=reference['photo'],revised_from_new_reference=ch in refinements,method='constrained geometric reconstruction',assumptions=NOTES[ch],original_width=e['width'],new_reference_width=reference['width'],width=round(width,3),bounds=[round(v,3) for v in (0,y0,width,y1)]))
-    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.111',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Original observations are retained in traced/; newer camera observations in high-resolution/. See reference-review.json for refinements.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
+    (ROOT/'glyphs/normalization.json').write_text(json.dumps(dict(version='1.112',cap_height=CAP,vertical_stem=V,horizontal_bar=H,note='Inferred design geometry; no claim of unique camera calibration. Original observations are retained in traced/; newer camera observations in high-resolution/. See reference-review.json for refinements.',glyphs=report),ensure_ascii=False,indent=2)+'\n')
     print(f'Normalized all {len(report)} core glyphs; photo traces retained separately')
 if __name__=='__main__':main()

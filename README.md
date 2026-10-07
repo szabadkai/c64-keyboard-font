@@ -12,7 +12,7 @@ Install the TTF or OTF, then select **C64 Keyboard** in your application.
 
 To try it out, open the [online preview](https://szabadkai.github.io/c64-keyboard-font/), or download and extract the complete package and open `preview.html`. Click a function-key or PETSCII button to insert its symbol into the type tester, then copy the text into your application and select **C64 Keyboard**.
 
-If you have an earlier version installed, replace it with **version 1.111** and restart applications that still show the old font. The former U+E000 symbol and the U+E020–U+E028 key-name legends are no longer included.
+If you have an earlier version installed, replace it with **version 1.112** and restart applications that still show the old font. The former U+E000 symbol and the U+E020–U+E028 key-name legends are no longer included.
 
 ## Included
 

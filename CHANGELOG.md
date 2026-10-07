@@ -1,5 +1,9 @@
 # Version history
 
+## 1.112 — 2026-10-07
+
+- Redrew & from a close-up of the key print: a small teardrop loop over a broad lower bowl, with a short spur and a foot on the baseline where the leg ends. Still at cap height for running text.
+
 ## 1.111 — 2026-10-07
 
 - Brought $, #, and % up to full size for running text, like ! and & in 1.109. $ is now the full S with its stem extending past cap height and baseline; # and % reach cap height at the shared stroke weight ([#2](https://github.com/szabadkai/c64-keyboard-font/issues/2)).
