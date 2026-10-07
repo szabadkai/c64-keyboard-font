@@ -475,51 +475,6 @@
     "source": "Composed f12 legend"
   },
   {
-    "character": "",
-    "codepoint": "U+E020",
-    "source": "Composed CTRL legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E021",
-    "source": "Composed RUN / STOP legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E022",
-    "source": "Composed SHIFT / LOCK legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E023",
-    "source": "Composed SHIFT legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E024",
-    "source": "Composed RETURN legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E025",
-    "source": "Composed RESTORE legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E026",
-    "source": "Composed CLR / HOME legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E027",
-    "source": "Composed INST / DEL legend"
-  },
-  {
-    "character": "",
-    "codepoint": "U+E028",
-    "source": "Composed CRSR legend"
-  },
-  {
     "character": "Á",
     "codepoint": "U+00C1",
     "source": "Composed accent extension"

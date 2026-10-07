@@ -15,6 +15,7 @@ for ext in ['ttf','otf','woff2']:
     assert font['name'].getDebugName(14)=='https://creativecommons.org/publicdomain/zero/1.0/',(ext,'license URL missing')
     assert 0xE000 not in cmap,(ext,'removed logo glyph is still mapped')
     assert 'uniE000' not in font.getGlyphOrder(),(ext,'removed logo glyph is still present')
+    assert not any(cp in cmap for cp in range(0xE020,0xE030)),(ext,'key-name legends such as RETURN or CRSR are not part of the font')
     assert set(range(32,127))<=set(cmap),'Printable ASCII coverage incomplete'
     for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':assert cmap[ord(c)]==cmap[ord(c.lower())]
     widths={font['hmtx'][cmap[ord(c)]][0] for c in '0123456789'};assert len(widths)==1
@@ -51,7 +52,7 @@ for ext in ['ttf','otf','woff2']:
     reports.append(dict(format=ext,glyphs=len(font.getGlyphOrder()),mapped_characters=len(cmap),bytes=path.stat().st_size))
 for ext in ['ttf','otf']:
     f=ImageFont.truetype(str(ROOT/'fonts'/f'C64Keyboard-Regular.{ext}'),64)
-    for text in ['ABCDEFGHIJKLMNOPQRSTUVWXYZ','0123456789','LOAD "*",8,1','ÁÉÍÓÖŐÚÜŰ','\ue010\ue021','\ue018\ue019\ue01a\ue01b']:
+    for text in ['ABCDEFGHIJKLMNOPQRSTUVWXYZ','0123456789','LOAD "*",8,1','ÁÉÍÓÖŐÚÜŰ','\ue010','\ue018\ue019\ue01a\ue01b']:
         assert f.getmask(text).getbbox(),(ext,text)
 # Render all unique mappings at useful viewing size for a final visual review.
 font=TTFont(ROOT/'fonts/C64Keyboard-Regular.ttf');cmap=font.getBestCmap()

@@ -10,15 +10,15 @@ A font recreated from photographs of classic Commodore 64 keycaps, with cleaned-
 
 Install the TTF or OTF, then select **C64 Keyboard** in your application.
 
-To try it out, open the [online preview](https://szabadkai.github.io/c64-keyboard-font/), or download and extract the complete package and open `preview.html`. Click a special-key or PETSCII button to insert its symbol into the type tester, then copy the text into your application and select **C64 Keyboard**.
+To try it out, open the [online preview](https://szabadkai.github.io/c64-keyboard-font/), or download and extract the complete package and open `preview.html`. Click a function-key or PETSCII button to insert its symbol into the type tester, then copy the text into your application and select **C64 Keyboard**.
 
-If you have an earlier version installed, replace it with **version 1.109** and restart applications that still show the old font. The former U+E000 symbol is no longer included.
+If you have an earlier version installed, replace it with **version 1.110** and restart applications that still show the old font. The former U+E000 symbol and the U+E020–U+E028 key-name legends are no longer included.
 
 ## Included
 
 - Uppercase letters, numbers, punctuation, arrows, £, and π.
 - Selected accented letters, including Hungarian characters.
-- Function-key labels f1–f12 and classic C64 key legends.
+- Function-key labels f1–f12.
 - All 63 PETSCII graphic front legends, arranged by key in the preview.
 
 Lowercase input displays as uppercase. This recreates printed key legends, including smooth geometric reconstructions of the PETSCII graphics, rather than the screen bitmap font.

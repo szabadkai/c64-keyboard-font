@@ -1,5 +1,9 @@
 # Version history
 
+## 1.110 — 2026-10-07
+
+- Removed the composed key-name legends at U+E020–U+E028 (CTRL, RUN/STOP, SHIFT LOCK, SHIFT, RETURN, RESTORE, CLR/HOME, INST/DEL, CRSR) from the font and the preview. The font covers the single-character legends; f1–f12 remain.
+
 ## 1.109 — 2026-10-07
 
 - Redrew S from the photographs: the upper bowl is narrower than the lower one, and the terminals sit where the keycap has them. The previous point-symmetric S looked upside down ([#5](https://github.com/szabadkai/c64-keyboard-font/issues/5)).

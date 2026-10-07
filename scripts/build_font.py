@@ -67,17 +67,6 @@ def build():
             items.append((SHAPES[digit],(.65,0,0,.65,x,0)))
             x+=(bounds(SHAPES[digit])[2]+130)*.65
         put(chr(0xE00F+i),combine(items),f'Composed f{i} legend')
-    # Compose key labels without turning common words into automatic ligatures.
-    labels=['CTRL','RUN\nSTOP','SHIFT\nLOCK','SHIFT','RETURN','RESTORE','CLR\nHOME','INST\nDEL','CRSR']
-    for index,label in enumerate(labels):
-        lines=label.split('\n');items=[];scale=.42
-        lengths=[sum(bounds(SHAPES[c])[2]+130 for c in line)-130 for line in lines];maxlen=max(lengths)
-        for row,(line,length) in enumerate(zip(lines,lengths)):
-            x=(maxlen-length)/2
-            for c in line:
-                items.append((SHAPES[c],(scale,0,0,scale,x*scale,(len(lines)-row-1)*400)))
-                x+=bounds(SHAPES[c])[2]+130
-        put(chr(0xE020+index),combine(items),f'Composed {label.replace(chr(10)," / ")} legend')
     # Latin accents are composed from the uppercase key lettering for practical typing.
     accents={
       'acute':rec('M55 760L180 910H290L135 760Z'),
@@ -123,8 +112,8 @@ def build():
         if c in petscii_chars:advance=830;bearing=65+x0
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
     common={'copyright':'Font reconstruction by Levente Szabadkai; CC0 1.0 Universal.',
-            'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.109',
-            'fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.109',
+            'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.110',
+            'fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.110',
             'description':'Geometrically normalized reconstruction of C64 keycap lettering and PETSCII key-front legends. Lowercase maps to uppercase. Unofficial reconstruction.',
             'manufacturer':'Independent reconstruction','designer':'Levente Szabadkai',
             'licenseDescription':'CC0 1.0 Universal. To the extent possible under law, the author has dedicated this font reconstruction to the public domain worldwide.',
@@ -146,7 +135,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
-        fb.font['head'].fontRevision=1.109
+        fb.font['head'].fontRevision=1.110
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')
