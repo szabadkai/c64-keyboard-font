@@ -1203,25 +1203,6 @@
       ]
     },
     {
-      "character": "",
-      "codepoint": "U+E000",
-      "source_photo": "LSZ04730.JPG",
-      "original_source_photo": "IMG_0348.HEIC",
-      "additional_reference": "LSZ04730.JPG",
-      "revised_from_new_reference": true,
-      "method": "constrained geometric reconstruction",
-      "assumptions": "LSZ04730: heavier 140-unit C ring and correctly mirrored wedge ends, with an open central gap",
-      "original_width": 577.117,
-      "new_reference_width": 568.384,
-      "width": 570.0,
-      "bounds": [
-        0,
-        60.0,
-        570.0,
-        640.0
-      ]
-    },
-    {
       "character": "",
       "codepoint": "U+E001",
       "source_photo": "LSZ04733.JPG",

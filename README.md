@@ -12,7 +12,7 @@ Install the TTF or OTF, then select **C64 Keyboard** in your application.
 
 To try it out, download and extract the complete package, then open `preview.html`. Click a special-key or PETSCII button to insert its symbol into the type tester, then copy the text into your application and select **C64 Keyboard**.
 
-If you have an earlier version installed, replace it with **version 1.107** and restart applications that still show the old font.
+If you have an earlier version installed, replace it with **version 1.108** and restart applications that still show the old font. The former U+E000 symbol is no longer included.
 
 ## Included
 
@@ -37,4 +37,8 @@ Editable outlines are in [glyphs/](glyphs/), with build tools in [scripts/](scri
 
 [Build instructions](docs/BUILDING.md) · [Version history](CHANGELOG.md)
 
-An independent, unofficial reconstruction.
+## License
+
+To the extent possible under law, Levente Szabadkai dedicates the copyright and related rights he holds in this repository to the public domain under [CC0 1.0 Universal](LICENSE). This covers the font files, editable outlines and traces, build scripts, preview, documentation, mappings, and specimen images. You may use, modify, and redistribute these contributions, including commercially, without attribution.
+
+The private source photographs are not included. CC0 does not grant rights held by others in the historical keycap designs or any trademarks. **C64 Keyboard** is an independent, unofficial reconstruction and is not endorsed by Commodore.

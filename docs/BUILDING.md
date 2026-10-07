@@ -28,7 +28,7 @@ The font builder uses FontTools. Outline construction also uses skia-pathops. Sp
 
 The outputs are TTF, OTF, and WOFF2 fonts in `fonts/`, a character map, specimen and comparison PNGs, and `C64-Keyboard.zip`. Validation also writes `build/validation.json` and `build/all-glyphs.png` for inspection. Open `preview.html` to check the webfont and insertion buttons.
 
-Version 1.107 has 203 glyphs and 262 mapped characters. Validation checks printable ASCII, uppercase/lowercase aliases, numeral widths, function-key labels, all 63 PETSCII legends, outline bounds, and font-table round trips. The geometry check covers the original letters, numbers, and paired punctuation.
+Version 1.108 has 202 glyphs and 261 mapped characters. Validation checks printable ASCII, uppercase/lowercase aliases, numeral widths, function-key labels, all 63 PETSCII legends, outline bounds, and font-table round trips. The geometry check covers the original letters, numbers, and paired punctuation.
 
 ## Regenerate geometric outlines
 
@@ -39,7 +39,7 @@ Only run these when changing construction parameters or intentionally regenerati
 .venv/bin/python scripts/build_petscii.py
 ```
 
-Then run the build and validation sequence above. `normalize_glyphs.py` reconstructs the 65 core shapes using the saved reference metadata. `build_petscii.py` reconstructs the 63 graphics and their thin cell frames; pi remains unframed.
+Then run the build and validation sequence above. `normalize_glyphs.py` reconstructs the 64 core shapes using the saved reference metadata. `build_petscii.py` reconstructs the 63 graphics and their thin cell frames; pi remains unframed.
 
 ## Sources and mappings
 
@@ -56,7 +56,7 @@ Then run the build and validation sequence above. `normalize_glyphs.py` reconstr
 | `glyphs/petscii-map.json` | Key assignments and code mappings |
 | `fonts/character-map.json` | Built glyph coverage and provenance |
 
-The core normalization and photo-review records retain version 1.106 because that is when those shapes were revised. Version 1.107 adds PETSCII without changing those core designs.
+The core normalization and photo-review records retain version 1.106 because that is when those shapes were revised. Version 1.107 added PETSCII; version 1.108 removes the former U+E000 symbol.
 
 ## Optional photo extraction
 

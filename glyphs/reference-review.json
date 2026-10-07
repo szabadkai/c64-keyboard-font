@@ -168,19 +168,6 @@
       "rotation": 90,
       "action": "refined",
       "finding": "Wider silhouette, raised bar, square left foot and rising right terminal."
-    },
-    {
-      "character": "",
-      "photo": "LSZ04730.JPG",
-      "crop": [
-        1457,
-        988,
-        1568,
-        1100
-      ],
-      "rotation": -90,
-      "action": "refined",
-      "finding": "Heavier C ring and mirrored wedge ends separated by a central gap."
     }
   ]
 }

@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 import make_comparison
 
 ROOT=make_comparison.ROOT
-CHARS='CG9£\ue000\ue001'
+CHARS='CG9£\ue001'
 
 def main():
     make_comparison.ROWS=[CHARS]
@@ -23,7 +23,7 @@ def main():
             draw.line((x-100,baseline,x+100,baseline),fill='#b9bdb4')
             draw.text((x,baseline),c,font=font,fill=color,anchor='ms')
             if row==0:
-                label(x-90,baseline-220,['C','G','9','Pound','Commodore','Function f'][i],22)
+                label(x-90,baseline-220,['C','G','9','Pound','Function f'][i],22)
     label(65,672,'Photo traces retain print wear and perspective. Geometric outlines use explicit design assumptions.',22,'#66706e')
     image.save(ROOT/'latest-reference-comparison.png')
 

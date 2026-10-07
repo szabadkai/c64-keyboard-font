@@ -145,9 +145,6 @@ def build_shapes():
     put('£','M0 0V80H35C110 80 132 140 132 230V340H72V420H132V505C132 635 211 700 360 700C509 700 600 630 600 490H500C500 577 452 620 360 620C268 620 232 580 232 505V420H410V340H232V230C232 163 218 112 184 80H420C472 80 500 123 500 210H600C600 70 528 0 420 0Z','LSZ04734: wider 600-unit silhouette, raised crossbar, square left foot and rising right terminal; 100-unit symbol stem')
     at=union(stroke('M536 156C432 42 235 17 118 108C-4 203 -16 398 75 522C168 649 368 663 493 579C599 509 623 356 550 276C487 207 426 244 437 324L461 492',66),ring(297,364,132,162,65,65))
     put('@',at,'Regularized oval counter and smooth spiral; intended lean retained')
-    # Separated bars: the original logo has an open horizontal gap at the center.
-    logo=union(subtract(ring(340,350,340,290,140,140),rect(340,0,400,700)),path('M340 390H500L570 470H340Z'),path('M340 310H500L570 230H340Z'))
-    put('\ue000',logo,'LSZ04730: heavier 140-unit C ring and correctly mirrored wedge ends, with an open central gap')
     put('\ue001','M120 0V350H0V446H120V520C120 642 174 700 284 700H360V604H284C240 604 220 575 220 520V446H360V350H220V0Z','LSZ04733 function f: 100-unit stem, 96-unit bar, flat-ended hook aligned with crossbar, and shared 700-unit height')
 
 def main():

@@ -36,16 +36,10 @@ def main():
         if count <= 1:
             raise ValueError(f'No ink found for {ch!r}')
         component = 1 + stats[1:, cv2.CC_STAT_AREA].argmax()
-        if ch == '\ue000':
-            # The logo has three separate ink components.
-            area=stats[component,cv2.CC_STAT_AREA]
-            selected=[j for j in range(1,count) if stats[j,cv2.CC_STAT_AREA]>=area*.05]
-            x,y,w,h=cv2.boundingRect(np.isin(labels,selected).astype('uint8'))
-        else:
-            x, y, w, h = stats[component, :4]
+        x, y, w, h = stats[component, :4]
         photo = photo.crop((x, y, x+w, y+h)).resize((round(w*175/h), 175))
         x0, y0 = i % 5 * 300 + 25, i // 5 * 510 + 115
-        draw.text((x0, y0), {'\ue001':'Function f','\ue000':'Commodore'}.get(ch,ch), font=ui, fill='#25333c')
+        draw.text((x0, y0), {'\ue001':'Function f'}.get(ch,ch), font=ui, fill='#25333c')
         sheet.paste(photo, (x0, y0+45))
         draw.text((x0-16, y0+410), ch, font=font, fill='#25333c', anchor='ls')
         draw.text((x0, y0+435), item['photo'], font=ui, fill='#66706e')

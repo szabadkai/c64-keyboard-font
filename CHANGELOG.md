@@ -1,5 +1,11 @@
 # Version history
 
+## 1.108 — 2026-10-07
+
+- Removed the Commodore logo glyph at U+E000 from the font, editable outlines, reference maps, preview, and download package.
+- Rebuilt the font files and specimen images without that glyph. Other character mappings remain unchanged.
+- Dedicated the author's contributions to the public domain under CC0 1.0 Universal, and set the font embedding flag and metadata accordingly.
+
 ## 1.107 — 2026-10-05
 
 - Added all 63 PETSCII graphic key-front legends as smooth vector outlines, with thin cell frames and an unframed pi.

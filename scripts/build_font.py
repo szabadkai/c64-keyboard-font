@@ -120,12 +120,18 @@ def build():
         if c in '.:,;':advance=max(270,advance);bearing=(advance-w)/2
         if c in petscii_chars:advance=830;bearing=65+x0
         gl[names[c]]=transformed(p,(1,0,0,1,bearing-x0,0));metrics[names[c]]=(advance,round(bearing))
-    common={'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.107','fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.107','description':'Geometrically normalized reconstruction of C64 keycap lettering and PETSCII key-front legends. Lowercase maps to uppercase. Unofficial reconstruction.','manufacturer':'Independent reconstruction','designer':'Reconstructed from user-supplied photographs and documented PETSCII mappings'}
+    common={'copyright':'Font reconstruction by Levente Szabadkai; CC0 1.0 Universal.',
+            'familyName':'C64 Keyboard','styleName':'Regular','uniqueFontIdentifier':'C64Keyboard-Regular-1.108',
+            'fullName':'C64 Keyboard Regular','psName':'C64Keyboard-Regular','version':'Version 1.108',
+            'description':'Geometrically normalized reconstruction of C64 keycap lettering and PETSCII key-front legends. Lowercase maps to uppercase. Unofficial reconstruction.',
+            'manufacturer':'Independent reconstruction','designer':'Levente Szabadkai',
+            'licenseDescription':'CC0 1.0 Universal. To the extent possible under law, the author has dedicated this font reconstruction to the public domain worldwide.',
+            'licenseInfoURL':'https://creativecommons.org/publicdomain/zero/1.0/'}
     kern='feature kern {\n'+ '\n'.join(f'pos {names[a]} {names[b]} {value};' for a,b,value in [('A','V',-45),('A','W',-30),('A','Y',-40),('V','A',-45),('W','A',-30),('Y','A',-40),('T','A',-35),('L','T',-30),('L','V',-30),('L','Y',-40),('T','O',-15),('T','.',-45)])+'\n} kern;'
     for ttf in [True,False]:
         fb=FontBuilder(1000,isTTF=ttf);fb.setupGlyphOrder(order);fb.setupCharacterMap(cmap)
         fb.setupHorizontalMetrics(metrics);fb.setupHorizontalHeader(ascent=1000,descent=-220,lineGap=0)
-        fb.setupNameTable(common);fb.setupOS2(version=4,sTypoAscender=1000,sTypoDescender=-220,sTypoLineGap=0,usWinAscent=1000,usWinDescent=220,sxHeight=700,sCapHeight=700,usWeightClass=400,usWidthClass=3,fsSelection=0xC0)
+        fb.setupNameTable(common);fb.setupOS2(version=4,sTypoAscender=1000,sTypoDescender=-220,sTypoLineGap=0,usWinAscent=1000,usWinDescent=220,sxHeight=700,sCapHeight=700,usWeightClass=400,usWidthClass=3,fsSelection=0xC0,fsType=0)
         fb.setupPost()
         if ttf:
             glyphs={}
@@ -138,7 +144,7 @@ def build():
                 pen=T2CharStringPen(metrics[name][0],None);p.replay(pen);chars[name]=pen.getCharString()
             fb.setupCFF('C64Keyboard-Regular',{'FullName':'C64 Keyboard Regular','FamilyName':'C64 Keyboard','Weight':'Regular'},chars,{})
         addOpenTypeFeaturesFromString(fb.font,kern)
-        fb.font['head'].fontRevision=1.107
+        fb.font['head'].fontRevision=1.108
         fb.font['head'].created=fb.font['head'].modified=3874003200
         ext='ttf' if ttf else 'otf';fb.save(OUT/f'C64Keyboard-Regular.{ext}')
         if ttf:fb.font.flavor='woff2';fb.save(OUT/'C64Keyboard-Regular.woff2')
