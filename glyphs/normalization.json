@@ -792,14 +792,14 @@
       "additional_reference": "LSZ04731.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Photo-fitted to the & key print at cap height: teardrop loop, broad bowl, spur and baseline foot",
+      "assumptions": "Photo-fitted single 88-unit stroke at cap height: teardrop loop, broad bowl, level spur and baseline foot",
       "original_width": 409.314,
       "new_reference_width": 430.713,
-      "width": 544.0,
+      "width": 540.0,
       "bounds": [
         0,
-        0.0,
-        544.0,
+        -0.0,
+        540.0,
         700.0
       ]
     },
