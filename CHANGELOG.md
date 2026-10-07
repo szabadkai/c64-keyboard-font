@@ -2,7 +2,7 @@
 
 ## 1.112 — 2026-10-07
 
-- Redrew & from a close-up of the key print as one continuous stroke at the 88-unit stem weight: a small teardrop loop over a broad lower bowl, a level spur, and a foot on the baseline. It stands upright, with the loop directly over the bowl, rather than copying the print's lean. Still at cap height for running text.
+- Redrew & from a close-up of the key print as one continuous stroke at the 88-unit stem weight: a small teardrop loop over a broad lower bowl, a level spur, and a foot on the baseline. It leans only 2 degrees, rather than the print's 10. Still at cap height for running text.
 - Redrew @ with one 80-unit stroke throughout: a round, upright ring that spirals into a slightly leaning a, fitted to the key print. The previous @ mixed heavy and thin parts and looked tilted.
 
 ## 1.111 — 2026-10-07
