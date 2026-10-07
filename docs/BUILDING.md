@@ -69,6 +69,10 @@ This workflow requires the original private photographs, which are excluded from
 
 Photo traces retain perspective and print wear. Geometric construction is an interpretation of the intended printed design, not a camera calibration or an exact recovery of manufacturing artwork.
 
+## Releasing
+
+Commit the rebuilt fonts and package, push, then publish a GitHub release (for example tag `v1.109`). The [Release workflow](../.github/workflows/release.yml) attaches the fonts and `C64-Keyboard.zip` to the release and deploys `preview.html` to GitHub Pages at https://szabadkai.github.io/c64-keyboard-font/. It can also be run by hand from the Actions tab to redeploy the page.
+
 ## Packaging
 
 `package_font.py` includes documentation, fonts, editable outlines, mapping files, Python scripts, the HTML preview, and public specimen/comparison images. It excludes `.venv/`, `build/`, and `source/`. The ZIP has one `C64-Keyboard/` root directory; extract it before opening the preview.

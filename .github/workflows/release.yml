@@ -1,0 +1,58 @@
+name: Release
+
+# Publishing a GitHub release attaches the font files to it and deploys the
+# interactive preview to GitHub Pages. Fonts are built locally and committed;
+# see docs/BUILDING.md.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  assets:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Attach fonts and package to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" --clobber \
+            C64-Keyboard.zip \
+            fonts/C64Keyboard-Regular.ttf \
+            fonts/C64Keyboard-Regular.otf \
+            fonts/C64Keyboard-Regular.woff2
+
+  pages:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble site
+        run: |
+          mkdir -p _site/fonts
+          cp preview.html _site/index.html
+          cp fonts/C64Keyboard-Regular.{ttf,otf,woff2} _site/fonts/
+          cp specimen.png petscii-specimen.png normalization-comparison.png C64-Keyboard.zip _site/
+          # README and LICENSE read better on GitHub than as raw files.
+          repo="${{ github.server_url }}/${{ github.repository }}"
+          sed -i -e "s#href=\"README.md\"#href=\"$repo\#readme\"#" \
+                 -e "s#href=\"LICENSE\"#href=\"$repo/blob/main/LICENSE\"#" _site/index.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

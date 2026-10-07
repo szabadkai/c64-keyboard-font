@@ -4,13 +4,13 @@ A font recreated from photographs of classic Commodore 64 keycaps, with cleaned-
 
 ![C64 Keyboard font preview](specimen.png)
 
-**[Download TTF](fonts/C64Keyboard-Regular.ttf?raw=true)** · [OTF](fonts/C64Keyboard-Regular.otf?raw=true) · [Webfont](fonts/C64Keyboard-Regular.woff2?raw=true) · [Complete package](C64-Keyboard.zip?raw=true)
+**[Try it in your browser](https://szabadkai.github.io/c64-keyboard-font/)** · **[Download TTF](fonts/C64Keyboard-Regular.ttf?raw=true)** · [OTF](fonts/C64Keyboard-Regular.otf?raw=true) · [Webfont](fonts/C64Keyboard-Regular.woff2?raw=true) · [Complete package](C64-Keyboard.zip?raw=true)
 
 ## Use it
 
 Install the TTF or OTF, then select **C64 Keyboard** in your application.
 
-To try it out, download and extract the complete package, then open `preview.html`. Click a special-key or PETSCII button to insert its symbol into the type tester, then copy the text into your application and select **C64 Keyboard**.
+To try it out, open the [online preview](https://szabadkai.github.io/c64-keyboard-font/), or download and extract the complete package and open `preview.html`. Click a special-key or PETSCII button to insert its symbol into the type tester, then copy the text into your application and select **C64 Keyboard**.
 
 If you have an earlier version installed, replace it with **version 1.109** and restart applications that still show the old font. The former U+E000 symbol is no longer included.
 
@@ -27,7 +27,7 @@ Lowercase input displays as uppercase. This recreates printed key legends, inclu
 
 ![PETSCII reference sheet](petscii-specimen.png)
 
-Open `preview.html` and use the PETSCII buttons to insert the symbols, then copy them from the type tester. Left legends correspond to Commodore + key, right legends to Shift + key in uppercase/graphics mode. Pi on the up-arrow key also works with Commodore.
+Open the [online preview](https://szabadkai.github.io/c64-keyboard-font/#petscii) or `preview.html` and use the PETSCII buttons to insert the symbols, then copy them from the type tester. Left legends correspond to Commodore + key, right legends to Shift + key in uppercase/graphics mode. Pi on the up-arrow key also works with Commodore.
 
 These are reconstructed outlines: identities and key assignments come from the [Ultimate Commodore 64 Reference](https://www.pagetable.com/c64ref/charset/); frame thickness, curves, and print proportions are inferred from the supplied keyboard photograph. They are not exact photo traces. Pi is unframed as on the key.
 
