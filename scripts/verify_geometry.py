@@ -75,6 +75,10 @@ def left_edge_at(y):
     return (lo+hi)/2
 edges=[left_edge_at(y) for y in [70,80,90]]
 assert abs(edges[0]+edges[2]-2*edges[1])<.01,edges
+# Regression: the & leg meets the baseline as one clean stroke, without the
+# thin slivers left where a separate kick bar overlapped its angled end.
+for y in range(5,200,15):
+    assert all(b-a>40 for a,b in scan(load('&'),y)),('&',y,scan(load('&'),y))
 # Regression (#5): S keeps the keycap's narrower upper bowl instead of
 # reading as a rotated copy of itself.
 s_upper=scan(load('S'),530);s_lower=scan(load('S'),170)

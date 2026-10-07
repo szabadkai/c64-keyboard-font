@@ -792,14 +792,14 @@
       "additional_reference": "LSZ04731.JPG",
       "revised_from_new_reference": false,
       "method": "constrained geometric reconstruction",
-      "assumptions": "Smooth loop and crossing scaled to cap height with stem-weight strokes",
+      "assumptions": "Smooth loop and crossing at cap height; straight leg cut level at the baseline",
       "original_width": 409.314,
       "new_reference_width": 430.713,
-      "width": 513.523,
+      "width": 567.33,
       "bounds": [
         0,
         0.0,
-        513.523,
+        567.33,
         700.0
       ]
     },

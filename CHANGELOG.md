@@ -4,7 +4,7 @@
 
 - Redrew S from the photographs: the upper bowl is narrower than the lower one, and the terminals sit where the keycap has them. The previous point-symmetric S looked upside down ([#5](https://github.com/szabadkai/c64-keyboard-font/issues/5)).
 - Redrew @ from the photographs: heavier spiral, level bottom tail, and a small leaning a ([#4](https://github.com/szabadkai/c64-keyboard-font/issues/4)).
-- Resized text punctuation for running text: ! sits on the baseline at stem weight, & reaches cap height, and the upper dots of : and ; are raised ([#2](https://github.com/szabadkai/c64-keyboard-font/issues/2)).
+- Resized text punctuation for running text: ! sits on the baseline at stem weight, & reaches cap height with a clean straight leg in place of the notched lower-right join, and the upper dots of : and ; are raised ([#2](https://github.com/szabadkai/c64-keyboard-font/issues/2)).
 - Typing π (U+03C0) now shows the pi legend ([#4](https://github.com/szabadkai/c64-keyboard-font/issues/4)).
 
 ## 1.108 — 2026-10-07

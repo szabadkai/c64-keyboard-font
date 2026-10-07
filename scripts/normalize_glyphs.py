@@ -147,10 +147,12 @@ def build_shapes():
     put('$',union(transform(s,(.83,0,0,.77,0,115)),rect(127,75,58,610)),'Normalized S-derived bowls crossed by one vertical stem')
     put('%',union(ring(105,490,105,120,55,55),ring(405,210,105,120,55,55),stroke('M105 90L410 610',62)),'Equal oval counters and straight diagonal; paired sizes')
     # The shifted keycap & is small and light; text use needs cap height and
-    # the shared stroke weight. Same construction, scaled to 700 units.
-    amp=union(stroke('M348 75L102 351C55 400 47 445 77 483C107 524 168 530 209 497C252 461 250 410 206 369L93 263C36 213 29 167 57 121C85 74 133 52 190 52C277 52 323 113 359 191',62),stroke('M272 146L379 66',62))
-    amp_bounds=BoundsPen(None);amp.draw(amp_bounds);_,amp_y0,_,amp_y1=amp_bounds.bounds;k=CAP/(amp_y1-amp_y0)
-    put('&',transform(amp,(k,0,0,k,0,-amp_y0*k)),'Smooth loop and crossing scaled to cap height with stem-weight strokes')
+    # the shared stroke weight. The leg runs straight through to the baseline:
+    # a separate kick bar over its angled end used to leave notches there.
+    amp_curve='L102 351C55 400 47 445 77 483C107 524 168 530 209 497C252 461 250 410 206 369L93 263C36 213 29 167 57 121C85 74 133 52 190 52C277 52 323 113 359 191'
+    amp_bounds=BoundsPen(None);stroke('M348 75'+amp_curve,62).draw(amp_bounds);_,amp_y0,_,amp_y1=amp_bounds.bounds;k=CAP/(amp_y1-amp_y0)
+    amp=transform(stroke('M460 -50'+amp_curve,62),(k,0,0,k,0,-amp_y0*k))
+    put('&',pathops.op(amp,rect(-100,0,1000,CAP),pathops.PathOp.INTERSECTION),'Smooth loop and crossing at cap height; straight leg cut level at the baseline')
     put('£','M0 0V80H35C110 80 132 140 132 230V340H72V420H132V505C132 635 211 700 360 700C509 700 600 630 600 490H500C500 577 452 620 360 620C268 620 232 580 232 505V420H410V340H232V230C232 163 218 112 184 80H420C472 80 500 123 500 210H600C600 70 528 0 420 0Z','LSZ04734: wider 600-unit silhouette, raised crossbar, square left foot and rising right terminal; 100-unit symbol stem')
     # IMG_0307/LSZ04734: a heavy spiral whose tail ends level at the bottom,
     # wrapped around a small, right-leaning a with a narrow counter.
