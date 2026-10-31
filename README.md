@@ -48,3 +48,6 @@ Editable outlines are in [glyphs/](glyphs/), with build tools in [scripts/](scri
 To the extent possible under law, Levente Szabadkai dedicates the copyright and related rights he holds in this repository to the public domain under [CC0 1.0 Universal](LICENSE). This covers the font files, editable outlines and traces, build scripts, preview, documentation, mappings, and specimen images. You may use, modify, and redistribute these contributions, including commercially, without attribution.
 
 The close-up photographs used for tracing are not included. CC0 does not grant rights held by others in the historical keycap designs or any trademarks. **C64 Keyboard** is an independent, unofficial reconstruction and is not endorsed by Commodore.
+
+## AI usage
+OpenAI codex (GPT6.1 - Astra - High) was used extensively for creating the scripts for generating the font.
